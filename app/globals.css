@@ -1,0 +1,126 @@
+:root {
+  /* --- colour tokens (matched to raipur.cgpolice.gov.in) --- */
+  --navy-950: #1c1108;
+  --navy-900: #2b1a10;
+  --navy-800: #3a2417;
+  --navy-700: #4a3020;
+  --paper: #f4f2e6;
+  --paper-raised: #fbfaf3;
+  --ink: #201a12;
+  --ink-soft: #5a5140;
+  --line: #ddd8c0;
+  --line-strong: #c2ba9a;
+  --amber: #c98f3f;
+  --amber-deep: #a8752b;
+  --gov-tan: #ede8d0;
+  --signal-red: #b3402f;
+  --signal-red-bg: #f3e0da;
+  --signal-green: #3f7d56;
+  --signal-green-bg: #e3efe6;
+  --signal-amber-bg: #f3e6c9;
+
+  /* --- type --- */
+  --font-display: "Rajdhani", "Noto Sans Devanagari", sans-serif;
+  --font-body: "Inter", "Noto Sans Devanagari", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 14px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+p { margin: 0; }
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+input, select, textarea {
+  font-family: var(--font-body);
+  font-size: 15px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--navy-800);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* --- lane-marking divider: the page's signature motif --- */
+.lane-divider {
+  height: 6px;
+  width: 100%;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--amber) 0px,
+    var(--amber) 28px,
+    transparent 28px,
+    transparent 52px
+  );
+  border-radius: 3px;
+}
+
+.lane-divider.dark {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--paper-raised) 0px,
+    var(--paper-raised) 22px,
+    transparent 22px,
+    transparent 42px
+  );
+  opacity: 0.5;
+}
+
+/* --- live traffic pulsing marker --- */
+.traffic-pulse {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--pulse-color);
+  border: 2px solid white;
+  box-shadow: 0 0 0 0 var(--pulse-color);
+  animation: traffic-pulse-anim 1.8s ease-out infinite;
+}
+@keyframes traffic-pulse-anim {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--pulse-color) 55%, transparent); }
+  70%  { box-shadow: 0 0 0 12px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+.live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--signal-red);
+  animation: traffic-pulse-anim 1.4s ease-out infinite;
+  margin-right: 6px;
+}

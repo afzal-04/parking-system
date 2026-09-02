@@ -1,0 +1,241 @@
+.shell {
+  min-height: 100vh;
+  background: var(--paper, #f7f9fa);
+}
+
+.hero {
+  background: linear-gradient(180deg, var(--navy-900, #0f2540) 0%, var(--navy-800, #16385f) 100%);
+  color: white;
+  padding: 48px 24px 36px;
+  border-bottom: 3px solid var(--amber, #f5a623);
+}
+.heroInner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber, #f5a623);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.eyebrow::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--amber, #f5a623);
+}
+.heroTitle {
+  font-size: clamp(26px, 4vw, 40px);
+  line-height: 1.18;
+  color: white;
+  margin: 0;
+}
+.heroSub {
+  font-size: 15px;
+  color: #c7d3e0;
+  margin-top: 10px;
+}
+
+.main {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.sectionHead {
+  margin-bottom: 28px;
+}
+.sectionHead h2 {
+  font-size: 24px;
+  color: var(--navy-900, #0f2540);
+  margin: 0 0 6px 0;
+}
+.sectionHead p {
+  font-size: 14px;
+  color: var(--ink-soft, #52637a);
+  margin: 0;
+}
+
+.modulesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+@media (max-width: 860px) {
+  .modulesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.moduleCard {
+  background: white;
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(15, 37, 64, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.moduleCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(15, 37, 64, 0.08);
+}
+.moduleBadge {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.mod1Badge { background: #fee2e2; color: #b91c1c; }
+.mod2Badge { background: #fef3c7; color: #b45309; }
+.mod3Badge { background: #e0e7ff; color: #4338ca; }
+.mod4Badge { background: #dcfce7; color: #15803d; }
+
+.moduleCard h3 {
+  font-size: 18px;
+  color: var(--navy-900, #0f2540);
+  margin: 0;
+}
+.moduleCard p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #334155;
+  margin: 0;
+}
+
+.specList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+.specItem {
+  font-size: 12.5px;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border-left: 3px solid #cbd5e1;
+}
+
+.archCard {
+  background: white;
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 40px;
+}
+.archDiagram {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+@media (max-width: 900px) {
+  .archDiagram {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .archDiagram {
+    grid-template-columns: 1fr;
+  }
+}
+
+.archStep {
+  background: #f8fafc;
+  border: 1.5px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.archStepNum {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--navy-900, #0f2540);
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px auto;
+}
+.archStepTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy-900, #0f2540);
+  margin-bottom: 4px;
+}
+.archStepDesc {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.roadMapBox {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 24px;
+}
+.roadMapBox h3 {
+  font-size: 17px;
+  color: #1e40af;
+  margin: 0 0 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.roadMapBox p {
+  font-size: 13.5px;
+  color: #1e3a8a;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+}
+
+.roadMapGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 760px) {
+  .roadMapGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.roadMapItem {
+  background: white;
+  border-radius: 8px;
+  padding: 14px 16px;
+  border-left: 4px solid #3b82f6;
+}
+.roadMapItem strong {
+  display: block;
+  font-size: 13.5px;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+.roadMapItem span {
+  font-size: 12px;
+  color: #64748b;
+}

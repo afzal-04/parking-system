@@ -1,0 +1,419 @@
+.shell { min-height: 100vh; }
+
+/* ---------- utility strip (matches raipur.cgpolice.gov.in) ---------- */
+.utilityBar {
+  background: var(--gov-tan);
+  border-bottom: 1px solid var(--line-strong);
+  padding: 6px 24px;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+.utilityRow {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+}
+.utilityRow .skip { margin-right: auto; }
+.langSelect {
+  font-size: 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  padding: 2px 6px;
+  background: white;
+  color: var(--ink-soft);
+}
+
+/* ---------- header ---------- */
+.header {
+  background: var(--navy-900);
+  color: var(--paper-raised);
+  padding: 14px 24px;
+  border-bottom: 3px solid var(--amber);
+}
+.headerRow {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.crest {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--amber);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; color: var(--navy-950);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.brandText h1 { font-size: 17px; color: white; line-height: 1.15; }
+.brandText p { font-size: 11px; color: #a9b8c9; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px;}
+.adminLink {
+  font-size: 13px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  color: #e8edf3;
+  white-space: nowrap;
+}
+.adminLink:hover { border-color: var(--amber); color: var(--amber); }
+
+/* ---------- hero ---------- */
+.hero {
+  background: linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 100%);
+  color: white;
+  padding: 56px 24px 40px;
+}
+.heroInner { max-width: 1180px; margin: 0 auto; }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.eyebrow::before {
+  content: "";
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--amber);
+}
+.heroTitle {
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.12;
+  color: white;
+  max-width: 780px;
+}
+.heroTitle span { color: var(--amber); }
+.heroSub {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: #c7d3e0;
+  max-width: 560px;
+  margin-top: 16px;
+  line-height: 1.6;
+}
+.heroStats {
+  display: flex;
+  gap: 32px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.heroStatCard {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  min-width: 140px;
+}
+.heroStatCard .num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+}
+.heroStatCard .lbl {
+  font-size: 12px;
+  color: #a9b8c9;
+  margin-top: 2px;
+}
+
+.heroServicesRow {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.heroServiceTitle {
+  font-size: 12px;
+  color: #fef3c7;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 4px;
+}
+.heroServiceChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #f8fafc;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.heroServiceChip:hover {
+  background: var(--amber);
+  color: var(--navy-950);
+  border-color: var(--amber);
+  transform: translateY(-1px);
+}
+
+/* ---------- lane divider strip ---------- */
+.laneStrip { background: var(--navy-800); padding: 0; }
+
+
+/* ---------- main content ---------- */
+.main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 44px 24px 80px;
+  display: grid;
+  grid-template-columns: 1.05fr 0.85fr;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .main { grid-template-columns: 1fr; }
+}
+
+/* ---------- chalan / report card ---------- */
+.card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(15,37,64,0.04);
+}
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 24px 16px;
+  border-bottom: 1px dashed var(--line-strong);
+}
+.cardHead h2 { font-size: 22px; color: var(--navy-900); }
+.cardHead .sub { font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
+.serial {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--amber-deep);
+  background: var(--signal-amber-bg);
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.form { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 18px; }
+.field label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--navy-800);
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
+}
+.field .hint { font-weight: 400; color: var(--ink-soft); margin-left: 6px; }
+
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.catBtn {
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: var(--radius);
+  padding: 10px 6px;
+  font-size: 12.5px;
+  text-align: center;
+  color: var(--ink-soft);
+  line-height: 1.3;
+  transition: border-color .15s ease, color .15s ease, background .15s ease;
+}
+.catBtn.active {
+  border-color: var(--navy-800);
+  background: var(--navy-900);
+  color: white;
+  font-weight: 600;
+}
+
+.locRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 11px 12px;
+  font-size: 14px;
+}
+.locRow input {
+  border: none; outline: none; flex: 1; font-size: 14px; background: transparent;
+}
+.gpsBtn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--navy-800);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  padding: 5px 9px;
+  background: var(--paper);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.gpsBtn:hover { border-color: var(--navy-800); }
+
+.dropzone {
+  border: 1.5px dashed var(--line-strong);
+  border-radius: var(--radius);
+  padding: 18px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 13px;
+  background: white;
+  cursor: pointer;
+}
+.dropzone.hasFile { border-color: var(--signal-green); color: var(--signal-green); }
+.dropzone input { display: none; }
+
+.textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 11px 12px;
+  resize: vertical;
+  min-height: 84px;
+  background: white;
+}
+
+.submitBtn {
+  background: var(--amber);
+  color: var(--navy-950);
+  border: none;
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: filter .15s ease, transform .1s ease;
+}
+.submitBtn:hover { filter: brightness(1.06); }
+.submitBtn:active { transform: translateY(1px); }
+.submitBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.successBox {
+  background: var(--signal-green-bg);
+  border: 1px solid var(--signal-green);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  color: #2c5c3f;
+  font-size: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.successBox strong { display: block; font-family: var(--font-display); font-size: 15px; margin-bottom: 2px; color: #234a33; }
+
+/* ---------- side column ---------- */
+.sideCard {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+  margin-bottom: 22px;
+}
+.sideCard h3 { font-size: 16px; color: var(--navy-900); margin-bottom: 4px; }
+.sideCard .sub { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 14px; }
+
+.feedItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+}
+.feedItem:last-child { border-bottom: none; }
+.feedLoc { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+.feedMeta { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.badge .dot { width: 6px; height: 6px; border-radius: 50%; }
+.badge-pending { background: var(--signal-amber-bg); color: var(--amber-deep); }
+.badge-pending .dot { background: var(--amber-deep); }
+.badge-progress { background: #e6edf5; color: var(--navy-800); }
+.badge-progress .dot { background: var(--navy-800); }
+.badge-resolved { background: var(--signal-green-bg); color: var(--signal-green); }
+.badge-resolved .dot { background: var(--signal-green); }
+
+.mapCaption {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ---------- footer (govt tri-column, matches raipur.cgpolice.gov.in) ---------- */
+.footer {
+  background: var(--amber);
+  color: var(--navy-950);
+}
+.footerInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 30px 24px 20px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 760px) { .footerInner { grid-template-columns: 1fr; } }
+.footerInner h4 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: var(--navy-950);
+}
+.footerBrand { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.footerBrand .crestSm {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--navy-900);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--amber); font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  flex-shrink: 0;
+}
+.footerBrand span { font-family: var(--font-display); font-weight: 700; font-size: 14px; }
+.footerList { font-size: 12.5px; line-height: 2; color: #3a2a12; }
+.footerBottom {
+  border-top: 1px solid rgba(28,17,8,0.2);
+  padding: 12px 24px;
+  font-size: 11.5px;
+  color: #4a3a20;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 1180px;
+  margin: 0 auto;
+}

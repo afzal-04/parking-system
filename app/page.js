@@ -14,14 +14,7 @@ import {
   searchParking,
 } from "@/lib/parkingData";
 import { TRAFFIC_POINTS } from "@/lib/trafficData";
-import {
-  POLICE_STATIONS,
-  PATROL_UNITS,
-  findNearestPoliceStation,
-  findNearestPatrolUnit,
-  getPoliceStationsWithDistance,
-  getPatrolUnitsWithDistance,
-} from "@/lib/policeStations";
+import { findNearestPoliceStation } from "@/lib/policeStations";
 import TrafficAdvisoryTicker from "@/components/TrafficAdvisoryTicker";
 import EChallanModal from "@/components/EChallanModal";
 import ELostReportModal from "@/components/ELostReportModal";
@@ -29,7 +22,6 @@ import FineRatesModal from "@/components/FineRatesModal";
 import SpeedLimitModal from "@/components/SpeedLimitModal";
 import TaxiComplaintModal from "@/components/TaxiComplaintModal";
 import VehicleNocModal from "@/components/VehicleNocModal";
-import PoliceStationFinder from "@/components/PoliceStationFinder";
 import SiteFooter from "@/components/SiteFooter";
 
 const MapView = dynamic(() => import("@/components/MapView"), { ssr: false });
@@ -89,10 +81,11 @@ const QUICK_LOCATIONS = [
 function CitizenPortalContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const initialTab = searchParams.get("tab") || "overview";
+  const tabFromUrl = searchParams.get("tab");
+  const [internalTab, setInternalTab] = useState(tabFromUrl || "overview");
+  const activeTab = tabFromUrl || internalTab;
 
   const [lang, setLang] = useState("en");
-  const [activeTab, setActiveTab] = useState(initialTab); // "overview", "report", "parking", "traffic", "police"
   const [complaints, setComplaints] = useState([]);
   const [category, setCategory] = useState(CATEGORIES[0]);
   const [location, setLocation] = useState("");
@@ -111,7 +104,7 @@ function CitizenPortalContent() {
   const [parkingZones, setParkingZones] = useState(PARKING_ZONES);
   const [parkingSearch, setParkingSearch] = useState("");
 
-  // Citizen Map tab selection ("traffic" | "parking" | "police")
+  // Citizen Map tab selection ("traffic" | "parking")
   const [mapTab, setMapTab] = useState("traffic");
 
   // Modal States
@@ -132,16 +125,8 @@ function CitizenPortalContent() {
     return initial;
   });
 
-  // Sync tab from URL if query param changes
-  useEffect(() => {
-    const tabParam = searchParams.get("tab");
-    if (tabParam && tabParam !== activeTab) {
-      setActiveTab(tabParam);
-    }
-  }, [searchParams]);
-
   function handleTabChange(newTab) {
-    setActiveTab(newTab);
+    setInternalTab(newTab);
     router.push(`/?tab=${newTab}`, { scroll: false });
   }
 
@@ -203,9 +188,6 @@ function CitizenPortalContent() {
     else if (serviceKey === "speed") setIsSpeedModalOpen(true);
     else if (serviceKey === "taxi") setIsTaxiModalOpen(true);
     else if (serviceKey === "noc") setIsNocModalOpen(true);
-    else if (serviceKey === "police_station" || serviceKey === "police") {
-      handleTabChange("police");
-    }
   }
 
   async function useMyLocation() {
@@ -387,20 +369,11 @@ function CitizenPortalContent() {
     [traffic, lang]
   );
 
-  const policeStationsFormatted = useMemo(() => {
-    return getPoliceStationsWithDistance(coords.lat, coords.lng);
-  }, [coords]);
-
-  const patrolUnitsFormatted = useMemo(() => {
-    return getPatrolUnitsWithDistance(coords.lat, coords.lng);
-  }, [coords]);
-
   const CITIZEN_NAV_TABS = [
     ["overview", lang === "hi" ? "मुख्य डैशबोर्ड" : "Citizen Dashboard", "📊"],
     ["report", lang === "hi" ? "शिकायत दर्ज करें (M1)" : "Report Violation (M1)", "📝"],
     ["parking", lang === "hi" ? "स्मार्ट पार्किंग खोजें (M4)" : "Find Parking (M4)", "🅿️"],
     ["traffic", lang === "hi" ? "लाइव ट्रैफिक मानचित्र (M2)" : "Live Traffic Map (M2)", "🚥"],
-    ["police", lang === "hi" ? "थाना व गश्ती दल (M5)" : "Police Stations & Patrol (M5)", "🏢"],
   ];
 
   return (
@@ -428,14 +401,6 @@ function CitizenPortalContent() {
             <span className={styles.heroServiceTitle}>
               {lang === "hi" ? "त्वरित नागरिक सेवाएँ:" : "Quick Services:"}
             </span>
-            <button
-              type="button"
-              className={styles.heroServiceChip}
-              onClick={() => handleTabChange("police")}
-              style={{ background: "#1e3a8a", color: "white", borderColor: "#60a5fa" }}
-            >
-              🚔 {lang === "hi" ? "निकटतम थाना व गश्ती दल" : "Nearby Station & Patrol"}
-            </button>
             <button
               type="button"
               className={styles.heroServiceChip}
@@ -576,13 +541,10 @@ function CitizenPortalContent() {
                       >
                         <span>🚨</span>
                         <div>
-                          <strong>Emergency Dispatch Mode Active:</strong> Nearest Police Station (
-                          <strong>
-                            {lang === "hi"
-                              ? findNearestPoliceStation(coords.lat, coords.lng).name
-                              : findNearestPoliceStation(coords.lat, coords.lng).nameEn}
-                          </strong>
-                          ) will receive instant audio & visual siren alert.
+                          <strong>{lang === "hi" ? "आपातकालीन त्वरित मोड सक्रिय:" : "Emergency Response Mode Active:"}</strong>{" "}
+                          {lang === "hi"
+                            ? "आपातकालीन नियंत्रण कक्ष को तुरंत सायरन व लोकेशन अलर्ट भेजा जाएगा।"
+                            : "Instant high-priority alert & location beacon dispatched to emergency response control."}
                         </div>
                       </div>
                     )}
@@ -664,18 +626,6 @@ function CitizenPortalContent() {
                           </span>
                           <span style={{ fontSize: 11, color: "#166534", fontWeight: 700 }}>
                             ✓ {lang === "hi" ? "सत्यापित लोकेशन" : "Verified GPS Fix"}
-                          </span>
-                        </div>
-                        <div style={{ marginTop: 5, fontSize: 11.5, color: "#14532d", display: "flex", alignItems: "center", gap: 5 }}>
-                          <span>🚓</span>
-                          <span>
-                            {lang === "hi" ? "स्वतः संबद्ध पुलिस थाना:" : "Auto-Assigned Police Station:"}{" "}
-                            <strong>
-                              {lang === "hi"
-                                ? findNearestPoliceStation(coords.lat, coords.lng).name
-                                : findNearestPoliceStation(coords.lat, coords.lng).nameEn}
-                            </strong>{" "}
-                            ({findNearestPoliceStation(coords.lat, coords.lng).distanceKm} km {lang === "hi" ? "दूरी" : "away"})
                           </span>
                         </div>
                       </div>
@@ -989,32 +939,26 @@ function CitizenPortalContent() {
                 <h3 style={{ margin: 0 }}>
                   {mapTab === "traffic"
                     ? t("liveTrafficMapTitle", lang)
-                    : mapTab === "parking"
-                    ? t("parkingMapTitle", lang)
-                    : t("policeMapTitle", lang)}
+                    : t("parkingMapTitle", lang)}
                 </h3>
                 <span
                   className={styles.serial}
                   style={{
-                    background: mapTab === "traffic" ? "#fef3c7" : mapTab === "parking" ? "#eef7f2" : "#eff6ff",
-                    color: mapTab === "traffic" ? "#b45309" : mapTab === "parking" ? "#3f7d56" : "#1e40af",
+                    background: mapTab === "traffic" ? "#fef3c7" : "#eef7f2",
+                    color: mapTab === "traffic" ? "#b45309" : "#3f7d56",
                     fontSize: 11,
                   }}
                 >
                   {mapTab === "traffic"
                     ? "MODULE 2 · TRAFFIC"
-                    : mapTab === "parking"
-                    ? "MODULE 4 · PARKING"
-                    : "MODULE 5 · POLICE DESK"}
+                    : "MODULE 4 · PARKING"}
                 </span>
               </div>
 
               <div className="sub" style={{ fontSize: 12.5, color: "var(--ink-soft)", marginBottom: 12 }}>
                 {mapTab === "traffic"
                   ? t("liveTrafficMapSub", lang)
-                  : mapTab === "parking"
-                  ? t("parkingMapSub", lang)
-                  : t("policeMapSub", lang)}
+                  : t("parkingMapSub", lang)}
               </div>
 
               {/* Separated Map Toggle Tabs */}
@@ -1035,22 +979,14 @@ function CitizenPortalContent() {
                 >
                   {t("mapToggleParking", lang)}
                 </button>
-                <button
-                  type="button"
-                  className={`${styles.catBtn} ${mapTab === "police" ? styles.active : ""}`}
-                  onClick={() => setMapTab("police")}
-                  style={{ flex: 1, padding: "8px 6px", fontSize: 12, borderRadius: 8, border: "none", fontWeight: mapTab === "police" ? 700 : 500 }}
-                >
-                  {t("mapTogglePolice", lang)}
-                </button>
               </div>
 
               {/* Map View */}
               <MapView
                 trafficPoints={trafficPointsFormatted}
                 parkingPoints={parkingZonesFormatted}
-                policeStations={policeStationsFormatted}
-                patrolUnits={patrolUnitsFormatted}
+                policeStations={[]}
+                patrolUnits={[]}
                 userLocation={coords}
                 height={340}
                 lang={lang}
@@ -1064,17 +1000,11 @@ function CitizenPortalContent() {
                   <span style={{ color: "#f59e0b", fontWeight: 600 }}>● {t("legendModerate", lang)}</span>
                   <span style={{ color: "#dc2626", fontWeight: 600 }}>● {t("legendHeavy", lang)}</span>
                 </div>
-              ) : mapTab === "parking" ? (
+              ) : (
                 <div className={styles.mapCaption} style={{ flexWrap: "wrap", gap: 10, marginTop: 12 }}>
                   <span style={{ color: "#16a34a", fontWeight: 600 }}>🅿️ {t("statusAvailable", lang)}</span>
                   <span style={{ color: "#d97706", fontWeight: 600 }}>🅿️ {t("statusFilling", lang)}</span>
                   <span style={{ color: "#dc2626", fontWeight: 600 }}>🅿️ {t("statusFull", lang)}</span>
-                </div>
-              ) : (
-                <div className={styles.mapCaption} style={{ flexWrap: "wrap", gap: 10, marginTop: 12 }}>
-                  <span style={{ color: "#1e3a8a", fontWeight: 600 }}>🏢 {lang === "hi" ? "पुलिस थाना (8)" : "Police Station (8)"}</span>
-                  <span style={{ color: "#dc2626", fontWeight: 600 }}>🚔 {lang === "hi" ? "सक्रिय पीसीआर गश्त (8)" : "Active Patrol (8)"}</span>
-                  <span style={{ color: "#0284c7", fontWeight: 600 }}>📍 {lang === "hi" ? "आपकी लोकेशन" : "Your Location"}</span>
                 </div>
               )}
 
@@ -1121,7 +1051,7 @@ function CitizenPortalContent() {
                     );
                   })}
                 </div>
-              ) : mapTab === "parking" ? (
+              ) : (
                 <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 14 }}>
                   <div style={{ fontSize: 12, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.05em" }}>
                     {lang === "hi" ? "रायपुर स्मार्ट पार्किंग हब स्थिति" : "Raipur Parking Hub Availability"}
@@ -1179,107 +1109,6 @@ function CitizenPortalContent() {
                       </div>
                     );
                   })}
-                </div>
-              ) : (
-                <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 14 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <div style={{ fontSize: 12, fontWeight: 700, color: "#1e3a8a", textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                      {lang === "hi" ? "निकटतम पुलिस थाने व गश्त" : "Closest Police Stations & Patrols"}
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => handleTabChange("police")}
-                      style={{
-                        background: "none",
-                        border: "none",
-                        color: "#1e40af",
-                        fontSize: 11.5,
-                        fontWeight: 700,
-                        cursor: "pointer",
-                        padding: 0,
-                      }}
-                    >
-                      {lang === "hi" ? "📋 पूरी तालिका देखें →" : "View Full Table →"}
-                    </button>
-                  </div>
-                  {policeStationsFormatted.slice(0, 3).map((stn) => (
-                    <div
-                      key={stn.id}
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        padding: "8px 12px",
-                        background: "white",
-                        border: "1px solid var(--line)",
-                        borderRadius: "var(--radius)",
-                      }}
-                    >
-                      <div>
-                        <div style={{ fontWeight: 600, fontSize: 13, color: "var(--navy-900)" }}>
-                          🏢 {lang === "hi" ? stn.name : stn.nameEn}
-                        </div>
-                        <div style={{ fontSize: 11, color: "var(--ink-soft)", marginTop: 1 }}>
-                          📍 {stn.distanceKm} km · {stn.inCharge}
-                        </div>
-                      </div>
-                      <div style={{ display: "flex", gap: 4 }}>
-                        <a
-                          href={`tel:${stn.phone}`}
-                          style={{
-                            fontSize: 11,
-                            fontWeight: 700,
-                            color: "#15803d",
-                            background: "#dcfce7",
-                            padding: "3px 8px",
-                            borderRadius: 6,
-                            textDecoration: "none",
-                          }}
-                        >
-                          📞 {lang === "hi" ? "कॉल" : "Call"}
-                        </a>
-                      </div>
-                    </div>
-                  ))}
-                  {patrolUnitsFormatted.slice(0, 3).map((patrol) => (
-                    <div
-                      key={patrol.id}
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        padding: "8px 12px",
-                        background: "white",
-                        border: "1px solid #fee2e2",
-                        borderRadius: "var(--radius)",
-                      }}
-                    >
-                      <div>
-                        <div style={{ fontWeight: 600, fontSize: 13, color: "#991b1b" }}>
-                          🚔 {lang === "hi" ? patrol.name : patrol.nameEn}
-                        </div>
-                        <div style={{ fontSize: 11, color: "var(--ink-soft)", marginTop: 1 }}>
-                          🛣️ {patrol.distanceKm} km · {patrol.officer}
-                        </div>
-                      </div>
-                      <div style={{ display: "flex", gap: 4 }}>
-                        <a
-                          href={`tel:${patrol.mobile}`}
-                          style={{
-                            fontSize: 11,
-                            fontWeight: 700,
-                            color: "#dc2626",
-                            background: "#fee2e2",
-                            padding: "3px 8px",
-                            borderRadius: 6,
-                            textDecoration: "none",
-                          }}
-                        >
-                          📞 {lang === "hi" ? "कॉल" : "Call"}
-                        </a>
-                      </div>
-                    </div>
-                  ))}
                 </div>
               )}
             </div>
@@ -1371,11 +1200,6 @@ function CitizenPortalContent() {
                 </a>
               </div>
             </div>
-          </div>
-
-          {/* Module 5: Find Nearby Police Station & Patrolling Units (Map & Table Data) */}
-          <div style={{ gridColumn: "1 / -1", width: "100%" }}>
-            <PoliceStationFinder lang={lang} initialCoords={coords} />
           </div>
         </main>
       )}
@@ -1566,21 +1390,21 @@ function CitizenPortalContent() {
 
           <div>
             <div className={styles.sideCard}>
-              <h3>📍 {lang === "hi" ? "स्थान व थाना मैप" : "Location & Nearest Station Map"}</h3>
+              <h3>📍 {lang === "hi" ? "स्थान व लाइव ट्रैफिक मैप" : "Location & Traffic Map"}</h3>
               <div className="sub">
                 {lang === "hi"
-                  ? "आपकी रिपोर्ट निकटतम थाना एवं संबंधित क्षेत्र के गश्ती दल को भेजी जाएगी।"
-                  : "Your report will be automatically routed to the closest police station & patrol van."}
+                  ? "आपकी रिपोर्ट के साथ सटीक GPS लोकेशन रायपुर ट्रैफिक पुलिस कंट्रोल को भेजी जाएगी।"
+                  : "Your precise GPS fix is securely transmitted with your report to Raipur Traffic Control."}
               </div>
               <MapView
                 trafficPoints={trafficPointsFormatted}
                 parkingPoints={parkingZonesFormatted}
-                policeStations={policeStationsFormatted}
-                patrolUnits={patrolUnitsFormatted}
+                policeStations={[]}
+                patrolUnits={[]}
                 userLocation={coords}
                 height={320}
                 lang={lang}
-                mode="police"
+                mode="traffic"
               />
             </div>
 
@@ -1821,8 +1645,8 @@ function CitizenPortalContent() {
               <MapView
                 trafficPoints={trafficPointsFormatted}
                 parkingPoints={parkingZonesFormatted}
-                policeStations={policeStationsFormatted}
-                patrolUnits={patrolUnitsFormatted}
+                policeStations={[]}
+                patrolUnits={[]}
                 userLocation={coords}
                 height={450}
                 lang={lang}
@@ -1875,8 +1699,8 @@ function CitizenPortalContent() {
                 <MapView
                   trafficPoints={trafficPointsFormatted}
                   parkingPoints={parkingZonesFormatted}
-                  policeStations={policeStationsFormatted}
-                  patrolUnits={patrolUnitsFormatted}
+                  policeStations={[]}
+                  patrolUnits={[]}
                   userLocation={coords}
                   height={420}
                   lang={lang}
@@ -1958,17 +1782,6 @@ function CitizenPortalContent() {
                 </table>
               </div>
             </div>
-          </div>
-        </main>
-      )}
-
-      {/* ========================================================================= */}
-      {/* VIEW 5: DEDICATED POLICE STATIONS & PATROL FLEET (M5) */}
-      {/* ========================================================================= */}
-      {activeTab === "police" && (
-        <main className={styles.main}>
-          <div style={{ gridColumn: "1 / -1", width: "100%" }}>
-            <PoliceStationFinder lang={lang} initialCoords={coords} />
           </div>
         </main>
       )}

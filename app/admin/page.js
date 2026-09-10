@@ -72,10 +72,11 @@ function nextLevel(current) {
 function AdminContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const initialTab = searchParams.get("tab") || "overview";
+  const tabFromUrl = searchParams.get("tab");
+  const [internalTab, setInternalTab] = useState(tabFromUrl || "overview");
+  const activeTab = tabFromUrl || internalTab;
 
   const [lang, setLang] = useState("en");
-  const [activeTab, setActiveTab] = useState(initialTab); // "overview", "complaints", "traffic", "parking", "stations", "patrol"
   const [complaints, setComplaints] = useState([]);
   const [filter, setFilter] = useState("all");
   const [selectedId, setSelectedId] = useState(null);
@@ -107,16 +108,8 @@ function AdminContent() {
   );
   const [alerts, setAlerts] = useState([]);
 
-  // Sync tab from URL if query param changes
-  useEffect(() => {
-    const tabParam = searchParams.get("tab");
-    if (tabParam && tabParam !== activeTab) {
-      setActiveTab(tabParam);
-    }
-  }, [searchParams]);
-
   function handleTabChange(newTab) {
-    setActiveTab(newTab);
+    setInternalTab(newTab);
     router.push(`/admin?tab=${newTab}`, { scroll: false });
   }
 
@@ -692,17 +685,20 @@ function AdminContent() {
         {/* Module Navigation Tabs */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12, marginBottom: 20 }}>
           <div className={styles.filterRow} style={{ marginBottom: 0 }}>
-            {MODULE_NAV_TABS.map(([key, label, icon]) => (
-              <button
-                key={key}
-                className={`${styles.filterBtn} ${activeTab === key ? styles.active : ""}`}
-                onClick={() => handleTabChange(key)}
-                style={{ padding: "8px 16px", fontSize: 13, display: "inline-flex", alignItems: "center", gap: 6 }}
-              >
-                <span>{icon}</span>
-                <span>{label}</span>
-              </button>
-            ))}
+            {MODULE_NAV_TABS.map(([key, label, icon]) => {
+              const cleanLabel = (label || "").replace(/^[^\w\u0900-\u097F]+/, "").trim();
+              return (
+                <button
+                  key={key}
+                  className={`${styles.filterBtn} ${activeTab === key ? styles.active : ""}`}
+                  onClick={() => handleTabChange(key)}
+                  style={{ padding: "8px 16px", fontSize: 13, display: "inline-flex", alignItems: "center", gap: 6 }}
+                >
+                  <span>{icon}</span>
+                  <span>{cleanLabel}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
 

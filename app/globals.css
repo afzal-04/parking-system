@@ -124,3 +124,31 @@ input, select, textarea {
   animation: traffic-pulse-anim 1.4s ease-out infinite;
   margin-right: 6px;
 }
+
+/* --- police patrol strobe & badge markers --- */
+.patrol-beacon-pulse {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: patrol-strobe 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes patrol-strobe {
+  0% {
+    box-shadow: 0 0 10px rgba(30, 58, 138, 0.8), 0 0 0 2px #3b82f6;
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(220, 38, 38, 0.9), 0 0 0 3px #ef4444;
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(30, 58, 138, 0.8), 0 0 0 2px #3b82f6;
+  }
+}
+
+.patrol-vehicle-selected {
+  box-shadow: 0 0 0 4px #fbbf24, 0 0 20px rgba(245, 158, 11, 0.9) !important;
+  transform: scale(1.15);
+  z-index: 9999 !important;
+}
+

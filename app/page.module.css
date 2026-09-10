@@ -270,6 +270,64 @@
 }
 .gpsBtn:hover { border-color: var(--navy-800); }
 
+.gpsBannerLocating {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: var(--radius-sm);
+  color: #1e40af;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gpsBannerSuccess {
+  margin-top: 8px;
+  padding: 10px 12px;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+}
+
+.gpsBannerError {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: var(--radius-sm);
+  color: #92400e;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quickLocGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.quickLocBtn {
+  background: white;
+  border: 1px solid var(--line);
+  color: var(--navy-900);
+  font-size: 11.5px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.quickLocBtn:hover {
+  background: var(--navy-900);
+  color: white;
+  border-color: var(--navy-900);
+}
+
 .dropzone {
   border: 1.5px dashed var(--line-strong);
   border-radius: var(--radius);
@@ -375,45 +433,69 @@
   justify-content: space-between;
 }
 
-/* ---------- footer (govt tri-column, matches raipur.cgpolice.gov.in) ---------- */
-.footer {
-  background: var(--amber);
-  color: var(--navy-950);
-}
-.footerInner {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 30px 24px 20px;
-  display: grid;
-  grid-template-columns: 1.1fr 1fr 1fr;
-  gap: 24px;
-}
-@media (max-width: 760px) { .footerInner { grid-template-columns: 1fr; } }
-.footerInner h4 {
-  font-family: var(--font-display);
-  font-size: 14px;
-  margin-bottom: 10px;
-  color: var(--navy-950);
-}
-.footerBrand { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-.footerBrand .crestSm {
-  width: 34px; height: 34px; border-radius: 50%;
-  background: var(--navy-900);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--amber); font-family: var(--font-display); font-weight: 700; font-size: 14px;
-  flex-shrink: 0;
-}
-.footerBrand span { font-family: var(--font-display); font-weight: 700; font-size: 14px; }
-.footerList { font-size: 12.5px; line-height: 2; color: #3a2a12; }
-.footerBottom {
-  border-top: 1px solid rgba(28,17,8,0.2);
-  padding: 12px 24px;
-  font-size: 11.5px;
-  color: #4a3a20;
+.filterRow {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
   gap: 8px;
-  max-width: 1180px;
-  margin: 0 auto;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
 }
+
+.filterBtn {
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: white;
+  color: var(--ink-soft);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.filterBtn:hover {
+  border-color: var(--navy-800);
+  color: var(--navy-900);
+  background: #f8fafc;
+}
+
+.filterBtn.active {
+  background: var(--navy-900);
+  border-color: var(--navy-900);
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(15, 37, 64, 0.15);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.table th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ink-soft);
+  padding: 10px 12px;
+  border-bottom: 1.5px solid var(--line-strong);
+}
+
+.table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+
+

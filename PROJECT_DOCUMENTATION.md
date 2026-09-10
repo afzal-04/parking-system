@@ -72,6 +72,12 @@ graph TD
 - **1-Click Google Maps Navigation:** Every hub includes direct deep-links to launch turn-by-turn Google Maps navigation to the parking entrance.
 - **Police Manual Override:** Police officers can manually calibrate and update occupied spot counts during festivals or peak hours.
 
+### 5. Module 5: Nearby Police Station & Live Patrolling Units Finder (Map & Table Data)
+- **1-Click GPS Proximity Engine:** Citizens can tap *"मेरे निकटतम थाना व पेट्रोलिंग खोजें (Find Nearest Station & Patrol)"* to calculate real-time Haversine distances to all 8 core police stations and 8 active PCR patrol vans / motorcycle squads across Raipur.
+- **Interactive Proximity Map:** Leaflet map with custom high-contrast markers for Police Stations (🏢 with blue badge) and Patrolling Units (🚔 with pulsing beacon and live speed/status). Displays citizen's GPS location pin (📍) and full directional routing to Google Maps.
+- **Comprehensive Table Data View:** Responsive data table with search filtering (station name, jurisdiction, officer, vehicle code), filter tabs (*All 16 / Stations 8 / Patrols 8*), SHO/Officer in charge, direct 1-click dial (`tel:`) and Google Maps turn-by-turn navigation.
+- **Dual Priority Cards:** Prominent highlight cards displaying the closest Police Station and closest Patrolling PCR Van with distance badge and rapid contact buttons.
+
 ---
 
 ## 🏛️ Digital Police Citizen Services (Navbar & Quick Access)

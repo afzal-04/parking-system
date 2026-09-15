@@ -1,5 +1,58 @@
 [
   {
+    "id": "RPT-3205",
+    "category": "सड़क दुर्घटना",
+    "categoryEn": "Accident / Emergency",
+    "location": "Jaistambh Chowk, Gol Bazar, Raipur",
+    "lat": 21.24368,
+    "lng": 81.63559,
+    "description": "Accident",
+    "isEmergency": true,
+    "nearestStation": {
+      "id": "kotwali-ps",
+      "type": "station",
+      "code": "PS-KTW",
+      "name": "कोतवाली पुलिस थाना",
+      "nameEn": "Kotwali Police Station",
+      "areaId": "kotwali",
+      "lat": 21.2435,
+      "lng": 81.635,
+      "phone": "0771-4287111",
+      "emergencyPhone": "112 / 0771-4287111",
+      "inCharge": "Ins. R. K. Sharma",
+      "inChargeRank": "Station House Officer (SHO)",
+      "inChargeRankHi": "थाना प्रभारी (टी.आई.)",
+      "jurisdiction": "सेंट्रल मार्केट, जयस्तंभ चौक, मालवीय रोड, गोल बाज़ार",
+      "jurisdictionEn": "Central Market, Jaistambh Chowk, Malviya Road, Gol Bazar",
+      "address": "गोल बाज़ार के पास, कोतवाली चौक, रायपुर",
+      "addressEn": "Near Gol Bazar, Kotwali Chowk, Raipur",
+      "status": "open_24x7",
+      "statusLabel": {
+        "hi": "24x7 खुला",
+        "en": "24x7 Active"
+      },
+      "assignedPatrol": "PCR-01 (Kotwali Tiger)",
+      "pcrId": "patrol-kotwali-01",
+      "distanceKm": "0.06",
+      "distanceNum": 0.06433944731456778
+    },
+    "status": "pending",
+    "reportedAt": "2026-09-11T11:53:54.000Z",
+    "photo": null
+  },
+  {
+    "id": "RPT-6771",
+    "category": "???? ????????",
+    "categoryEn": "Illegal parking",
+    "location": "Test Location",
+    "lat": 21.2514,
+    "lng": 81.6296,
+    "description": "Test description",
+    "status": "pending",
+    "reportedAt": "2026-09-11T11:25:52.976Z",
+    "photo": null
+  },
+  {
     "id": "RPT-5141",
     "category": "सड़क दुर्घटना",
     "categoryEn": "Accident / Emergency",

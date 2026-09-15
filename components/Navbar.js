@@ -88,32 +88,32 @@ export default function Navbar({
     {
       key: "complaints",
       icon: "📝",
-      label: lang === "hi" ? "शिकायत रिपोर्ट व मैप (M1)" : "Complaint Reports & Map (M1)",
-      desc: lang === "hi" ? "नागरिक शिकायतों की तालिका व स्थान मैप" : "Complaints table & location map",
+      label: lang === "hi" ? "शिकायत रिपोर्ट व मैप (मॉड्यूल 2)" : "Complaint Reports & Map (Module 2)",
+      desc: lang === "hi" ? "नागरिक शिकायतों की तालिका व स्थान मैप — AI अवैध पार्किंग डिटेक्शन पाइपलाइन" : "Complaints table & map — AI Illegal Parking Detection pipeline",
     },
     {
       key: "traffic",
       icon: "🚥",
-      label: lang === "hi" ? "लाइव ट्रैफिक कंट्रोल (M2)" : "Live Traffic Control & Map (M2)",
-      desc: lang === "hi" ? "जंक्शन व सड़क कॉरिडोर लाइव स्थिति" : "Junctions, corridors & speed table",
+      label: lang === "hi" ? "लाइव ट्रैफिक कंट्रोल व मैप" : "Live Traffic Control & Map",
+      desc: lang === "hi" ? "कमांड सपोर्ट — जंक्शन व सड़क कॉरिडोर लाइव स्थिति" : "Command Support — junctions, corridors & speed table",
     },
     {
       key: "parking",
       icon: "🅿️",
-      label: lang === "hi" ? "स्मार्ट पार्किंग सिस्टम (M4)" : "Smart Parking System (M4)",
+      label: lang === "hi" ? "स्मार्ट पार्किंग सिस्टम (मॉड्यूल 1)" : "Smart Parking System (Module 1)",
       desc: lang === "hi" ? "पार्किंग हब क्षमता व लाइव मैप" : "Parking hubs capacity & live map",
     },
     {
       key: "stations",
       icon: "🏢",
       label: lang === "hi" ? "पंजीकृत पुलिस थाने" : "Registered Police Stations",
-      desc: lang === "hi" ? "थाना निर्देशिका, SHO संपर्क व मैप" : "Station directory, SHO & map",
+      desc: lang === "hi" ? "कमांड सपोर्ट — थाना निर्देशिका, SHO संपर्क व मैप" : "Command Support — station directory, SHO & map",
     },
     {
       key: "patrol",
       icon: "🚔",
-      label: lang === "hi" ? "लाइव पेट्रोलिंग पुलिस गश्त (M5)" : "Live Patrol Police Fleet (M5)",
-      desc: lang === "hi" ? "क्षेत्रवार गश्त वाहन ट्रैकर व अलर्ट" : "Area-wise patrol fleet & dispatch",
+      label: lang === "hi" ? "लाइव पेट्रोलिंग पुलिस गश्त" : "Live Patrol Police Fleet",
+      desc: lang === "hi" ? "कमांड सपोर्ट — क्षेत्रवार गश्त वाहन ट्रैकर व अलर्ट" : "Command Support — area-wise patrol fleet & dispatch",
     },
   ];
 

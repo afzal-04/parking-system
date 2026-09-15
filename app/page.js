@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useState, Suspense } from "react";
 import dynamic from "next/dynamic";
@@ -98,6 +98,7 @@ function CitizenPortalContent() {
   const [gpsAccuracy, setGpsAccuracy] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(null);
+  const [submitError, setSubmitError] = useState(null);
 
   // Module 4: Smart Parking states
   const [nearestSpot, setNearestSpot] = useState(null);
@@ -276,6 +277,7 @@ function CitizenPortalContent() {
     e.preventDefault();
     if (!location || !description) return;
     setSubmitting(true);
+    setSubmitError(null);
     try {
       const nearestStation = findNearestPoliceStation(coords.lat, coords.lng);
       const res = await fetch("/api/complaints", {
@@ -300,7 +302,12 @@ function CitizenPortalContent() {
         setDescription("");
         setFileName("");
         setFilePreview(null);
+      } else {
+        setSubmitError(data.error || (lang === "hi" ? "शिकायत दर्ज नहीं हो सकी। कृपया पुनः प्रयास करें।" : "Submission failed. Please try again."));
       }
+    } catch (err) {
+      console.error("Complaint submit error:", err);
+      setSubmitError(lang === "hi" ? "नेटवर्क त्रुटि: शिकायत नहीं भेजी जा सकी। इंटरनेट कनेक्शन जाँचें।" : "Network error: Could not submit complaint. Check your internet connection.");
     } finally {
       setSubmitting(false);
     }
@@ -371,9 +378,9 @@ function CitizenPortalContent() {
 
   const CITIZEN_NAV_TABS = [
     ["overview", lang === "hi" ? "मुख्य डैशबोर्ड" : "Citizen Dashboard", "📊"],
-    ["report", lang === "hi" ? "शिकायत दर्ज करें (M1)" : "Report Violation (M1)", "📝"],
-    ["parking", lang === "hi" ? "स्मार्ट पार्किंग खोजें (M4)" : "Find Parking (M4)", "🅿️"],
-    ["traffic", lang === "hi" ? "लाइव ट्रैफिक मानचित्र (M2)" : "Live Traffic Map (M2)", "🚥"],
+    ["report", lang === "hi" ? "उल्लंघन शिकायत (मॉड्यूल 2)" : "Report Violation (Module 2)", "📝"],
+    ["parking", lang === "hi" ? "स्मार्ट पार्किंग खोजें (मॉड्यूल 1)" : "Find Parking (Module 1)", "🅿️"],
+    ["traffic", lang === "hi" ? "लाइव ट्रैफिक मानचित्र" : "Live Traffic Map", "🚥"],
   ];
 
   return (
@@ -682,6 +689,12 @@ function CitizenPortalContent() {
                       required
                     />
                   </div>
+
+                  {submitError && (
+                    <div style={{ background: "#fee2e2", border: "1px solid #ef4444", borderRadius: 8, padding: "10px 14px", fontSize: 13, color: "#991b1b", display: "flex", alignItems: "center", gap: 8 }}>
+                      <span>??</span> {submitError}
+                    </div>
+                  )}
 
                   <button className={styles.submitBtn} type="submit" disabled={submitting}>
                     {submitting ? t("submitting", lang) : t("submitButton", lang)}
@@ -1212,7 +1225,7 @@ function CitizenPortalContent() {
           <div style={{ gridColumn: "1 / -1" }}>
             <div style={{ marginBottom: 18 }}>
               <h2 style={{ fontSize: 24, color: "var(--navy-900)", margin: 0 }}>
-                📝 {lang === "hi" ? "अवैध पार्किंग व यातायात उल्लंघन शिकायत (M1)" : "Report Illegal Parking & Traffic Violation (M1)"}
+                📝 {lang === "hi" ? "अवैध पार्किंग व यातायात उल्लंघन शिकायत (मॉड्यूल 2)" : "Report Illegal Parking & Traffic Violation (Module 2)"}
               </h2>
               <p style={{ color: "var(--ink-soft)", fontSize: 13.5, marginTop: 4 }}>
                 {lang === "hi"
@@ -1380,6 +1393,18 @@ function CitizenPortalContent() {
                     />
                   </div>
 
+                  {submitError && (
+                    <div style={{ background: "#fee2e2", border: "1px solid #ef4444", borderRadius: 8, padding: "10px 14px", fontSize: 13, color: "#991b1b", display: "flex", alignItems: "center", gap: 8 }}>
+                      <span>⚠️</span> {submitError}
+                    </div>
+                  )}
+
+                  {submitError && (
+                    <div style={{ background: "#fee2e2", border: "1px solid #ef4444", borderRadius: 8, padding: "10px 14px", fontSize: 13, color: "#991b1b", display: "flex", alignItems: "center", gap: 8 }}>
+                      <span>??</span> {submitError}
+                    </div>
+                  )}
+
                   <button className={styles.submitBtn} type="submit" disabled={submitting}>
                     {submitting ? t("submitting", lang) : t("submitButton", lang)}
                   </button>
@@ -1428,7 +1453,7 @@ function CitizenPortalContent() {
           <div style={{ gridColumn: "1 / -1" }}>
             <div style={{ marginBottom: 18 }}>
               <h2 style={{ fontSize: 24, color: "var(--navy-900)", margin: 0 }}>
-                🅿️ {lang === "hi" ? "स्मार्ट पार्किंग हब व वाहन सर्च सिस्टम (M4)" : "Smart Parking Hubs & Universal Vehicle Search (M4)"}
+                🅿️ {lang === "hi" ? "स्मार्ट पार्किंग हब व वाहन सर्च सिस्टम (मॉड्यूल 1)" : "Smart Parking Hubs & Universal Vehicle Search (Module 1)"}
               </h2>
               <p style={{ color: "var(--ink-soft)", fontSize: 13.5, marginTop: 4 }}>
                 {lang === "hi"
@@ -1670,7 +1695,7 @@ function CitizenPortalContent() {
           <div style={{ gridColumn: "1 / -1" }}>
             <div style={{ marginBottom: 18 }}>
               <h2 style={{ fontSize: 24, color: "var(--navy-900)", margin: 0 }}>
-                🚥 {lang === "hi" ? "रायपुर लाइव ट्रैफिक नियंत्रण व जंक्शन स्थिति (M2)" : "Raipur Live Traffic Control & Junction Status (M2)"}
+                🚥 {lang === "hi" ? "रायपुर लाइव ट्रैफिक नियंत्रण व जंक्शन स्थिति" : "Raipur Live Traffic Control & Junction Status"}
               </h2>
               <p style={{ color: "var(--ink-soft)", fontSize: 13.5, marginTop: 4 }}>
                 {lang === "hi"

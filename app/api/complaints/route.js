@@ -8,7 +8,7 @@ export async function GET() {
 
 export async function POST(request) {
   const body = await request.json();
-  const { category, categoryEn, location, lat, lng, description } = body;
+  const { category, categoryEn, location, lat, lng, description, isEmergency, nearestStation } = body;
 
   if (!category || !location || !description) {
     return NextResponse.json(
@@ -25,6 +25,8 @@ export async function POST(request) {
     lat: lat ?? 21.2514,
     lng: lng ?? 81.6296,
     description,
+    isEmergency: isEmergency || false,
+    nearestStation: nearestStation || null,
     status: "pending",
     reportedAt: new Date().toISOString(),
     photo: null,

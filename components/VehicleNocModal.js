@@ -61,7 +61,7 @@ export default function VehicleNocModal({ isOpen, onClose, lang = "en" }) {
         >
           <div>
             <div style={{ fontSize: 11, color: "#a7f3d0", fontWeight: 700, letterSpacing: "0.1em" }}>
-              DELHI TRAFFIC POLICE MODEL · TRAFFIC NOC VERIFICATION
+              RAIPUR TRAFFIC POLICE · TRAFFIC NOC VERIFICATION
             </div>
             <h3 style={{ fontSize: 20, marginTop: 2, color: "white" }}>
               📄 {lang === "hi" ? "वाहन ट्रैफिक एनओसी (NOC) सत्यापन" : "Vehicle Traffic NOC Clearance Status"}

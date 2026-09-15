@@ -23,7 +23,7 @@ export default function ELostReportModal({ isOpen, onClose, lang = "en" }) {
     setTimeout(() => {
       const station = findNearestPoliceStation(21.2514, 81.6296);
       const articleObj = LOST_ARTICLE_TYPES.find((a) => a.id === articleType);
-      const reportId = `KSP-ELOST-2026-${Math.floor(100000 + Math.random() * 900000)}`;
+      const reportId = `RAIPUR-ELOST-2026-${Math.floor(100000 + Math.random() * 900000)}`;
 
       setReceipt({
         reportId,

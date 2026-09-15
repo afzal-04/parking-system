@@ -83,7 +83,7 @@ export default function ELostReportModal({ isOpen, onClose, lang = "en" }) {
         >
           <div>
             <div style={{ fontSize: 11, color: "#e0f2fe", fontWeight: 700, letterSpacing: "0.1em" }}>
-              KARNATAKA POLICE MODEL · DIGITAL CITIZEN SERVICES
+              POLICE MODEL · DIGITAL CITIZEN SERVICES
             </div>
             <h3 style={{ fontSize: 20, marginTop: 2, color: "white" }}>
               📁 {lang === "hi" ? "इ-लॉस्ट रिपोर्ट (गुमशुदगी शिकायत)" : "e-Lost Article Digital Report"}

@@ -84,7 +84,7 @@ export default function EChallanModal({ isOpen, onClose, lang = "en" }) {
         >
           <div>
             <div style={{ fontSize: 11, color: "var(--amber)", fontWeight: 700, letterSpacing: "0.1em" }}>
-              KARNATAKA POLICE MODEL · E-CHALLAN HUB
+              POLICE MODEL · E-CHALLAN HUB
             </div>
             <h3 style={{ fontSize: 20, marginTop: 2, color: "white" }}>
               💳 {lang === "hi" ? "इ-चालान ई-भुगतान व खोज" : "e-Challan Lookup & Payment"}

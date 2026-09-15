@@ -48,7 +48,7 @@ export default function SpeedLimitModal({ isOpen, onClose, lang = "en" }) {
         >
           <div>
             <div style={{ fontSize: 11, color: "#fef3c7", fontWeight: 700, letterSpacing: "0.1em" }}>
-              DELHI TRAFFIC POLICE MODEL · SPEED SAFETY GUIDANCE
+              RAIPUR TRAFFIC POLICE · SPEED SAFETY GUIDANCE
             </div>
             <h3 style={{ fontSize: 20, marginTop: 2, color: "white" }}>
               🏎️ {lang === "hi" ? "रायपुर शहर गति सीमा दर तालिका" : "Raipur City Speed Limit Matrix"}

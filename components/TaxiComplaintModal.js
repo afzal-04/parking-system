@@ -20,7 +20,7 @@ export default function TaxiComplaintModal({ isOpen, onClose, lang = "en" }) {
     setIsSubmitting(true);
 
     setTimeout(() => {
-      const caseId = `DTP-TSR-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+      const caseId = `RAIPUR-TSR-2026-${Math.floor(1000 + Math.random() * 9000)}`;
       setReceipt({
         caseId,
         vehicleNo: vehicleNo.toUpperCase(),
@@ -78,7 +78,7 @@ export default function TaxiComplaintModal({ isOpen, onClose, lang = "en" }) {
         >
           <div>
             <div style={{ fontSize: 11, color: "#c7d2fe", fontWeight: 700, letterSpacing: "0.1em" }}>
-              DELHI TRAFFIC POLICE MODEL · TSR & TAXI COMPLAINT
+              RAIPUR TRAFFIC POLICE · TSR & TAXI COMPLAINT
             </div>
             <h3 style={{ fontSize: 20, marginTop: 2, color: "white" }}>
               🛺 {lang === "hi" ? "ऑटो / टैक्सि मनाही व ओवरचार्जिंग शिकायत" : "Auto / Taxi Refusal & Overcharging Complaint"}

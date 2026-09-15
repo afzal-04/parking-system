@@ -1,4 +1,4 @@
-# 🚦 Parking Suraksha & Smart Traffic System — Raipur Police
+# 🚦 Raipur Parking Setu & Smart Traffic System — Raipur Police
 ### Comprehensive Project Documentation & Technical Architecture Report
 **Submission:** Raipur Police Commissionerate · Traffic Hackathon 2026  
 **Tech Stack:** Next.js (App Router), React, Vanilla CSS Design System, Leaflet Maps, REST APIs
@@ -7,7 +7,7 @@
 
 ## 📌 Executive Summary
 
-**Parking Suraksha & Smart Traffic System** is an end-to-end civic and municipal policing platform engineered for the **Raipur Police Commissionerate**. It bridges the gap between citizens on the road and traffic police control officers at headquarters.
+**Raipur Parking Setu & Smart Traffic System** is an end-to-end civic and municipal policing platform engineered for the **Raipur Police Commissionerate**. It bridges the gap between citizens on the road and traffic police control officers at headquarters.
 
 The platform provides a streamlined, clutter-free **Citizen Portal** for instant traffic violation reporting, real-time GPS parking spot location, live junction traffic monitoring, and 6 digital police desks (e-Challan, e-Lost, Speed Limits, NOC, Taxi Complaint, Fine Guide), seamlessly integrated with an **Admin Command Dashboard** equipped with emergency dispatch, signal preemption, and patrol management.
 
@@ -86,10 +86,10 @@ All auxiliary citizen services open in interactive, lightweight modals without c
 
 | Service | Module / Authority | Features |
 | :--- | :--- | :--- |
-| **💳 e-Challan Fine Lookup & Payment** | Karnataka State Police (KSP) Model | Search by vehicle registration number (e.g., `CG 04 AB 1234`), view violation details, date, location, amount, and execute 1-click UPI dummy payment with instant downloadable PDF receipt. |
+| **💳 e-Challan Fine Lookup & Payment** | Raipur Police Model | Search by vehicle registration number (e.g., `CG 04 AB 1234`), view violation details, date, location, amount, and execute 1-click UPI dummy payment with instant downloadable PDF receipt. |
 | **📁 e-Lost Article Reporting** | Digital Citizen Desk | Report lost Driving License (DL), RC Book, Mobile Phone, or Wallet. Issues an instant official digital acknowledgement receipt for duplicate document issuance without visiting a police station. |
 | **📜 Traffic Fine Rates Guide** | Motor Vehicles Act (MVA) 2026 | Comprehensive, searchable statutory fine schedule with MVA section references, penalty ranges, and license suspension rules. |
-| **🏎️ City Speed Limit Matrix** | Delhi Traffic Police (DTP) Model | Road-wise maximum permissible speed limits for Cars, Two-Wheelers, and Heavy Trucks across GE Road, Ring Roads, VIP Airport Expressway, and School Zones. |
+| **🏎️ City Speed Limit Matrix** | Raipur Traffic Police Model | Road-wise maximum permissible speed limits for Cars, Two-Wheelers, and Heavy Trucks across GE Road, Ring Roads, VIP Airport Expressway, and School Zones. |
 | **🛺 TSR / Taxi Refusal Complaint** | Commuter Helpdesk | Online complaint desk for auto-rickshaw or taxi refusal, meter tampering, or excess fare demands for prompt Traffic Inspector action. |
 | **📄 Traffic NOC Clearance Verification** | Traffic Clearance Desk | Instant verification of zero-pending challan status and generation of verified Traffic NOC clearance certificates for RTO vehicle transfer. |
 | **🚨 24x7 Emergency Helplines** | Raipur Police Contact Desk | Direct shortcuts to WhatsApp Traffic Photo Line (`8750871493`), National Emergency (`112`), Cyber Crime (`1930`), and Women Helpline (`1091`). |

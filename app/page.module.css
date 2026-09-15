@@ -505,3 +505,16 @@
 
 
 
+
+
+@media (max-width: 600px) {
+  .hero { padding: 32px 16px 24px; }
+  .heroTitle { font-size: 28px; }
+  .heroStats { gap: 16px; flex-direction: column; }
+  .main { padding: 24px 16px 40px; grid-template-columns: 1fr; }
+  .cardHead { flex-direction: column; gap: 12px; }
+  .locRow { flex-direction: column; align-items: stretch; }
+  .categoryGrid { grid-template-columns: 1fr; }
+  .filterRow { gap: 8px; flex-direction: row; flex-wrap: wrap; }
+}
+

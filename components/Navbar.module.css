@@ -226,3 +226,13 @@
   margin-top: 1px;
 }
 
+
+
+@media (max-width: 600px) {
+  .headerRow { flex-direction: column; align-items: stretch; gap: 12px; }
+  .navLinks { justify-content: flex-start; width: 100%; }
+  .dropdownMenu { width: 100%; right: auto; left: 0; min-width: 0; }
+  .utilityRow { flex-wrap: wrap; justify-content: space-between; }
+  .skip { display: none; }
+}
+

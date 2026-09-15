@@ -22,36 +22,6 @@ import { t } from "@/lib/i18n";
 
 const MapView = dynamic(() => import("@/components/MapView"), { ssr: false });
 
-const RECOMMENDATIONS = [
-  {
-    icon: "🚧",
-    title: { hi: "गोल बाज़ार — सर्विस लेन मार्किंग", en: "Gol Bazar — Service Lane Marking" },
-    detail: {
-      hi: "सर्विस लेन पर पीली पट्टी व साइनेज लगाना, सुबह/शाम पीक ऑवर में एक कांस्टेबल तैनात करना।",
-      en: "Paint yellow lane markings and add signage on the service lane; station one constable during morning/evening peak hours.",
-    },
-    cost: { hi: "≈ ₹8,000 · कम लागत", en: "≈ ₹8,000 · Low cost" },
-  },
-  {
-    icon: "🅿️",
-    title: { hi: "पंडरी बस स्टैंड — निर्धारित पार्किंग बे", en: "Pandri Bus Stand — Designated Parking Bay" },
-    detail: {
-      hi: "मौजूदा खाली जगह को ऑफ-स्ट्रीट पार्किंग बे के रूप में चिन्हित कर बोर्ड लगाना।",
-      en: "Mark the existing open space as an off-street parking bay with clear signboards.",
-    },
-    cost: { hi: "≈ ₹15,000 · कम लागत", en: "≈ ₹15,000 · Low cost" },
-  },
-  {
-    icon: "🏫",
-    title: { hi: "सेजबहार स्कूल ज़ोन — समय-आधारित नियम", en: "Sejbahar School Zone — Time-based Rule" },
-    detail: {
-      hi: "छुट्टी के 30 मिनट के लिए 'No Parking - School Hours' बोर्ड व अस्थायी बैरिकेड।",
-      en: "Put up a 'No Parking - School Hours' board and temporary barricade for the 30-minute dismissal window.",
-    },
-    cost: { hi: "≈ ₹5,000 · कम लागत", en: "≈ ₹5,000 · Low cost" },
-  },
-];
-
 const LEVEL_LABEL = {
   free: { hi: "सामान्य", en: "Free flow" },
   moderate: { hi: "मध्यम", en: "Moderate" },
@@ -905,24 +875,6 @@ function AdminContent() {
                   ))}
                 </div>
 
-                <div className={styles.panel}>
-                  <div className={styles.panelHead}>
-                    <h3>{t("recoTitle", lang)}</h3>
-                    <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>{t("recoSub", lang)}</span>
-                  </div>
-                  <div className={styles.recoList}>
-                    {RECOMMENDATIONS.map((r) => (
-                      <div className={styles.recoItem} key={r.title.en}>
-                        <div className={styles.recoIcon}>{r.icon}</div>
-                        <div className={styles.recoText} style={{ flex: 1 }}>
-                          <strong>{r.title[lang]}</strong>
-                          <span>{r.detail[lang]}</span>
-                        </div>
-                        <div className={styles.recoCost}>{r.cost[lang]}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
           </div>

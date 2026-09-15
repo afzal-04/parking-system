@@ -23,9 +23,9 @@
   font-size: 16px;
 }
 .brand h1 { font-size: 16px; color: white; }
-.brand p { font-size: 11px; color: #8ea0b5; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+.brand p { font-size: 16px; color: #8ea0b5; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
 .backLink {
-  font-size: 12.5px;
+  font-size: 16px;
   color: #b9c6d4;
   border: 1px solid rgba(255,255,255,0.2);
   padding: 7px 14px;
@@ -53,7 +53,7 @@
   border-radius: var(--radius-lg);
   padding: 18px 20px;
 }
-.statCard .lbl { font-size: 12px; color: var(--ink-soft); font-weight: 600; letter-spacing: 0.02em; }
+.statCard .lbl { font-size: 16px; color: var(--ink-soft); font-weight: 600; letter-spacing: 0.02em; }
 .statCard .val { font-family: var(--font-display); font-size: 32px; font-weight: 700; color: var(--navy-900); margin-top: 6px; }
 .statCard.pending .val { color: var(--signal-red); }
 .statCard.progress .val { color: var(--amber-deep); }
@@ -81,7 +81,7 @@
   margin-bottom: 14px;
 }
 .panelHead h3 { font-size: 16px; color: var(--navy-900); }
-.panelHead .sub { font-size: 12px; color: var(--ink-soft); }
+.panelHead .sub { font-size: 16px; color: var(--ink-soft); }
 
 .zoneRow {
   display: flex;
@@ -89,13 +89,13 @@
   gap: 10px;
   padding: 9px 0;
   border-bottom: 1px solid var(--line);
-  font-size: 13.5px;
+  font-size: 16px;
 }
 .zoneRow:last-child { border-bottom: none; }
 .zoneRank {
   width: 20px; height: 20px; border-radius: 4px;
   background: var(--navy-900); color: white;
-  font-family: var(--font-mono); font-size: 11px;
+  font-family: var(--font-mono); font-size: 16px;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
@@ -107,11 +107,11 @@
   overflow: hidden;
 }
 .zoneBarFill { height: 100%; background: var(--signal-red); border-radius: 4px; }
-.zoneCount { font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft); width: 22px; text-align: right; }
+.zoneCount { font-family: var(--font-mono); font-size: 16px; color: var(--ink-soft); width: 22px; text-align: right; }
 
 .filterRow { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
 .filterBtn {
-  font-size: 12px;
+  font-size: 16px;
   padding: 6px 12px;
   border-radius: 999px;
   border: 1px solid var(--line-strong);
@@ -120,11 +120,11 @@
 }
 .filterBtn.active { background: var(--navy-900); border-color: var(--navy-900); color: white; font-weight: 600; }
 
-.table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+.table { width: 100%; border-collapse: collapse; font-size: 16px; margin-top: 12px; }
 .table th {
   text-align: left;
   font-weight: 600;
-  font-size: 11.5px;
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   color: var(--ink-soft);
@@ -133,10 +133,10 @@
 }
 .table td { padding: 11px 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
 .table tr:last-child td { border-bottom: none; }
-.rowId { font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft); }
+.rowId { font-family: var(--font-mono); font-size: 16px; color: var(--ink-soft); }
 
 .statusSelect {
-  font-size: 12px;
+  font-size: 16px;
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-sm);
   padding: 5px 8px;
@@ -147,7 +147,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 600;
   padding: 4px 9px;
   border-radius: 999px;
@@ -169,19 +169,19 @@
   background: var(--paper);
   border-radius: var(--radius);
   padding: 12px 14px;
-  font-size: 13px;
+  font-size: 16px;
 }
 .recoIcon {
   width: 26px; height: 26px; border-radius: 50%;
   background: var(--signal-green-bg); color: var(--signal-green);
   display: flex; align-items: center; justify-content: center;
-  font-size: 13px; flex-shrink: 0;
+  font-size: 16px; flex-shrink: 0;
 }
-.recoText strong { display: block; font-size: 13.5px; color: var(--ink); margin-bottom: 2px; }
-.recoText span { color: var(--ink-soft); font-size: 12.5px; }
+.recoText strong { display: block; font-size: 16px; color: var(--ink); margin-bottom: 2px; }
+.recoText span { color: var(--ink-soft); font-size: 16px; }
 .recoCost {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 16px;
   color: var(--amber-deep);
   background: var(--signal-amber-bg);
   padding: 2px 8px;
@@ -200,7 +200,7 @@
   display: inline-flex;
   align-items: center;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 16px;
   letter-spacing: 0.04em;
   color: var(--signal-red);
   background: var(--signal-red-bg);
@@ -221,11 +221,11 @@
   width: 10px; height: 10px; border-radius: 50%;
   flex-shrink: 0;
 }
-.trafficName { font-size: 13.5px; font-weight: 600; color: var(--ink); }
-.trafficMeta { font-size: 11.5px; color: var(--ink-soft); margin-top: 1px; }
+.trafficName { font-size: 16px; font-weight: 600; color: var(--ink); }
+.trafficMeta { font-size: 16px; color: var(--ink-soft); margin-top: 1px; }
 .trafficLevel {
   margin-left: auto;
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 600;
   padding: 4px 10px;
   border-radius: 999px;
@@ -249,8 +249,8 @@
   gap: 14px;
   flex-wrap: wrap;
 }
-.alertBanner strong { color: #7a2a20; font-family: var(--font-display); font-size: 14.5px; }
-.alertBanner span { color: #7a2a20; font-size: 12.5px; }
+.alertBanner strong { color: #7a2a20; font-family: var(--font-display); font-size: 16px; }
+.alertBanner span { color: #7a2a20; font-size: 16px; }
 .deployBtn {
   margin-left: auto;
   background: var(--signal-red);
@@ -260,7 +260,7 @@
   padding: 9px 16px;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 16px;
   white-space: nowrap;
 }
 .deployBtn:hover { filter: brightness(1.08); }
@@ -292,13 +292,13 @@
 }
 .emergencyDesc {
   color: #7f1d1d;
-  font-size: 13px;
+  font-size: 16px;
 }
 .soundBtn {
   background: white;
   border: 1px solid #dc2626;
   color: #b91c1c;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   padding: 6px 12px;
   border-radius: 6px;
@@ -333,7 +333,7 @@
 }
 
 .areaSelectLabel {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--navy-900);
   display: flex;
@@ -345,7 +345,7 @@
   background: #f8fafc;
   border: 1.5px solid #0284c7;
   color: #0f172a;
-  font-size: 13.5px;
+  font-size: 16px;
   font-weight: 600;
   padding: 8px 14px;
   border-radius: 8px;
@@ -370,7 +370,7 @@
 }
 
 .typePill {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   padding: 6px 12px;
   border-radius: 20px;
@@ -394,7 +394,7 @@
 }
 
 .resetViewBtn {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   color: #0369a1;
   background: #e0f2fe;
@@ -435,7 +435,7 @@
 }
 
 .actionBtnSmall {
-  font-size: 11.5px;
+  font-size: 16px;
   font-weight: 600;
   padding: 5px 10px;
   border-radius: 6px;
@@ -481,7 +481,7 @@
   color: #ffffff;
   padding: 10px 18px;
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
   margin-bottom: 16px;
   display: flex;

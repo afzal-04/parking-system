@@ -5,7 +5,7 @@
   background: var(--gov-tan);
   border-bottom: 1px solid var(--line-strong);
   padding: 6px 24px;
-  font-size: 11.5px;
+  font-size: 16px;
   color: var(--ink-soft);
 }
 .utilityRow {
@@ -18,7 +18,7 @@
 }
 .utilityRow .skip { margin-right: auto; }
 .langSelect {
-  font-size: 11px;
+  font-size: 16px;
   border: 1px solid var(--line-strong);
   border-radius: 3px;
   padding: 2px 6px;
@@ -38,7 +38,8 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 24px;
   gap: 16px;
 }
 .brand { display: flex; align-items: center; gap: 12px; }
@@ -51,9 +52,9 @@
   flex-shrink: 0;
 }
 .brandText h1 { font-size: 17px; color: white; line-height: 1.15; }
-.brandText p { font-size: 11px; color: #a9b8c9; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px;}
+.brandText p { font-size: 16px; color: #a9b8c9; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px;}
 .adminLink {
-  font-size: 13px;
+  font-size: 16px;
   font-family: var(--font-display);
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -74,7 +75,7 @@
 .heroInner { max-width: 1180px; margin: 0 auto; }
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 16px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--amber);
@@ -123,7 +124,7 @@
   color: white;
 }
 .heroStatCard .lbl {
-  font-size: 12px;
+  font-size: 16px;
   color: #a9b8c9;
   margin-top: 2px;
 }
@@ -136,7 +137,7 @@
   align-items: center;
 }
 .heroServiceTitle {
-  font-size: 12px;
+  font-size: 16px;
   color: #fef3c7;
   font-weight: 600;
   text-transform: uppercase;
@@ -147,12 +148,12 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
   color: #f8fafc;
   padding: 6px 14px;
   border-radius: 20px;
-  font-size: 12.5px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -192,27 +193,28 @@
 }
 .cardHead {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 24px;
   align-items: flex-start;
   padding: 20px 24px 16px;
   border-bottom: 1px dashed var(--line-strong);
 }
 .cardHead h2 { font-size: 22px; color: var(--navy-900); }
-.cardHead .sub { font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
+.cardHead .sub { font-size: 16px; color: var(--ink-soft); margin-top: 4px; }
 .serial {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 16px;
   color: var(--amber-deep);
   background: var(--signal-amber-bg);
   padding: 5px 10px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   white-space: nowrap;
 }
 
 .form { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 18px; }
 .field label {
   display: block;
-  font-size: 12.5px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--navy-800);
   margin-bottom: 6px;
@@ -222,7 +224,7 @@
 
 .categoryGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
 }
 .catBtn {
@@ -230,7 +232,7 @@
   background: white;
   border-radius: var(--radius);
   padding: 10px 6px;
-  font-size: 12.5px;
+  font-size: 16px;
   text-align: center;
   color: var(--ink-soft);
   line-height: 1.3;
@@ -251,18 +253,18 @@
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 11px 12px;
-  font-size: 14px;
+  font-size: 16px;
 }
 .locRow input {
-  border: none; outline: none; flex: 1; font-size: 14px; background: transparent;
+  border: none; outline: none; flex: 1; font-size: 16px; background: transparent;
 }
 .gpsBtn {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 16px;
   letter-spacing: 0.04em;
   color: var(--navy-800);
   border: 1px solid var(--line-strong);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   padding: 5px 9px;
   background: var(--paper);
   white-space: nowrap;
@@ -275,9 +277,9 @@
   padding: 8px 12px;
   background: #eff6ff;
   border: 1px solid #bfdbfe;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   color: #1e40af;
-  font-size: 12px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -288,8 +290,8 @@
   padding: 10px 12px;
   background: #f0fdf4;
   border: 1px solid #86efac;
-  border-radius: var(--radius-sm);
-  font-size: 12px;
+  border-radius: var(--radius);
+  font-size: 16px;
 }
 
 .gpsBannerError {
@@ -297,9 +299,9 @@
   padding: 8px 12px;
   background: #fffbeb;
   border: 1px solid #fde68a;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   color: #92400e;
-  font-size: 12px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -315,9 +317,11 @@
   background: white;
   border: 1px solid var(--line);
   color: var(--navy-900);
-  font-size: 11.5px;
-  padding: 4px 8px;
-  border-radius: 12px;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 16px;
+  margin-right: 4px;
+  margin-bottom: 4px;
   cursor: pointer;
   transition: all 0.15s ease;
 }
@@ -334,7 +338,7 @@
   padding: 18px;
   text-align: center;
   color: var(--ink-soft);
-  font-size: 13px;
+  font-size: 16px;
   background: white;
   cursor: pointer;
 }
@@ -377,12 +381,12 @@
   border-radius: var(--radius);
   padding: 16px 18px;
   color: #2c5c3f;
-  font-size: 14px;
+  font-size: 16px;
   display: flex;
   gap: 12px;
   align-items: flex-start;
 }
-.successBox strong { display: block; font-family: var(--font-display); font-size: 15px; margin-bottom: 2px; color: #234a33; }
+.successBox strong { display: block; font-family: var(--font-display); font-size: 16px; margin-bottom: 2px; color: #234a33; }
 
 /* ---------- side column ---------- */
 .sideCard {
@@ -393,25 +397,26 @@
   margin-bottom: 22px;
 }
 .sideCard h3 { font-size: 16px; color: var(--navy-900); margin-bottom: 4px; }
-.sideCard .sub { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 14px; }
+.sideCard .sub { font-size: 16px; color: var(--ink-soft); margin-bottom: 14px; }
 
 .feedItem {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 24px;
   align-items: flex-start;
   gap: 10px;
   padding: 11px 0;
   border-bottom: 1px solid var(--line);
 }
 .feedItem:last-child { border-bottom: none; }
-.feedLoc { font-size: 13.5px; font-weight: 600; color: var(--ink); }
-.feedMeta { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+.feedLoc { font-size: 16px; font-weight: 600; color: var(--ink); }
+.feedMeta { font-size: 16px; color: var(--ink-soft); margin-top: 2px; }
 
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 600;
   padding: 4px 9px;
   border-radius: 999px;
@@ -426,11 +431,12 @@
 .badge-resolved .dot { background: var(--signal-green); }
 
 .mapCaption {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--ink-soft);
   margin-top: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 24px;
 }
 
 .filterRow {
@@ -441,7 +447,7 @@
 }
 
 .filterBtn {
-  font-size: 13px;
+  font-size: 16px;
   padding: 8px 16px;
   border-radius: 999px;
   border: 1px solid var(--line-strong);
@@ -472,14 +478,14 @@
 .table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: 16px;
   margin-top: 12px;
 }
 
 .table th {
   text-align: left;
   font-weight: 600;
-  font-size: 11.5px;
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   color: var(--ink-soft);

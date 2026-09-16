@@ -100,7 +100,7 @@ function CitizenPortalContent() {
   const [success, setSuccess] = useState(null);
   const [submitError, setSubmitError] = useState(null);
 
-  // Module 4: Smart Parking states
+  // Smart Parking states
   const [nearestSpot, setNearestSpot] = useState(null);
   const [parkingZones, setParkingZones] = useState(PARKING_ZONES);
   const [parkingSearch, setParkingSearch] = useState("");
@@ -116,7 +116,7 @@ function CitizenPortalContent() {
   const [isTaxiModalOpen, setIsTaxiModalOpen] = useState(false);
   const [isNocModalOpen, setIsNocModalOpen] = useState(false);
 
-  // Module 2: Traffic states
+  // Traffic states
   const [traffic, setTraffic] = useState(() => {
     const initial = {};
     TRAFFIC_POINTS.forEach((p, idx) => {
@@ -378,8 +378,8 @@ function CitizenPortalContent() {
 
   const CITIZEN_NAV_TABS = [
     ["overview", lang === "hi" ? "मुख्य डैशबोर्ड" : "Citizen Dashboard", ""],
-    ["report", lang === "hi" ? "उल्लंघन शिकायत (मॉड्यूल 2)" : "Report Violation (Module 2)", ""],
-    ["parking", lang === "hi" ? "स्मार्ट पार्किंग खोजें (मॉड्यूल 1)" : "Find Parking (Module 1)", ""],
+    ["report", lang === "hi" ? "उल्लंघन शिकायत" : "Report Violation", ""],
+    ["parking", lang === "hi" ? "स्मार्ट पार्किंग खोजें" : "Find Parking", ""],
     ["traffic", lang === "hi" ? "लाइव ट्रैफिक मानचित्र" : "Live Traffic Map", ""],
   ];
 
@@ -706,8 +706,7 @@ function CitizenPortalContent() {
                       : "Designated parking hubs, live spot capacity & real-time distance"}
                   </div>
                 </div>
-                <span className={styles.serial} style={{ background: "#eef7f2", color: "#3f7d56" }}>
-                  MODULE 4 · PARKING
+                <span className={styles.serial} style={{ background: "#eef7f2", color: "#3f7d56" }}>PARKING
                 </span>
               </div>
 
@@ -953,8 +952,8 @@ function CitizenPortalContent() {
                   }}
                 >
                   {mapTab === "traffic"
-                    ? "Module 2 · Traffic"
-                    : "Module 4 · Parking"}
+                    ? "Traffic"
+                    : "Parking"}
                 </span>
               </div>
 
@@ -1215,7 +1214,7 @@ function CitizenPortalContent() {
           <div style={{ gridColumn: "1 / -1" }}>
             <div style={{ marginBottom: 18 }}>
               <h2 style={{ fontSize: 24, color: "var(--navy-900)", margin: 0 }}>
-                 {lang === "hi" ? "अवैध पार्किंग व यातायात उल्लंघन शिकायत (मॉड्यूल 2)" : "Report Illegal Parking & Traffic Violation (Module 2)"}
+                 {lang === "hi" ? "अवैध पार्किंग व यातायात उल्लंघन शिकायत" : "Report Illegal Parking & Traffic Violation"}
               </h2>
               <p style={{ color: "var(--ink-soft)", fontSize: 16, marginTop: 4 }}>
                 {lang === "hi"
@@ -1435,7 +1434,7 @@ function CitizenPortalContent() {
           <div style={{ gridColumn: "1 / -1" }}>
             <div style={{ marginBottom: 18 }}>
               <h2 style={{ fontSize: 24, color: "var(--navy-900)", margin: 0 }}>
-                 {lang === "hi" ? "स्मार्ट पार्किंग हब व वाहन सर्च सिस्टम (मॉड्यूल 1)" : "Smart Parking Hubs & Universal Vehicle Search (Module 1)"}
+                 {lang === "hi" ? "स्मार्ट पार्किंग हब व वाहन सर्च सिस्टम" : "Smart Parking Hubs & Universal Vehicle Search"}
               </h2>
               <p style={{ color: "var(--ink-soft)", fontSize: 16, marginTop: 4 }}>
                 {lang === "hi"

@@ -154,7 +154,7 @@ function AdminContent() {
     return () => clearInterval(interval);
   }, []);
 
-  // Simulated traffic feed (Module 2)
+  // Simulated traffic feed
   useEffect(() => {
     const interval = setInterval(() => {
       setTraffic((prev) => {
@@ -182,7 +182,7 @@ function AdminContent() {
     return () => clearInterval(interval);
   }, []);
 
-  // Simulated live parking occupancy feed (Module 4)
+  // Simulated live parking occupancy feed
   useEffect(() => {
     const interval = setInterval(() => {
       setParkingZones((prev) =>

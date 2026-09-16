@@ -81,13 +81,13 @@ export default function ParkedVehiclesModal({ isOpen, onClose, zone, lang = "en"
         >
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <span style={{ fontSize: 22 }}>🅿️</span>
+              <span style={{ fontSize: 22 }}></span>
               <div>
                 <h3 style={{ margin: 0, fontSize: 17, fontWeight: 700, color: "white" }}>
                   {lang === "hi" ? zone.name : zone.nameEn}
                 </h3>
                 <div style={{ fontSize: 12, color: "#94a3b8", marginTop: 2 }}>
-                  📍 {lang === "hi" ? zone.address : zone.addressEn} · <span style={{ color: "#38bdf8" }}>{zone.type}</span>
+                   {lang === "hi" ? zone.address : zone.addressEn} · <span style={{ color: "#38bdf8" }}>{zone.type}</span>
                 </div>
               </div>
             </div>
@@ -159,7 +159,7 @@ export default function ParkedVehiclesModal({ isOpen, onClose, zone, lang = "en"
                 fontSize: 14,
               }}
             >
-              🔍
+              
             </span>
             <input
               type="text"
@@ -196,7 +196,7 @@ export default function ParkedVehiclesModal({ isOpen, onClose, zone, lang = "en"
                   fontSize: 12,
                 }}
               >
-                ✕
+                
               </button>
             )}
           </div>
@@ -224,7 +224,7 @@ export default function ParkedVehiclesModal({ isOpen, onClose, zone, lang = "en"
                 border: "1px dashed #cbd5e1",
               }}
             >
-              <div style={{ fontSize: 32, marginBottom: 8 }}>🚗</div>
+              <div style={{ fontSize: 32, marginBottom: 8 }}></div>
               <div style={{ fontWeight: 600, fontSize: 14 }}>
                 {search
                   ? (lang === "hi" ? "कोई वाहन नहीं मिला" : "No matching vehicle found in this hub")
@@ -323,7 +323,7 @@ export default function ParkedVehiclesModal({ isOpen, onClose, zone, lang = "en"
                       </td>
 
                       <td style={{ padding: "9px 10px", color: "#334155" }}>
-                        🕒 {v.entryTime}
+                         {v.entryTime}
                       </td>
 
                       <td style={{ padding: "9px 10px", color: "#475569" }}>

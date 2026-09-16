@@ -27,11 +27,11 @@ import SiteFooter from "@/components/SiteFooter";
 const MapView = dynamic(() => import("@/components/MapView"), { ssr: false });
 
 const CATEGORIES = [
-  { hi: "अवैध पार्किंग", en: "Illegal parking", icon: "🚗" },
-  { hi: "अतिक्रमण", en: "Encroachment", icon: "🚧" },
-  { hi: "नो-पार्किंग ज़ोन", en: "No-parking zone", icon: "⛔" },
-  { hi: "सड़क दुर्घटना", en: "Accident / Emergency", icon: "🚨", isEmergency: true },
-  { hi: "अन्य", en: "Other", icon: "📍" },
+  { hi: "अवैध पार्किंग", en: "Illegal parking", icon: "" },
+  { hi: "अतिक्रमण", en: "Encroachment", icon: "" },
+  { hi: "नो-पार्किंग ज़ोन", en: "No-parking zone", icon: "" },
+  { hi: "सड़क दुर्घटना", en: "Accident / Emergency", icon: "", isEmergency: true },
+  { hi: "अन्य", en: "Other", icon: "" },
 ];
 
 const LEVEL_LABEL = {
@@ -198,7 +198,7 @@ function CitizenPortalContent() {
     }
     setLocating(true);
     setGpsStatus("locating");
-    setLocation(lang === "hi" ? "🛰️ जीपीएस सिग्नल व पता खोज रहे हैं..." : "🛰️ Fetching GPS fix and address...");
+    setLocation(lang === "hi" ? " जीपीएस सिग्नल व पता खोज रहे हैं..." : " Fetching GPS fix and address...");
 
     navigator.geolocation.getCurrentPosition(
       async (pos) => {
@@ -377,10 +377,10 @@ function CitizenPortalContent() {
   );
 
   const CITIZEN_NAV_TABS = [
-    ["overview", lang === "hi" ? "मुख्य डैशबोर्ड" : "Citizen Dashboard", "📊"],
-    ["report", lang === "hi" ? "उल्लंघन शिकायत (मॉड्यूल 2)" : "Report Violation (Module 2)", "📝"],
-    ["parking", lang === "hi" ? "स्मार्ट पार्किंग खोजें (मॉड्यूल 1)" : "Find Parking (Module 1)", "🅿️"],
-    ["traffic", lang === "hi" ? "लाइव ट्रैफिक मानचित्र" : "Live Traffic Map", "🚥"],
+    ["overview", lang === "hi" ? "मुख्य डैशबोर्ड" : "Citizen Dashboard", ""],
+    ["report", lang === "hi" ? "उल्लंघन शिकायत (मॉड्यूल 2)" : "Report Violation (Module 2)", ""],
+    ["parking", lang === "hi" ? "स्मार्ट पार्किंग खोजें (मॉड्यूल 1)" : "Find Parking (Module 1)", ""],
+    ["traffic", lang === "hi" ? "लाइव ट्रैफिक मानचित्र" : "Live Traffic Map", ""],
   ];
 
   return (
@@ -413,42 +413,42 @@ function CitizenPortalContent() {
               className={styles.heroServiceChip}
               onClick={() => setIsChallanModalOpen(true)}
             >
-              💳 {lang === "hi" ? "ई-चालान" : "e-Challan"}
+               {lang === "hi" ? "ई-चालान" : "e-Challan"}
             </button>
             <button
               type="button"
               className={styles.heroServiceChip}
               onClick={() => setIsELostModalOpen(true)}
             >
-              📁 {lang === "hi" ? "ई-लॉस्ट रिपोर्ट" : "e-Lost Report"}
+               {lang === "hi" ? "ई-लॉस्ट रिपोर्ट" : "e-Lost Report"}
             </button>
             <button
               type="button"
               className={styles.heroServiceChip}
               onClick={() => setIsFineModalOpen(true)}
             >
-              📜 {lang === "hi" ? "जुर्माना दर तालिका" : "Fine Penalty Guide"}
+               {lang === "hi" ? "जुर्माना दर तालिका" : "Fine Penalty Guide"}
             </button>
             <button
               type="button"
               className={styles.heroServiceChip}
               onClick={() => setIsSpeedModalOpen(true)}
             >
-              🏎️ {lang === "hi" ? "गति सीमा नियम" : "Speed Limits"}
+               {lang === "hi" ? "गति सीमा नियम" : "Speed Limits"}
             </button>
             <button
               type="button"
               className={styles.heroServiceChip}
               onClick={() => setIsTaxiModalOpen(true)}
             >
-              🛺 {lang === "hi" ? "ऑटो / टैक्सि शिकायत" : "Taxi Complaint"}
+               {lang === "hi" ? "ऑटो / टैक्सि शिकायत" : "Taxi Complaint"}
             </button>
             <button
               type="button"
               className={styles.heroServiceChip}
               onClick={() => setIsNocModalOpen(true)}
             >
-              📄 {lang === "hi" ? "ट्रैफिक एनओसी" : "Traffic NOC"}
+               {lang === "hi" ? "ट्रैफिक एनओसी" : "Traffic NOC"}
             </button>
           </div>
         </div>
@@ -544,7 +544,7 @@ function CitizenPortalContent() {
                           alignItems: "center",
                         }}
                       >
-                        <span>🚨</span>
+                        <span></span>
                         <div>
                           <strong>{lang === "hi" ? "आपातकालीन त्वरित मोड सक्रिय:" : "Emergency Response Mode Active:"}</strong>{" "}
                           {lang === "hi"
@@ -564,7 +564,7 @@ function CitizenPortalContent() {
                       {filePreview ? (
                         <span className={styles.previewRow}>
                           <img src={filePreview} alt="" className={styles.previewThumb} style={{ width: 40, height: 40, objectFit: "cover", borderRadius: 4, marginRight: 8 }} />
-                          <span>✓ {fileName} {t("photoAdded", lang)}</span>
+                          <span> {fileName} {t("photoAdded", lang)}</span>
                         </span>
                       ) : (
                         t("dropzone", lang)
@@ -601,7 +601,7 @@ function CitizenPortalContent() {
                         disabled={locating}
                         title={lang === "hi" ? "जीपीएस से सटीक स्थान प्राप्त करें" : "Fetch precise location via GPS"}
                       >
-                        {locating ? (lang === "hi" ? "🛰️ खोज रहे हैं..." : "🛰️ Locating...") : t("gpsButton", lang)}
+                        {locating ? (lang === "hi" ? " खोज रहे हैं..." : " Locating...") : t("gpsButton", lang)}
                       </button>
                     </div>
 
@@ -611,8 +611,8 @@ function CitizenPortalContent() {
                         <span className="live-dot" />
                         <span>
                           {lang === "hi"
-                            ? "🛰️ उपग्रह से जीपीएस सिग्नल व सटीक सड़क का पता प्राप्त किया जा रहा है..."
-                            : "🛰️ Acquiring high-precision GPS satellites & resolving street address..."}
+                            ? " उपग्रह से जीपीएस सिग्नल व सटीक सड़क का पता प्राप्त किया जा रहा है..."
+                            : " Acquiring high-precision GPS satellites & resolving street address..."}
                         </span>
                       </div>
                     )}
@@ -621,12 +621,12 @@ function CitizenPortalContent() {
                       <div className={styles.gpsBannerSuccess}>
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 4 }}>
                           <span style={{ fontWeight: 700, color: "#15803d", display: "inline-flex", alignItems: "center", gap: 5 }}>
-                            <span>🛰️</span> {lang === "hi" ? "जीपीएस लॉक:" : "GPS Locked:"}{" "}
+                            <span></span> {lang === "hi" ? "जीपीएस लॉक:" : "GPS Locked:"}{" "}
                             <code>{coords.lat.toFixed(4)}° N, {coords.lng.toFixed(4)}° E</code>
                             {gpsAccuracy && <span style={{ fontSize: 16, fontWeight: 600, color: "#166534" }}>(±{gpsAccuracy}m)</span>}
                           </span>
                           <span style={{ fontSize: 16, color: "#166534", fontWeight: 700 }}>
-                            ✓ {lang === "hi" ? "सत्यापित लोकेशन" : "Verified GPS Fix"}
+                             {lang === "hi" ? "सत्यापित लोकेशन" : "Verified GPS Fix"}
                           </span>
                         </div>
                       </div>
@@ -634,7 +634,7 @@ function CitizenPortalContent() {
 
                     {gpsStatus === "error" && (
                       <div className={styles.gpsBannerError}>
-                        <span>⚠️</span>
+                        <span></span>
                         <div>
                           {lang === "hi"
                             ? "ब्राउज़र से जीपीएस सिग्नल प्राप्त नहीं हुआ। आप नीचे दिए गए रायपुर के क्षेत्रों में से चुन सकते हैं या मैन्युअल पता लिख सकते हैं।"
@@ -646,7 +646,7 @@ function CitizenPortalContent() {
                     {/* Quick Hub Chips */}
                     <div style={{ marginTop: 8 }}>
                       <div style={{ fontSize: 16, color: "var(--ink-soft)", marginBottom: 5, fontWeight: 600 }}>
-                        {lang === "hi" ? "⚡ रायपुर के प्रमुख क्षेत्र:" : "⚡ Key Raipur Hubs:"}
+                        {lang === "hi" ? " रायपुर के प्रमुख क्षेत्र:" : " Key Raipur Hubs:"}
                       </div>
                       <div className={styles.quickLocGrid}>
                         {QUICK_LOCATIONS.map((q) => (
@@ -661,7 +661,7 @@ function CitizenPortalContent() {
                               setGpsAccuracy(6);
                             }}
                           >
-                            📍 {lang === "hi" ? q.name.hi : q.name.en}
+                             {lang === "hi" ? q.name.hi : q.name.en}
                           </button>
                         ))}
                       </div>
@@ -699,7 +699,7 @@ function CitizenPortalContent() {
             <div className={styles.card} style={{ marginTop: 24 }}>
               <div className={styles.cardHead}>
                 <div>
-                  <h2>🎯 {lang === "hi" ? "निकटतम पार्किंग खोजें" : "Find Parking Near You"}</h2>
+                  <h2> {lang === "hi" ? "निकटतम पार्किंग खोजें" : "Find Parking Near You"}</h2>
                   <div className="sub" style={{ fontSize: 16, color: "var(--ink-soft)", marginTop: 4 }}>
                     {lang === "hi"
                       ? "रायपुर शहर के निर्धारित पार्किंग स्थल, लाइव खाली स्थान व दूरी"
@@ -729,12 +729,12 @@ function CitizenPortalContent() {
                   >
                     {locating
                       ? (lang === "hi" ? "⏳ लोकेशन जाँची जा रही है..." : "⏳ Locating your GPS...")
-                      : (lang === "hi" ? "📍 मेरे पास की पार्किंग खोजें" : "📍 Find Nearest Parking")}
+                      : (lang === "hi" ? " मेरे पास की पार्किंग खोजें" : " Find Nearest Parking")}
                   </button>
 
                   <input
                     type="text"
-                    placeholder={lang === "hi" ? "🔍 स्थान, लैंडमार्क या पार्किंग हब खोजें..." : "🔍 Search by destination, landmark, or parking hub..."}
+                    placeholder={lang === "hi" ? " स्थान, लैंडमार्क या पार्किंग हब खोजें..." : " Search by destination, landmark, or parking hub..."}
                     value={parkingSearch}
                     onChange={(e) => setParkingSearch(e.target.value)}
                     style={{
@@ -775,18 +775,18 @@ function CitizenPortalContent() {
                                 letterSpacing: 0.5,
                               }}
                             >
-                              🚗 {v.vehicleNumber}
+                               {v.vehicleNumber}
                             </span>
                             <span style={{ fontSize: 16, fontWeight: 700, color: "#1e40af" }}>
                               {lang === "hi" ? "वाहन पार्क है:" : "Standing at:"} {lang === "hi" ? v.zoneName : v.zoneNameEn}
                             </span>
                           </div>
                           <span style={{ fontSize: 16, background: "#dbeafe", color: "#1d4ed8", padding: "2px 8px", borderRadius: 10, fontWeight: 700 }}>
-                            📍 {v.slot}
+                             {v.slot}
                           </span>
                         </div>
                         <div style={{ fontSize: 16, color: "#334155" }}>
-                          🚘 {v.model} ({v.type}) · {lang === "hi" ? "प्रवेश:" : "Entry:"} <strong>{v.entryTime}</strong> | 📍 {lang === "hi" ? v.zoneAddress : v.zoneAddressEn}
+                           {v.model} ({v.type}) · {lang === "hi" ? "प्रवेश:" : "Entry:"} <strong>{v.entryTime}</strong> |  {lang === "hi" ? v.zoneAddress : v.zoneAddressEn}
                         </div>
                       </div>
                     ))}
@@ -807,7 +807,7 @@ function CitizenPortalContent() {
                     <div style={{ width: "100%" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 6 }}>
                         <strong style={{ color: "#15803d", fontSize: 14 }}>
-                          🎯 {lang === "hi" ? "निकटतम पार्किंग:" : "Nearest Parking:"} {lang === "hi" ? nearestSpot.name : nearestSpot.nameEn}
+                           {lang === "hi" ? "निकटतम पार्किंग:" : "Nearest Parking:"} {lang === "hi" ? nearestSpot.name : nearestSpot.nameEn}
                         </strong>
                         <a
                           href={`https://www.google.com/maps/dir/?api=1&destination=${nearestSpot.lat},${nearestSpot.lng}`}
@@ -826,11 +826,11 @@ function CitizenPortalContent() {
                             gap: 4,
                           }}
                         >
-                          🧭 {lang === "hi" ? "दिशा-निर्देश (Maps)" : "Directions (Maps)"}
+                           {lang === "hi" ? "दिशा-निर्देश (Maps)" : "Directions (Maps)"}
                         </a>
                       </div>
                       <div style={{ fontSize: 16, color: "#166534", marginTop: 4 }}>
-                        📍 {lang === "hi" ? nearestSpot.address : nearestSpot.addressEn} · <strong>{nearestSpot.distanceKm} km away</strong> |{" "}
+                         {lang === "hi" ? nearestSpot.address : nearestSpot.addressEn} · <strong>{nearestSpot.distanceKm} km away</strong> |{" "}
                         <span style={{ fontWeight: 700 }}>
                           {nearestSpot.totalSpots - nearestSpot.occupiedSpots} / {nearestSpot.totalSpots} {lang === "hi" ? "स्थान खाली" : "spots free"}
                         </span>
@@ -872,7 +872,7 @@ function CitizenPortalContent() {
                               {lang === "hi" ? zone.name : zone.nameEn}
                             </div>
                             <div style={{ fontSize: 16, color: "var(--ink-soft)", marginTop: 2 }}>
-                              📍 {lang === "hi" ? zone.address : zone.addressEn} ·{" "}
+                               {lang === "hi" ? zone.address : zone.addressEn} ·{" "}
                               <span style={{ color: "var(--navy-950)", fontWeight: 600 }}>{zone.distanceKm} km away</span> · {zone.type}
                             </div>
                           </div>
@@ -924,7 +924,7 @@ function CitizenPortalContent() {
                               marginLeft: 4,
                             }}
                           >
-                            🧭 {lang === "hi" ? "नेविगेट" : "Navigate"}
+                             {lang === "hi" ? "नेविगेट" : "Navigate"}
                           </a>
                         </div>
                       </div>
@@ -1005,9 +1005,9 @@ function CitizenPortalContent() {
                 </div>
               ) : (
                 <div className={styles.mapCaption} style={{ flexWrap: "wrap", gap: 10, marginTop: 12 }}>
-                  <span style={{ color: "#16a34a", fontWeight: 600 }}>🅿️ {t("statusAvailable", lang)}</span>
-                  <span style={{ color: "#d97706", fontWeight: 600 }}>🅿️ {t("statusFilling", lang)}</span>
-                  <span style={{ color: "#dc2626", fontWeight: 600 }}>🅿️ {t("statusFull", lang)}</span>
+                  <span style={{ color: "#16a34a", fontWeight: 600 }}> {t("statusAvailable", lang)}</span>
+                  <span style={{ color: "#d97706", fontWeight: 600 }}> {t("statusFilling", lang)}</span>
+                  <span style={{ color: "#dc2626", fontWeight: 600 }}> {t("statusFull", lang)}</span>
                 </div>
               )}
 
@@ -1118,7 +1118,7 @@ function CitizenPortalContent() {
 
             {/* Emergency & Police 24x7 Helpline Card */}
             <div className={styles.sideCard} style={{ background: "#0f172a", color: "white", border: "none" }}>
-              <h3 style={{ color: "#f59e0b", fontSize: 15 }}>🚨 Emergency & WhatsApp Helpdesk</h3>
+              <h3 style={{ color: "#f59e0b", fontSize: 15 }}> Emergency & WhatsApp Helpdesk</h3>
               <div className="sub" style={{ fontSize: 16, color: "#94a3b8", marginBottom: 12 }}>
                 Raipur Police 24x7 Direct Citizen Assistance
               </div>
@@ -1139,7 +1139,7 @@ function CitizenPortalContent() {
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: 16, fontWeight: 700 }}>💬 WhatsApp Traffic Photo Line</div>
+                    <div style={{ fontSize: 16, fontWeight: 700 }}> WhatsApp Traffic Photo Line</div>
                     <div style={{ fontSize: 10.5, color: "#a7f3d0" }}>Photo & Video Reporting</div>
                   </div>
                   <span style={{ fontSize: 16, fontWeight: 800, color: "#34d399" }}>8750871493</span>
@@ -1158,7 +1158,7 @@ function CitizenPortalContent() {
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: 16, fontWeight: 700 }}>🚨 Emergency Police & Rescue</div>
+                    <div style={{ fontSize: 16, fontWeight: 700 }}> Emergency Police & Rescue</div>
                     <div style={{ fontSize: 10.5, color: "#94a3b8" }}>National Response System</div>
                   </div>
                   <span style={{ fontSize: 15, fontWeight: 800, color: "#ef4444" }}>112</span>
@@ -1177,7 +1177,7 @@ function CitizenPortalContent() {
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: 16, fontWeight: 700 }}>💻 Cyber Crime Helpline</div>
+                    <div style={{ fontSize: 16, fontWeight: 700 }}> Cyber Crime Helpline</div>
                     <div style={{ fontSize: 10.5, color: "#94a3b8" }}>Financial Fraud Desk</div>
                   </div>
                   <span style={{ fontSize: 15, fontWeight: 800, color: "#3b82f6" }}>1930</span>
@@ -1196,7 +1196,7 @@ function CitizenPortalContent() {
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: 16, fontWeight: 700 }}>👩 Women & Child Safety</div>
+                    <div style={{ fontSize: 16, fontWeight: 700 }}> Women & Child Safety</div>
                     <div style={{ fontSize: 10.5, color: "#94a3b8" }}>24x7 Women Support</div>
                   </div>
                   <span style={{ fontSize: 15, fontWeight: 800, color: "#ec4899" }}>1091</span>
@@ -1215,7 +1215,7 @@ function CitizenPortalContent() {
           <div style={{ gridColumn: "1 / -1" }}>
             <div style={{ marginBottom: 18 }}>
               <h2 style={{ fontSize: 24, color: "var(--navy-900)", margin: 0 }}>
-                📝 {lang === "hi" ? "अवैध पार्किंग व यातायात उल्लंघन शिकायत (मॉड्यूल 2)" : "Report Illegal Parking & Traffic Violation (Module 2)"}
+                 {lang === "hi" ? "अवैध पार्किंग व यातायात उल्लंघन शिकायत (मॉड्यूल 2)" : "Report Illegal Parking & Traffic Violation (Module 2)"}
               </h2>
               <p style={{ color: "var(--ink-soft)", fontSize: 16, marginTop: 4 }}>
                 {lang === "hi"
@@ -1285,7 +1285,7 @@ function CitizenPortalContent() {
                       {filePreview ? (
                         <span className={styles.previewRow}>
                           <img src={filePreview} alt="" style={{ width: 40, height: 40, objectFit: "cover", borderRadius: 4, marginRight: 8 }} />
-                          <span>✓ {fileName} {t("photoAdded", lang)}</span>
+                          <span> {fileName} {t("photoAdded", lang)}</span>
                         </span>
                       ) : (
                         t("dropzone", lang)
@@ -1321,7 +1321,7 @@ function CitizenPortalContent() {
                         onClick={useMyLocation}
                         disabled={locating}
                       >
-                        {locating ? (lang === "hi" ? "🛰️ खोज रहे हैं..." : "🛰️ Locating...") : t("gpsButton", lang)}
+                        {locating ? (lang === "hi" ? " खोज रहे हैं..." : " Locating...") : t("gpsButton", lang)}
                       </button>
                     </div>
 
@@ -1329,10 +1329,10 @@ function CitizenPortalContent() {
                       <div className={styles.gpsBannerSuccess}>
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                           <span style={{ fontWeight: 700, color: "#15803d" }}>
-                            🛰️ {coords.lat.toFixed(4)}° N, {coords.lng.toFixed(4)}° E
+                             {coords.lat.toFixed(4)}° N, {coords.lng.toFixed(4)}° E
                           </span>
                           <span style={{ fontSize: 16, color: "#166534", fontWeight: 700 }}>
-                            ✓ {lang === "hi" ? "सत्यापित GPS" : "Verified GPS Fix"}
+                             {lang === "hi" ? "सत्यापित GPS" : "Verified GPS Fix"}
                           </span>
                         </div>
                       </div>
@@ -1340,7 +1340,7 @@ function CitizenPortalContent() {
 
                     <div style={{ marginTop: 8 }}>
                       <div style={{ fontSize: 16, color: "var(--ink-soft)", marginBottom: 5, fontWeight: 600 }}>
-                        {lang === "hi" ? "⚡ प्रमुख क्षेत्र चयन:" : "⚡ Quick Hubs:"}
+                        {lang === "hi" ? " प्रमुख क्षेत्र चयन:" : " Quick Hubs:"}
                       </div>
                       <div className={styles.quickLocGrid}>
                         {QUICK_LOCATIONS.map((q) => (
@@ -1354,7 +1354,7 @@ function CitizenPortalContent() {
                               setGpsStatus("success");
                             }}
                           >
-                            📍 {lang === "hi" ? q.name.hi : q.name.en}
+                             {lang === "hi" ? q.name.hi : q.name.en}
                           </button>
                         ))}
                       </div>
@@ -1377,7 +1377,7 @@ function CitizenPortalContent() {
 
                   {submitError && (
                     <div style={{ background: "#fee2e2", border: "1px solid #ef4444", borderRadius: 8, padding: "10px 14px", fontSize: 16, color: "#991b1b", display: "flex", alignItems: "center", gap: 8 }}>
-                      <span>⚠️</span> {submitError}
+                      <span></span> {submitError}
                     </div>
                   )}
 
@@ -1397,7 +1397,7 @@ function CitizenPortalContent() {
 
           <div>
             <div className={styles.sideCard}>
-              <h3>📍 {lang === "hi" ? "स्थान व लाइव ट्रैफिक मैप" : "Location & Traffic Map"}</h3>
+              <h3> {lang === "hi" ? "स्थान व लाइव ट्रैफिक मैप" : "Location & Traffic Map"}</h3>
               <div className="sub">
                 {lang === "hi"
                   ? "आपकी रिपोर्ट के साथ सटीक GPS लोकेशन रायपुर ट्रैफिक पुलिस कंट्रोल को भेजी जाएगी।"
@@ -1416,7 +1416,7 @@ function CitizenPortalContent() {
             </div>
 
             <div className={styles.sideCard} style={{ background: "#f8fafc" }}>
-              <h3 style={{ fontSize: 14 }}>ℹ️ {lang === "hi" ? "सख्त कार्यवाही नियम" : "Reporting Guidelines"}</h3>
+              <h3 style={{ fontSize: 14 }}>ℹ {lang === "hi" ? "सख्त कार्यवाही नियम" : "Reporting Guidelines"}</h3>
               <ul style={{ fontSize: 16, color: "#475569", paddingLeft: 18, margin: "8px 0 0", lineHeight: 1.6 }}>
                 <li>{lang === "hi" ? "वाहन का नंबर प्लेट स्पष्ट दिखाई देना चाहिए।" : "Vehicle registration plate must be clearly visible in photo."}</li>
                 <li>{lang === "hi" ? "नो-पार्किंग साइनेज या सड़क बाधा स्पष्ट होनी चाहिए।" : "No-parking signboard or road blockage should be framed."}</li>
@@ -1435,7 +1435,7 @@ function CitizenPortalContent() {
           <div style={{ gridColumn: "1 / -1" }}>
             <div style={{ marginBottom: 18 }}>
               <h2 style={{ fontSize: 24, color: "var(--navy-900)", margin: 0 }}>
-                🅿️ {lang === "hi" ? "स्मार्ट पार्किंग हब व वाहन सर्च सिस्टम (मॉड्यूल 1)" : "Smart Parking Hubs & Universal Vehicle Search (Module 1)"}
+                 {lang === "hi" ? "स्मार्ट पार्किंग हब व वाहन सर्च सिस्टम (मॉड्यूल 1)" : "Smart Parking Hubs & Universal Vehicle Search (Module 1)"}
               </h2>
               <p style={{ color: "var(--ink-soft)", fontSize: 16, marginTop: 4 }}>
                 {lang === "hi"
@@ -1449,7 +1449,7 @@ function CitizenPortalContent() {
             <div className={styles.card}>
               <div className={styles.cardHead}>
                 <div>
-                  <h2>🔍 {lang === "hi" ? "वाहन व पार्किंग स्थल सर्च" : "Universal Vehicle & Area Search"}</h2>
+                  <h2> {lang === "hi" ? "वाहन व पार्किंग स्थल सर्च" : "Universal Vehicle & Area Search"}</h2>
                   <div className="sub" style={{ fontSize: 16, color: "var(--ink-soft)", marginTop: 4 }}>
                     {lang === "hi"
                       ? "वाहन नंबर (उदा. CG-04-MB-1245), क्षेत्र या मॉल का नाम दर्ज करें"
@@ -1478,12 +1478,12 @@ function CitizenPortalContent() {
                   >
                     {locating
                       ? (lang === "hi" ? "⏳ लोकेशन जाँची जा रही है..." : "⏳ Locating your GPS...")
-                      : (lang === "hi" ? "📍 मेरे पास की पार्किंग खोजें" : "📍 Find Nearest Parking")}
+                      : (lang === "hi" ? " मेरे पास की पार्किंग खोजें" : " Find Nearest Parking")}
                   </button>
 
                   <input
                     type="text"
-                    placeholder={lang === "hi" ? "🔍 स्थान, लैंडमार्क या पार्किंग हब खोजें..." : "🔍 Search by destination, landmark, or parking hub..."}
+                    placeholder={lang === "hi" ? " स्थान, लैंडमार्क या पार्किंग हब खोजें..." : " Search by destination, landmark, or parking hub..."}
                     value={parkingSearch}
                     onChange={(e) => setParkingSearch(e.target.value)}
                     style={{
@@ -1524,18 +1524,18 @@ function CitizenPortalContent() {
                                 letterSpacing: 0.5,
                               }}
                             >
-                              🚗 {v.vehicleNumber}
+                               {v.vehicleNumber}
                             </span>
                             <span style={{ fontSize: 16, fontWeight: 700, color: "#1e40af" }}>
                               {lang === "hi" ? "वाहन यहाँ पार्क है:" : "Standing at:"} {lang === "hi" ? v.zoneName : v.zoneNameEn}
                             </span>
                           </div>
                           <span style={{ fontSize: 16, background: "#dbeafe", color: "#1d4ed8", padding: "3px 10px", borderRadius: 12, fontWeight: 700 }}>
-                            📍 {v.slot}
+                             {v.slot}
                           </span>
                         </div>
                         <div style={{ fontSize: 16, color: "#334155", marginTop: 2 }}>
-                          🚘 {v.model} ({v.type}) · {lang === "hi" ? "प्रवेश समय:" : "Entry:"} <strong>{v.entryTime}</strong> | 📍 {lang === "hi" ? v.zoneAddress : v.zoneAddressEn}
+                           {v.model} ({v.type}) · {lang === "hi" ? "प्रवेश समय:" : "Entry:"} <strong>{v.entryTime}</strong> |  {lang === "hi" ? v.zoneAddress : v.zoneAddressEn}
                         </div>
                       </div>
                     ))}
@@ -1576,7 +1576,7 @@ function CitizenPortalContent() {
                               {lang === "hi" ? zone.name : zone.nameEn}
                             </div>
                             <div style={{ fontSize: 16, color: "var(--ink-soft)", marginTop: 2 }}>
-                              📍 {lang === "hi" ? zone.address : zone.addressEn} ·{" "}
+                               {lang === "hi" ? zone.address : zone.addressEn} ·{" "}
                               <span style={{ color: "var(--navy-950)", fontWeight: 600 }}>{zone.distanceKm} km away</span> · {zone.type}
                             </div>
                           </div>
@@ -1628,7 +1628,7 @@ function CitizenPortalContent() {
                               marginLeft: 6,
                             }}
                           >
-                            🧭 {lang === "hi" ? "नेविगेट" : "Navigate"}
+                             {lang === "hi" ? "नेविगेट" : "Navigate"}
                           </a>
                         </div>
                       </div>
@@ -1641,7 +1641,7 @@ function CitizenPortalContent() {
 
           <div>
             <div className={styles.sideCard}>
-              <h3>🅿️ {lang === "hi" ? "रायपुर स्मार्ट पार्किंग लाइव मानचित्र" : "Raipur Smart Parking Map"}</h3>
+              <h3> {lang === "hi" ? "रायपुर स्मार्ट पार्किंग लाइव मानचित्र" : "Raipur Smart Parking Map"}</h3>
               <div className="sub">
                 {lang === "hi"
                   ? "प्रत्येक पार्किंग स्थल की लाइव क्षमता व वास्तविक स्थिति"
@@ -1658,9 +1658,9 @@ function CitizenPortalContent() {
                 mode="parking"
               />
               <div className={styles.mapCaption} style={{ flexWrap: "wrap", gap: 10, marginTop: 12 }}>
-                <span style={{ color: "#16a34a", fontWeight: 600 }}>🅿️ {t("statusAvailable", lang)}</span>
-                <span style={{ color: "#d97706", fontWeight: 600 }}>🅿️ {t("statusFilling", lang)}</span>
-                <span style={{ color: "#dc2626", fontWeight: 600 }}>🅿️ {t("statusFull", lang)}</span>
+                <span style={{ color: "#16a34a", fontWeight: 600 }}> {t("statusAvailable", lang)}</span>
+                <span style={{ color: "#d97706", fontWeight: 600 }}> {t("statusFilling", lang)}</span>
+                <span style={{ color: "#dc2626", fontWeight: 600 }}> {t("statusFull", lang)}</span>
               </div>
             </div>
           </div>
@@ -1675,7 +1675,7 @@ function CitizenPortalContent() {
           <div style={{ gridColumn: "1 / -1" }}>
             <div style={{ marginBottom: 18 }}>
               <h2 style={{ fontSize: 24, color: "var(--navy-900)", margin: 0 }}>
-                🚥 {lang === "hi" ? "रायपुर लाइव ट्रैफिक नियंत्रण व जंक्शन स्थिति" : "Raipur Live Traffic Control & Junction Status"}
+                 {lang === "hi" ? "रायपुर लाइव ट्रैफिक नियंत्रण व जंक्शन स्थिति" : "Raipur Live Traffic Control & Junction Status"}
               </h2>
               <p style={{ color: "var(--ink-soft)", fontSize: 16, marginTop: 4 }}>
                 {lang === "hi"
@@ -1689,7 +1689,7 @@ function CitizenPortalContent() {
             <div className={styles.card}>
               <div className={styles.cardHead}>
                 <div>
-                  <h2>🗺️ {lang === "hi" ? "लाइव ट्रैफिक नियंत्रण मानचित्र" : "Live Traffic Control Map"}</h2>
+                  <h2> {lang === "hi" ? "लाइव ट्रैफिक नियंत्रण मानचित्र" : "Live Traffic Control Map"}</h2>
                   <div className="sub" style={{ fontSize: 16, color: "var(--ink-soft)", marginTop: 4 }}>
                     {lang === "hi" ? "रायपुर ट्रैफिक पुलिस लाइव सेंसर व सीसीटीवी समन्वय" : "Raipur Police live IoT sensors & CCTV feeds"}
                   </div>
@@ -1724,7 +1724,7 @@ function CitizenPortalContent() {
             <div className={styles.card} style={{ marginTop: 24 }}>
               <div className={styles.cardHead}>
                 <div>
-                  <h2>📊 {lang === "hi" ? "रायपुर प्रमुख जंक्शन स्थिति तालिका" : "Key Raipur Junction Congestion Table"}</h2>
+                  <h2> {lang === "hi" ? "रायपुर प्रमुख जंक्शन स्थिति तालिका" : "Key Raipur Junction Congestion Table"}</h2>
                   <div className="sub" style={{ fontSize: 16, color: "var(--ink-soft)", marginTop: 4 }}>
                     {lang === "hi" ? "प्रत्येक जंक्शन की गति, जाम स्तर एवं लाइव स्थिति" : "Speed, congestion level & real-time monitoring"}
                   </div>

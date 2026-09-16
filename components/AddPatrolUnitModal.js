@@ -198,7 +198,7 @@ export default function AddPatrolUnitModal({ isOpen, onClose, onPatrolAdded, sta
               PATROL FLEET DISPATCH · VEHICLE ONBOARDING
             </div>
             <h3 style={{ fontSize: 19, marginTop: 2, color: "white" }}>
-              🚔 {lang === "hi" ? "नया पेट्रोलिंग वाहन / स्टेशन जोड़ें" : "Register New Patrol Vehicle / Unit"}
+               {lang === "hi" ? "नया पेट्रोलिंग वाहन / स्टेशन जोड़ें" : "Register New Patrol Vehicle / Unit"}
             </h3>
           </div>
           <button
@@ -221,7 +221,7 @@ export default function AddPatrolUnitModal({ isOpen, onClose, onPatrolAdded, sta
         <form onSubmit={handleSubmit} style={{ padding: "20px 24px", display: "flex", flexDirection: "column", gap: 14 }}>
           {error && (
             <div style={{ padding: "10px 14px", background: "#fef2f2", color: "#b91c1c", borderRadius: 8, fontSize: 13, fontWeight: 600 }}>
-              ⚠️ {error}
+               {error}
             </div>
           )}
 
@@ -277,10 +277,10 @@ export default function AddPatrolUnitModal({ isOpen, onClose, onPatrolAdded, sta
                 onChange={(e) => handleCategoryChange(e.target.value)}
                 style={{ width: "100%", padding: "8px 12px", borderRadius: 6, border: "1px solid #cbd5e1", fontSize: 13.5 }}
               >
-                <option value="pcr_van">🚔 PCR Mobile Van (Bolero/Xenon)</option>
-                <option value="bike_squad">🏍️ Cheetah Bike Squad (Twin Pulsar/Bullet)</option>
-                <option value="interceptor">🚓 Highway Interceptor (High-Speed)</option>
-                <option value="erv">🚨 Emergency Response Unit (ERV)</option>
+                <option value="pcr_van"> PCR Mobile Van (Bolero/Xenon)</option>
+                <option value="bike_squad"> Cheetah Bike Squad (Twin Pulsar/Bullet)</option>
+                <option value="interceptor"> Highway Interceptor (High-Speed)</option>
+                <option value="erv"> Emergency Response Unit (ERV)</option>
               </select>
             </div>
             <div>
@@ -364,7 +364,7 @@ export default function AddPatrolUnitModal({ isOpen, onClose, onPatrolAdded, sta
           <div style={{ background: "#f8fafc", padding: "12px 14px", borderRadius: 8, border: "1px solid #e2e8f0" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
               <span style={{ fontSize: 12.5, fontWeight: 700, color: "#b91c1c" }}>
-                📍 {lang === "hi" ? "प्रारंभिक GPS स्थिति (Initial Location) *" : "Initial GPS Position *"}
+                 {lang === "hi" ? "प्रारंभिक GPS स्थिति (Initial Location) *" : "Initial GPS Position *"}
               </span>
               <button
                 type="button"
@@ -380,7 +380,7 @@ export default function AddPatrolUnitModal({ isOpen, onClose, onPatrolAdded, sta
                   cursor: "pointer",
                 }}
               >
-                📍 Use My GPS
+                 Use My GPS
               </button>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
@@ -439,7 +439,7 @@ export default function AddPatrolUnitModal({ isOpen, onClose, onPatrolAdded, sta
                 boxShadow: "0 2px 8px rgba(185, 28, 28, 0.3)",
               }}
             >
-              {loading ? (lang === "hi" ? "जोड़ रहे हैं..." : "Adding...") : (lang === "hi" ? "✓ वाहन पंजीकृत करें" : "✓ Onboard Patrol Unit")}
+              {loading ? (lang === "hi" ? "जोड़ रहे हैं..." : "Adding...") : (lang === "hi" ? " वाहन पंजीकृत करें" : " Onboard Patrol Unit")}
             </button>
           </div>
         </form>

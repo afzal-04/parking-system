@@ -86,7 +86,7 @@ export default function ELostReportModal({ isOpen, onClose, lang = "en" }) {
               POLICE MODEL · DIGITAL CITIZEN SERVICES
             </div>
             <h3 style={{ fontSize: 20, marginTop: 2, color: "white" }}>
-              📁 {lang === "hi" ? "इ-लॉस्ट रिपोर्ट (गुमशुदगी शिकायत)" : "e-Lost Article Digital Report"}
+               {lang === "hi" ? "इ-लॉस्ट रिपोर्ट (गुमशुदगी शिकायत)" : "e-Lost Article Digital Report"}
             </h3>
           </div>
           <button
@@ -114,7 +114,7 @@ export default function ELostReportModal({ isOpen, onClose, lang = "en" }) {
                   OFFICIAL DIGITAL ACKNOWLEDGEMENT RECEIPT
                 </span>
                 <span style={{ fontSize: 12, background: "#dcfce7", color: "#166534", padding: "3px 8px", borderRadius: 10, fontWeight: 700 }}>
-                  ✓ DIGITALLY VERIFIED
+                   DIGITALLY VERIFIED
                 </span>
               </div>
 
@@ -144,7 +144,7 @@ export default function ELostReportModal({ isOpen, onClose, lang = "en" }) {
               </div>
 
               <div style={{ marginTop: 16, padding: "10px 14px", background: "#e0f2fe", borderRadius: 8, fontSize: 12, color: "#0369a1" }}>
-                ℹ️ {lang === "hi" ? "यह एक डिजिटल पावती है। इसका उपयोग नया DL/RC जारी कराने हेतु अधिकृत प्रमाण पत्र के रूप में किया जा सकता है।" : "This digital report is an authentic proof for re-issuance of lost DL/RC book or insurance claims."}
+                ℹ {lang === "hi" ? "यह एक डिजिटल पावती है। इसका उपयोग नया DL/RC जारी कराने हेतु अधिकृत प्रमाण पत्र के रूप में किया जा सकता है।" : "This digital report is an authentic proof for re-issuance of lost DL/RC book or insurance claims."}
               </div>
 
               <div style={{ display: "flex", gap: 10, marginTop: 20 }}>
@@ -161,7 +161,7 @@ export default function ELostReportModal({ isOpen, onClose, lang = "en" }) {
                     cursor: "pointer",
                   }}
                 >
-                  🖨️ {lang === "hi" ? "पावती प्रिंट/डाउनलोड करें" : "Print / Download Receipt"}
+                   {lang === "hi" ? "पावती प्रिंट/डाउनलोड करें" : "Print / Download Receipt"}
                 </button>
                 <button
                   onClick={() => setReceipt(null)}
@@ -282,7 +282,7 @@ export default function ELostReportModal({ isOpen, onClose, lang = "en" }) {
                   marginTop: 6,
                 }}
               >
-                {isSubmitting ? (lang === "hi" ? "रिपोर्ट दर्ज हो रही है..." : "Generating e-Lost Certificate...") : (lang === "hi" ? "📑 ऑनलाइन इ-लॉस्ट रिपोर्ट दर्ज करें" : "📑 File Online e-Lost Report & Get Receipt")}
+                {isSubmitting ? (lang === "hi" ? "रिपोर्ट दर्ज हो रही है..." : "Generating e-Lost Certificate...") : (lang === "hi" ? " ऑनलाइन इ-लॉस्ट रिपोर्ट दर्ज करें" : " File Online e-Lost Report & Get Receipt")}
               </button>
             </form>
           )}

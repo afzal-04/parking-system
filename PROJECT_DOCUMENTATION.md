@@ -1,11 +1,11 @@
-# 🚦 Raipur Parking Setu & Smart Traffic System — Raipur Police
+#  Raipur Parking Setu & Smart Traffic System — Raipur Police
 ### Comprehensive Project Documentation & Technical Architecture Report
 **Submission:** Raipur Police Commissionerate · Traffic Hackathon 2026  
 **Tech Stack:** Next.js (App Router), React, Vanilla CSS Design System, Leaflet Maps, REST APIs
 
 ---
 
-## 📌 Executive Summary
+##  Executive Summary
 
 **Raipur Parking Setu & Smart Traffic System** is an end-to-end civic and municipal policing platform engineered for the **Raipur Police Commissionerate**. It bridges the gap between citizens on the road and traffic police control officers at headquarters.
 
@@ -13,7 +13,7 @@ The platform provides a streamlined, clutter-free **Citizen Portal** for instant
 
 ---
 
-## 🏛️ System Architecture Overview
+##  System Architecture Overview
 
 ```mermaid
 graph TD
@@ -46,7 +46,7 @@ graph TD
 
 ---
 
-## 🚀 The 4 Core Modules
+##  The 4 Core Modules
 
 ### 1. Module 1: Citizen Parking & Violation Reporting Map
 - **Photo & GPS Geo-Tagged Reports:** Citizens can snap a photo, auto-fill high-precision GPS coordinates, select violation category (*Illegal Parking, Encroachment, No-Parking Zone, Accident/Emergency, Other*), and submit in seconds.
@@ -58,7 +58,7 @@ graph TD
 - **Traffic Level Classification:**
   - 🟢 **Free Flow (सामान्य)** — Normal traffic movement.
   - 🟡 **Moderate (मध्यम)** — Slow-moving traffic.
-  - 🔴 **Heavy Jam (भारी जाम)** — Severe congestion.
+  -  **Heavy Jam (भारी जाम)** — Severe congestion.
 - **1-Click Patrol Deployment:** When heavy congestion is flagged, officers can deploy a mobile traffic motorcycle patrol to the exact junction with 1 click.
 
 ### 3. Module 3: Emergency Vehicle Green Corridor & Signal Priority (PoC)
@@ -74,35 +74,35 @@ graph TD
 
 ### 5. Module 5: Nearby Police Station & Live Patrolling Units Finder (Map & Table Data)
 - **1-Click GPS Proximity Engine:** Citizens can tap *"मेरे निकटतम थाना व पेट्रोलिंग खोजें (Find Nearest Station & Patrol)"* to calculate real-time Haversine distances to all 8 core police stations and 8 active PCR patrol vans / motorcycle squads across Raipur.
-- **Interactive Proximity Map:** Leaflet map with custom high-contrast markers for Police Stations (🏢 with blue badge) and Patrolling Units (🚔 with pulsing beacon and live speed/status). Displays citizen's GPS location pin (📍) and full directional routing to Google Maps.
+- **Interactive Proximity Map:** Leaflet map with custom high-contrast markers for Police Stations ( with blue badge) and Patrolling Units ( with pulsing beacon and live speed/status). Displays citizen's GPS location pin () and full directional routing to Google Maps.
 - **Comprehensive Table Data View:** Responsive data table with search filtering (station name, jurisdiction, officer, vehicle code), filter tabs (*All 16 / Stations 8 / Patrols 8*), SHO/Officer in charge, direct 1-click dial (`tel:`) and Google Maps turn-by-turn navigation.
 - **Dual Priority Cards:** Prominent highlight cards displaying the closest Police Station and closest Patrolling PCR Van with distance badge and rapid contact buttons.
 
 ---
 
-## 🏛️ Digital Police Citizen Services (Navbar & Quick Access)
+##  Digital Police Citizen Services (Navbar & Quick Access)
 
 All auxiliary citizen services open in interactive, lightweight modals without cluttering the main landing page:
 
 | Service | Module / Authority | Features |
 | :--- | :--- | :--- |
-| **💳 e-Challan Fine Lookup & Payment** | Raipur Police Model | Search by vehicle registration number (e.g., `CG 04 AB 1234`), view violation details, date, location, amount, and execute 1-click UPI dummy payment with instant downloadable PDF receipt. |
-| **📁 e-Lost Article Reporting** | Digital Citizen Desk | Report lost Driving License (DL), RC Book, Mobile Phone, or Wallet. Issues an instant official digital acknowledgement receipt for duplicate document issuance without visiting a police station. |
-| **📜 Traffic Fine Rates Guide** | Motor Vehicles Act (MVA) 2026 | Comprehensive, searchable statutory fine schedule with MVA section references, penalty ranges, and license suspension rules. |
-| **🏎️ City Speed Limit Matrix** | Raipur Traffic Police Model | Road-wise maximum permissible speed limits for Cars, Two-Wheelers, and Heavy Trucks across GE Road, Ring Roads, VIP Airport Expressway, and School Zones. |
-| **🛺 TSR / Taxi Refusal Complaint** | Commuter Helpdesk | Online complaint desk for auto-rickshaw or taxi refusal, meter tampering, or excess fare demands for prompt Traffic Inspector action. |
-| **📄 Traffic NOC Clearance Verification** | Traffic Clearance Desk | Instant verification of zero-pending challan status and generation of verified Traffic NOC clearance certificates for RTO vehicle transfer. |
-| **🚨 24x7 Emergency Helplines** | Raipur Police Contact Desk | Direct shortcuts to WhatsApp Traffic Photo Line (`8750871493`), National Emergency (`112`), Cyber Crime (`1930`), and Women Helpline (`1091`). |
+| ** e-Challan Fine Lookup & Payment** | Raipur Police Model | Search by vehicle registration number (e.g., `CG 04 AB 1234`), view violation details, date, location, amount, and execute 1-click UPI dummy payment with instant downloadable PDF receipt. |
+| ** e-Lost Article Reporting** | Digital Citizen Desk | Report lost Driving License (DL), RC Book, Mobile Phone, or Wallet. Issues an instant official digital acknowledgement receipt for duplicate document issuance without visiting a police station. |
+| ** Traffic Fine Rates Guide** | Motor Vehicles Act (MVA) 2026 | Comprehensive, searchable statutory fine schedule with MVA section references, penalty ranges, and license suspension rules. |
+| ** City Speed Limit Matrix** | Raipur Traffic Police Model | Road-wise maximum permissible speed limits for Cars, Two-Wheelers, and Heavy Trucks across GE Road, Ring Roads, VIP Airport Expressway, and School Zones. |
+| ** TSR / Taxi Refusal Complaint** | Commuter Helpdesk | Online complaint desk for auto-rickshaw or taxi refusal, meter tampering, or excess fare demands for prompt Traffic Inspector action. |
+| ** Traffic NOC Clearance Verification** | Traffic Clearance Desk | Instant verification of zero-pending challan status and generation of verified Traffic NOC clearance certificates for RTO vehicle transfer. |
+| ** 24x7 Emergency Helplines** | Raipur Police Contact Desk | Direct shortcuts to WhatsApp Traffic Photo Line (`8750871493`), National Emergency (`112`), Cyber Crime (`1930`), and Women Helpline (`1091`). |
 
 ---
 
-## 🌐 Full Bilingual Support (Hindi & English)
+##  Full Bilingual Support (Hindi & English)
 
 Every module, modal, button, advisory ticker, and status indicator supports instantaneous bilingual switching between **English (ENG)** and **Hindi (हिन्दी)** via the global language toggle in the header.
 
 ---
 
-## 🔌 API Endpoints Reference
+##  API Endpoints Reference
 
 ### `GET /api/complaints`
 Returns list of all filed citizen reports.
@@ -130,7 +130,7 @@ Updates the triage status of a complaint (Admin only).
 
 ---
 
-## 🛠️ File & Codebase Structure
+##  File & Codebase Structure
 
 ```
 ├── app/
@@ -174,7 +174,7 @@ Updates the triage status of a complaint (Admin only).
 
 ---
 
-## 🔮 Production Hardware Integration Roadmap
+##  Production Hardware Integration Roadmap
 
 | Module | Hackathon Prototype (PoC) | Production Integration Plan |
 | :--- | :--- | :--- |

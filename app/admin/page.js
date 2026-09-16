@@ -235,7 +235,7 @@ function AdminContent() {
     setSelectedId(patrol.id);
     setMapCenter([patrol.lat, patrol.lng]);
     setMapZoom(15);
-    setToastMessage(`📍 Focused on ${patrol.code} (${patrol.callSign}) at ${patrol.sectorEn}`);
+    setToastMessage(` Focused on ${patrol.code} (${patrol.callSign}) at ${patrol.sectorEn}`);
   }
 
   // Handle locating a police station on map
@@ -244,7 +244,7 @@ function AdminContent() {
     setSelectedPatrolId(stn.id);
     setMapCenter([stn.lat, stn.lng]);
     setMapZoom(15);
-    setToastMessage(`📍 Focused on ${stn.nameEn} (${stn.code})`);
+    setToastMessage(` Focused on ${stn.nameEn} (${stn.code})`);
   }
 
   // Handle dispatching alert to patrol vehicle
@@ -253,7 +253,7 @@ function AdminContent() {
       prev.map((u) => (u.id === patrolId ? { ...u, status: "responding", statusLabel: { hi: "अलर्ट रिस्पॉन्स (Responding)", en: "Emergency Responding" } } : u))
     );
     const p = patrolUnits.find((u) => u.id === patrolId);
-    const msg = `🚨 Dispatch alert transmitted to ${p?.code} (${p?.officer})`;
+    const msg = ` Dispatch alert transmitted to ${p?.code} (${p?.officer})`;
     setToastMessage(msg);
     speakVoiceAlert(msg);
   }
@@ -263,7 +263,7 @@ function AdminContent() {
     setStations((prev) => [newStation, ...prev.filter((s) => s.id !== newStation.id)]);
     setMapCenter([newStation.lat, newStation.lng]);
     setMapZoom(15);
-    setToastMessage(`✓ ${newStation.nameEn} (${newStation.code}) registered successfully!`);
+    setToastMessage(` ${newStation.nameEn} (${newStation.code}) registered successfully!`);
     speakVoiceAlert(`New police station ${newStation.nameEn} registered in system.`);
   }
 
@@ -273,7 +273,7 @@ function AdminContent() {
     setSelectedPatrolId(newUnit.id);
     setMapCenter([newUnit.lat, newUnit.lng]);
     setMapZoom(15);
-    setToastMessage(`✓ ${newUnit.code} (${newUnit.callSign}) onboarded to patrol fleet!`);
+    setToastMessage(` ${newUnit.code} (${newUnit.callSign}) onboarded to patrol fleet!`);
     speakVoiceAlert(`New patrol unit ${newUnit.code} activated in system.`);
   }
 
@@ -395,12 +395,12 @@ function AdminContent() {
   }
 
   const MODULE_NAV_TABS = [
-    ["overview", t("tabOverviewAdmin", lang), "📊"],
-    ["complaints", t("tabComplaintsReport", lang), "📝"],
-    ["traffic", t("tabTrafficControl", lang), "🚥"],
-    ["parking", t("tabSmartParking", lang), "🅿️"],
-    ["stations", t("tabStationsDir", lang), "🏢"],
-    ["patrol", t("tabPatrol", lang), "🚔"],
+    ["overview", t("tabOverviewAdmin", lang), ""],
+    ["complaints", t("tabComplaintsReport", lang), ""],
+    ["traffic", t("tabTrafficControl", lang), ""],
+    ["parking", t("tabSmartParking", lang), ""],
+    ["stations", t("tabStationsDir", lang), ""],
+    ["patrol", t("tabPatrol", lang), ""],
   ];
 
   const FILTERS = [
@@ -455,7 +455,7 @@ function AdminContent() {
                 ...u,
                 status: "responding",
                 statusLabel: { hi: "अलर्ट रिस्पॉन्स (Responding)", en: "Emergency Responding" },
-                currentTask: `🚨 Responding to Accident at ${complaint.location}`,
+                currentTask: ` Responding to Accident at ${complaint.location}`,
               }
             : u
         )
@@ -494,8 +494,8 @@ function AdminContent() {
     // Toast notification confirmation
     const msg =
       lang === "hi"
-        ? `🚨 आपातकालीन टीम तैनात: गश्त पुलिस ${patrolCallSign} एवं ${stationName} को ${complaint.location} के लिए रवाना किया गया! अलर्ट सूचना हटाई गई और डेटा तालिका में सुरक्षित है।`
-        : `🚨 Emergency Dispatched: Alert transmitted to patrolling police ${patrolCallSign} via ${stationName}! Notification dismissed & updated in complaints table.`;
+        ? ` आपातकालीन टीम तैनात: गश्त पुलिस ${patrolCallSign} एवं ${stationName} को ${complaint.location} के लिए रवाना किया गया! अलर्ट सूचना हटाई गई और डेटा तालिका में सुरक्षित है।`
+        : ` Emergency Dispatched: Alert transmitted to patrolling police ${patrolCallSign} via ${stationName}! Notification dismissed & updated in complaints table.`;
 
     setToastMessage(msg);
     speakVoiceAlert(`Emergency team dispatched. Alert transmitted to patrolling police.`);
@@ -558,7 +558,7 @@ function AdminContent() {
 
           return (
             <div className={styles.emergencyAlertBanner} key={`emergency-${c.id}`}>
-              <span style={{ fontSize: 26 }}>🚨</span>
+              <span style={{ fontSize: 26 }}></span>
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
                   <span
@@ -573,7 +573,7 @@ function AdminContent() {
                       letterSpacing: 0.5,
                     }}
                   >
-                    🎯 {lang === "hi" ? "लक्षित अलर्ट: केवल एडमिन व निकटतम थाना" : "TARGETED ALERT: ADMIN & NEARBY POLICE ONLY"}
+                     {lang === "hi" ? "लक्षित अलर्ट: केवल एडमिन व निकटतम थाना" : "TARGETED ALERT: ADMIN & NEARBY POLICE ONLY"}
                   </span>
                   <span style={{ fontSize: 16, color: "#7f1d1d", fontWeight: 700 }}>
                     ({lang === "hi" ? station.name : station.nameEn})
@@ -588,19 +588,19 @@ function AdminContent() {
                   <strong>{c.category} ({c.id}):</strong> {c.description}
                   <div style={{ marginTop: 6, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 6, fontSize: 16 }}>
                     <div>
-                      <strong>🏢 {t("nearestStationLabel", lang)}:</strong>{" "}
+                      <strong> {t("nearestStationLabel", lang)}:</strong>{" "}
                       <span style={{ fontWeight: 700, color: "#991b1b" }}>
                         {lang === "hi" ? station.name : station.nameEn}
                       </span>{" "}
-                      ({station.distanceKm || "1.2"} km) · 📞 {station.phone}
+                      ({station.distanceKm || "1.2"} km) ·  {station.phone}
                     </div>
                     {patrol && (
                       <div>
-                        <strong>🚔 {t("nearestPatrolLabel", lang)}:</strong>{" "}
+                        <strong> {t("nearestPatrolLabel", lang)}:</strong>{" "}
                         <span style={{ fontWeight: 700, color: "#1e3a8a" }}>
                           {patrol.code} ({patrol.callSign})
                         </span>{" "}
-                        · 👤 {patrol.driverName} ({patrol.speed})
+                        ·  {patrol.driverName} ({patrol.speed})
                       </div>
                     )}
                   </div>
@@ -798,7 +798,7 @@ function AdminContent() {
                             <div>{c.id}</div>
                             {(c.isEmergency || c.category === "सड़क दुर्घटना" || c.categoryEn === "Accident / Emergency") && (
                               <span style={{ fontSize: 9.5, background: "#fee2e2", color: "#b91c1c", padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>
-                                🚨 EMERGENCY
+                                 EMERGENCY
                               </span>
                             )}
                           </td>
@@ -806,7 +806,7 @@ function AdminContent() {
                             <strong>{c.location}</strong>
                             {c.assignedPatrol && (
                               <div style={{ fontSize: 16, color: "#15803d", fontWeight: 700, marginTop: 2 }}>
-                                🚔 Dispatched: {c.assignedPatrol} ({c.assignedStation || "Police PS"})
+                                 Dispatched: {c.assignedPatrol} ({c.assignedStation || "Police PS"})
                               </div>
                             )}
                           </td>
@@ -888,7 +888,7 @@ function AdminContent() {
             <div className={styles.grid}>
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
-                  <h3>📝 {t("tabComplaintsReport", lang)}</h3>
+                  <h3> {t("tabComplaintsReport", lang)}</h3>
                   <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>
                     {filtered.length} of {complaints.length} reports
                   </span>
@@ -930,7 +930,7 @@ function AdminContent() {
                             <div>{c.id}</div>
                             {(c.isEmergency || c.category === "सड़क दुर्घटना" || c.categoryEn === "Accident / Emergency") && (
                               <span style={{ fontSize: 9.5, background: "#fee2e2", color: "#b91c1c", padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>
-                                🚨 EMERGENCY
+                                 EMERGENCY
                               </span>
                             )}
                           </td>
@@ -939,7 +939,7 @@ function AdminContent() {
                             <div style={{ fontSize: 16, color: "var(--ink-soft)" }}>{c.description?.slice(0, 45)}...</div>
                             {c.assignedPatrol && (
                               <div style={{ fontSize: 16, color: "#15803d", fontWeight: 700, marginTop: 2 }}>
-                                🚔 Dispatched: {c.assignedPatrol} ({c.assignedStation || "Police PS"})
+                                 Dispatched: {c.assignedPatrol} ({c.assignedStation || "Police PS"})
                               </div>
                             )}
                           </td>
@@ -968,7 +968,7 @@ function AdminContent() {
 
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
-                  <h3>📍 {lang === "hi" ? "शिकायत स्थान मानचित्र" : "Complaints Map View"}</h3>
+                  <h3> {lang === "hi" ? "शिकायत स्थान मानचित्र" : "Complaints Map View"}</h3>
                   <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>
                     {filtered.length} locations
                   </span>
@@ -1001,7 +1001,7 @@ function AdminContent() {
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
                   <div className={styles.liveHead}>
-                    <h3>🚥 {t("tabTrafficControl", lang)}</h3>
+                    <h3> {t("tabTrafficControl", lang)}</h3>
                     <span className={styles.liveTag}>● REAL-TIME RADAR</span>
                   </div>
                   <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>
@@ -1055,7 +1055,7 @@ function AdminContent() {
                                 setToastMessage(`Patrol deployed to ${p.nameEn}`);
                               }}
                             >
-                              🚓 Clear Jam
+                               Clear Jam
                             </button>
                           </td>
                         </tr>
@@ -1067,7 +1067,7 @@ function AdminContent() {
 
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
-                  <h3>🛣️ {lang === "hi" ? "रायपुर लाइव ट्रैफिक फ्लो मैप" : "Raipur Live Traffic Flow Map"}</h3>
+                  <h3> {lang === "hi" ? "रायपुर लाइव ट्रैफिक फ्लो मैप" : "Raipur Live Traffic Flow Map"}</h3>
                   <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>High-contrast road corridors</span>
                 </div>
                 <MapView
@@ -1098,7 +1098,7 @@ function AdminContent() {
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
                   <div className={styles.liveHead}>
-                    <h3>🅿️ {t("tabSmartParking", lang)}</h3>
+                    <h3> {t("tabSmartParking", lang)}</h3>
                     <span className={styles.liveTag} style={{ background: "#eef7f2", color: "#3f7d56" }}>
                       ● LIVE SENSORS & ANPR
                     </span>
@@ -1138,13 +1138,13 @@ function AdminContent() {
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
                     <label style={{ fontSize: 16, fontWeight: 700, color: "var(--navy-900)", display: "flex", alignItems: "center", gap: 6 }}>
-                      <span>🔍</span> {lang === "hi" ? "वाहन नंबर या क्षेत्र द्वारा खोजें" : "Universal Parking & Vehicle Search"}
+                      <span></span> {lang === "hi" ? "वाहन नंबर या क्षेत्र द्वारा खोजें" : "Universal Parking & Vehicle Search"}
                     </label>
                     {parkingSearchQuery && (
                       <span style={{ fontSize: 16, color: "#64748b" }}>
                         {parkingSearchResults.matchedVehicles.length > 0
-                          ? `🎯 ${parkingSearchResults.matchedVehicles.length} vehicle(s) found`
-                          : `📍 ${filteredParkingPointsFormatted.length} hub(s) found`}
+                          ? ` ${parkingSearchResults.matchedVehicles.length} vehicle(s) found`
+                          : ` ${filteredParkingPointsFormatted.length} hub(s) found`}
                       </span>
                     )}
                   </div>
@@ -1159,7 +1159,7 @@ function AdminContent() {
                         pointerEvents: "none",
                       }}
                     >
-                      🔎
+                      
                     </span>
                     <input
                       type="text"
@@ -1202,7 +1202,7 @@ function AdminContent() {
                           fontWeight: 700,
                         }}
                       >
-                        ✕
+                        
                       </button>
                     )}
                   </div>
@@ -1238,7 +1238,7 @@ function AdminContent() {
                         cursor: "pointer",
                       }}
                     >
-                      📍 Pandri Area
+                       Pandri Area
                     </button>
                     <button
                       type="button"
@@ -1253,7 +1253,7 @@ function AdminContent() {
                         cursor: "pointer",
                       }}
                     >
-                      📍 Marine Drive
+                       Marine Drive
                     </button>
                     <button
                       type="button"
@@ -1268,7 +1268,7 @@ function AdminContent() {
                         cursor: "pointer",
                       }}
                     >
-                      📍 Station Road
+                       Station Road
                     </button>
                     <button
                       type="button"
@@ -1284,7 +1284,7 @@ function AdminContent() {
                         fontWeight: 600,
                       }}
                     >
-                      🚗 CG-04-MB-1245
+                       CG-04-MB-1245
                     </button>
                     <button
                       type="button"
@@ -1300,7 +1300,7 @@ function AdminContent() {
                         fontWeight: 600,
                       }}
                     >
-                      🚗 CG-04-MH-5821
+                       CG-04-MH-5821
                     </button>
                     <button
                       type="button"
@@ -1316,7 +1316,7 @@ function AdminContent() {
                         fontWeight: 600,
                       }}
                     >
-                      🚗 MH-12-QX-3321
+                       MH-12-QX-3321
                     </button>
                   </div>
                 </div>
@@ -1412,7 +1412,7 @@ function AdminContent() {
                                 gap: 4,
                               }}
                             >
-                              🎯 {lang === "hi" ? "मैप पर देखें" : "Locate on Map"}
+                               {lang === "hi" ? "मैप पर देखें" : "Locate on Map"}
                             </button>
                             <button
                               type="button"
@@ -1431,7 +1431,7 @@ function AdminContent() {
                                 cursor: "pointer",
                               }}
                             >
-                              📋 {lang === "hi" ? "पार्किंग विवरण" : "Hub Details"}
+                               {lang === "hi" ? "पार्किंग विवरण" : "Hub Details"}
                             </button>
                           </div>
                         </div>
@@ -1451,10 +1451,10 @@ function AdminContent() {
                           </div>
                           <div>
                             <span style={{ color: "#475569" }}>{lang === "hi" ? "प्रवेश समय:" : "Entry Time:"}</span>{" "}
-                            <strong>🕒 {v.entryTime}</strong>
+                            <strong> {v.entryTime}</strong>
                           </div>
                           <div style={{ gridColumn: "1 / -1", color: "#166534", fontSize: 16 }}>
-                            📍 {lang === "hi" ? v.zoneAddress : v.zoneAddressEn} ·{" "}
+                             {lang === "hi" ? v.zoneAddress : v.zoneAddressEn} ·{" "}
                             <strong>{v.totalSpots - v.occupiedSpots} spots currently available</strong> in this hub
                           </div>
                         </div>
@@ -1481,7 +1481,7 @@ function AdminContent() {
                       {filteredParkingPointsFormatted.length === 0 ? (
                         <tr>
                           <td colSpan={7} style={{ textAlign: "center", padding: "30px 10px", color: "var(--ink-soft)" }}>
-                            <div style={{ fontSize: 24, marginBottom: 6 }}>🔍</div>
+                            <div style={{ fontSize: 24, marginBottom: 6 }}></div>
                             <strong>{lang === "hi" ? "कोई पार्किंग स्थल या वाहन नहीं मिला" : "No matching parking hub or vehicle found"}</strong>
                             <div style={{ fontSize: 16, marginTop: 4 }}>
                               {lang === "hi" ? "कृपया दूसरा क्षेत्र नाम या वाहन नंबर आज़माएँ" : "Try searching by a different area name or vehicle registration number"}
@@ -1514,7 +1514,7 @@ function AdminContent() {
                                   <strong>{lang === "hi" ? p.name : p.nameEn}</strong>
                                   {hasMatchedVehicleInThisZone && (
                                     <span style={{ fontSize: 10, background: "#dcfce7", color: "#15803d", padding: "1px 6px", borderRadius: 10, fontWeight: 700 }}>
-                                      🎯 Vehicle Here
+                                       Vehicle Here
                                     </span>
                                   )}
                                 </div>
@@ -1585,7 +1585,7 @@ function AdminContent() {
                                     gap: 4,
                                   }}
                                 >
-                                  🚗 {p.parkedVehicles?.length || 0} Vehicles
+                                   {p.parkedVehicles?.length || 0} Vehicles
                                 </button>
                               </td>
                               <td>
@@ -1608,7 +1608,7 @@ function AdminContent() {
                                     cursor: "pointer",
                                   }}
                                 >
-                                  🎯 Map
+                                   Map
                                 </button>
                               </td>
                             </tr>
@@ -1622,7 +1622,7 @@ function AdminContent() {
 
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
-                  <h3>🅿️ {lang === "hi" ? "स्मार्ट पार्किंग मानचित्र" : "Smart Parking Map"}</h3>
+                  <h3> {lang === "hi" ? "स्मार्ट पार्किंग मानचित्र" : "Smart Parking Map"}</h3>
                   <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>
                     {filteredParkingPointsFormatted.length} live hubs displayed
                   </span>
@@ -1655,7 +1655,7 @@ function AdminContent() {
               <div className={styles.panel} style={{ border: "2px solid #1e3a8a" }}>
                 <div className={styles.panelHead}>
                   <div className={styles.liveHead}>
-                    <h3>🏢 {t("stationsDirectoryTitle", lang)}</h3>
+                    <h3> {t("stationsDirectoryTitle", lang)}</h3>
                     <span className={styles.liveTag} style={{ background: "#eff6ff", color: "#1e3a8a" }}>
                       ● 24x7 DIRECTORY
                     </span>
@@ -1724,7 +1724,7 @@ function AdminContent() {
                         >
                           <td>
                             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                              <span style={{ fontSize: 18 }}>🏢</span>
+                              <span style={{ fontSize: 18 }}></span>
                               <div>
                                 <strong style={{ color: "#0f172a", fontSize: 16 }}>
                                   {lang === "hi" ? stn.name : stn.nameEn}
@@ -1740,20 +1740,20 @@ function AdminContent() {
                               {lang === "hi" ? stn.jurisdiction : stn.jurisdictionEn}
                             </div>
                             <div style={{ fontSize: 16, color: "var(--ink-soft)" }}>
-                              📍 {lang === "hi" ? stn.address : stn.addressEn}
+                               {lang === "hi" ? stn.address : stn.addressEn}
                             </div>
                           </td>
                           <td>
                             <div style={{ fontSize: 16, color: "#0f172a" }}>
-                              👤 <strong>{stn.inCharge}</strong>
+                               <strong>{stn.inCharge}</strong>
                             </div>
                             <div style={{ fontSize: 16, color: "var(--ink-soft)" }}>
-                              {lang === "hi" ? stn.inChargeRankHi : stn.inChargeRank} · 📞 <a href={`tel:${stn.phone}`} style={{ color: "#1e40af", fontWeight: 700 }}>{stn.phone}</a>
+                              {lang === "hi" ? stn.inChargeRankHi : stn.inChargeRank} ·  <a href={`tel:${stn.phone}`} style={{ color: "#1e40af", fontWeight: 700 }}>{stn.phone}</a>
                             </div>
                           </td>
                           <td>
                             <span style={{ background: "#fef2f2", color: "#b91c1c", padding: "2px 8px", borderRadius: 4, fontSize: 16, fontWeight: 700 }}>
-                              🚔 {stn.assignedPatrol || "PCR Patrol"}
+                               {stn.assignedPatrol || "PCR Patrol"}
                             </span>
                           </td>
                           <td>
@@ -1766,14 +1766,14 @@ function AdminContent() {
                                   handleLocateStation(stn);
                                 }}
                               >
-                                📍 {t("locateOnMap", lang)}
+                                 {t("locateOnMap", lang)}
                               </button>
                               <a
                                 href={`tel:${stn.phone}`}
                                 className={styles.actionBtnSmall}
                                 onClick={(e) => e.stopPropagation()}
                               >
-                                📞 Call
+                                 Call
                               </a>
                               <button
                                 type="button"
@@ -1784,7 +1784,7 @@ function AdminContent() {
                                 }}
                                 style={{ color: "#b91c1c", borderColor: "#fecaca" }}
                               >
-                                🗑️
+                                
                               </button>
                             </div>
                           </td>
@@ -1797,7 +1797,7 @@ function AdminContent() {
 
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
-                  <h3>🏢 {lang === "hi" ? "पुलिस थाना नेटवर्क मानचित्र" : "Police Station Network Map"}</h3>
+                  <h3> {lang === "hi" ? "पुलिस थाना नेटवर्क मानचित्र" : "Police Station Network Map"}</h3>
                   <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>{stations.length} active stations</span>
                 </div>
                 <MapView
@@ -1828,7 +1828,7 @@ function AdminContent() {
             <div className={styles.areaControlBar}>
               <div className={styles.areaControlGroup}>
                 <label htmlFor="area-select-dropdown" className={styles.areaSelectLabel}>
-                  <span>📍 {t("areaSelectLabel", lang)}</span>
+                  <span> {t("areaSelectLabel", lang)}</span>
                 </label>
                 <select
                   id="area-select-dropdown"
@@ -1840,7 +1840,7 @@ function AdminContent() {
                     const pCount = area.id === "all" ? patrolUnits.length : patrolUnits.filter((u) => u.areaId === area.id).length;
                     return (
                       <option key={area.id} value={area.id}>
-                        {lang === "hi" ? area.name : area.nameEn} ({pCount} 🚔)
+                        {lang === "hi" ? area.name : area.nameEn} ({pCount} )
                       </option>
                     );
                   })}
@@ -1853,35 +1853,35 @@ function AdminContent() {
                   className={`${styles.typePill} ${selectedVehicleType === "all" ? styles.active : ""}`}
                   onClick={() => setSelectedVehicleType("all")}
                 >
-                  🌐 {t("allVehicles", lang)} ({filteredPatrolUnits.length})
+                   {t("allVehicles", lang)} ({filteredPatrolUnits.length})
                 </button>
                 <button
                   type="button"
                   className={`${styles.typePill} ${selectedVehicleType === "pcr_van" ? styles.active : ""}`}
                   onClick={() => setSelectedVehicleType("pcr_van")}
                 >
-                  🚔 PCR Vans
+                   PCR Vans
                 </button>
                 <button
                   type="button"
                   className={`${styles.typePill} ${selectedVehicleType === "bike_squad" ? styles.active : ""}`}
                   onClick={() => setSelectedVehicleType("bike_squad")}
                 >
-                  🏍️ Cheetah Bikes
+                   Cheetah Bikes
                 </button>
                 <button
                   type="button"
                   className={`${styles.typePill} ${selectedVehicleType === "interceptor" ? styles.active : ""}`}
                   onClick={() => setSelectedVehicleType("interceptor")}
                 >
-                  🚓 Interceptors
+                   Interceptors
                 </button>
                 <button
                   type="button"
                   className={`${styles.typePill} ${selectedVehicleType === "erv" ? styles.active : ""}`}
                   onClick={() => setSelectedVehicleType("erv")}
                 >
-                  🚨 ERVs
+                   ERVs
                 </button>
                 <button
                   type="button"
@@ -1897,7 +1897,7 @@ function AdminContent() {
                     cursor: "pointer",
                   }}
                 >
-                  ➕ {t("addPatrolBtn", lang)}
+                   {t("addPatrolBtn", lang)}
                 </button>
               </div>
             </div>
@@ -1906,7 +1906,7 @@ function AdminContent() {
               <div className={styles.panel} style={{ border: "2px solid #b91c1c" }}>
                 <div className={styles.panelHead}>
                   <div className={styles.liveHead}>
-                    <h3>🚔 {t("patrolRosterTitle", lang)} — {lang === "hi" ? currentArea.name : currentArea.nameEn}</h3>
+                    <h3> {t("patrolRosterTitle", lang)} — {lang === "hi" ? currentArea.name : currentArea.nameEn}</h3>
                     <span className={styles.liveTag} style={{ background: "#fef2f2", color: "#b91c1c" }}>
                       ● LIVE GPS
                     </span>
@@ -1934,7 +1934,7 @@ function AdminContent() {
                         const isBike = patrol.vehicleCategory === "bike_squad";
                         const isERV = patrol.vehicleCategory === "erv";
                         const isInterceptor = patrol.vehicleCategory === "interceptor";
-                        const vehicleIcon = isBike ? "🏍️" : isERV ? "🚨" : isInterceptor ? "🚓" : "🚔";
+                        const vehicleIcon = isBike ? "" : isERV ? "" : isInterceptor ? "" : "";
 
                         return (
                           <tr
@@ -1964,23 +1964,23 @@ function AdminContent() {
                                 {lang === "hi" ? patrol.sector : patrol.sectorEn}
                               </div>
                               <div style={{ fontSize: 16, color: "var(--ink-soft)" }}>
-                                🏢 {lang === "hi" ? patrol.stationName : patrol.stationNameEn}
+                                 {lang === "hi" ? patrol.stationName : patrol.stationNameEn}
                               </div>
                             </td>
                             <td>
                               <div style={{ fontSize: 16, color: "#0f172a" }}>
-                                👮 <strong>{patrol.officer}</strong>
+                                 <strong>{patrol.officer}</strong>
                               </div>
                               <div style={{ fontSize: 16, color: "var(--ink-soft)" }}>
-                                {lang === "hi" ? patrol.officerRankHi : patrol.officerRank} · 📞 {patrol.mobile}
+                                {lang === "hi" ? patrol.officerRankHi : patrol.officerRank} ·  {patrol.mobile}
                               </div>
                             </td>
                             <td>
                               <div style={{ fontSize: 16, fontWeight: 700, color: "#16a34a" }}>
-                                ⚡ {patrol.speed || "22 km/h"}
+                                 {patrol.speed || "22 km/h"}
                               </div>
                               <div style={{ fontSize: 16, color: "var(--ink-soft)" }}>
-                                🔋 Fuel: <strong>{patrol.fuelBattery || "85%"}</strong>
+                                 Fuel: <strong>{patrol.fuelBattery || "85%"}</strong>
                               </div>
                             </td>
                             <td>
@@ -2008,14 +2008,14 @@ function AdminContent() {
                                     handleLocateVehicle(patrol);
                                   }}
                                 >
-                                  📍 {t("locateOnMap", lang)}
+                                   {t("locateOnMap", lang)}
                                 </button>
                                 <a
                                   href={`tel:${patrol.mobile}`}
                                   className={styles.actionBtnSmall}
                                   onClick={(e) => e.stopPropagation()}
                                 >
-                                  📞 Call
+                                   Call
                                 </a>
                                 <button
                                   type="button"
@@ -2025,7 +2025,7 @@ function AdminContent() {
                                     handleDispatchPatrol(patrol.id);
                                   }}
                                 >
-                                  🚨 Alert
+                                   Alert
                                 </button>
                                 <button
                                   type="button"
@@ -2036,7 +2036,7 @@ function AdminContent() {
                                   }}
                                   style={{ color: "#b91c1c", borderColor: "#fecaca" }}
                                 >
-                                  🗑️
+                                  
                                 </button>
                               </div>
                             </td>
@@ -2050,7 +2050,7 @@ function AdminContent() {
 
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
-                  <h3>🚔 {lang === "hi" ? "लाइव गश्त वाहन मैप" : "Live Patrol Fleet Map"}</h3>
+                  <h3> {lang === "hi" ? "लाइव गश्त वाहन मैप" : "Live Patrol Fleet Map"}</h3>
                   <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>
                     {filteredPatrolUnits.length} units in {lang === "hi" ? currentArea.name : currentArea.nameEn}
                   </span>

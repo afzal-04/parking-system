@@ -87,7 +87,7 @@ export default function EChallanModal({ isOpen, onClose, lang = "en" }) {
               POLICE MODEL · E-CHALLAN HUB
             </div>
             <h3 style={{ fontSize: 20, marginTop: 2, color: "white" }}>
-              💳 {lang === "hi" ? "इ-चालान ई-भुगतान व खोज" : "e-Challan Lookup & Payment"}
+               {lang === "hi" ? "इ-चालान ई-भुगतान व खोज" : "e-Challan Lookup & Payment"}
             </h3>
           </div>
           <button
@@ -138,12 +138,12 @@ export default function EChallanModal({ isOpen, onClose, lang = "en" }) {
                 cursor: "pointer",
               }}
             >
-              🔍 {lang === "hi" ? "खोजें" : "Search"}
+               {lang === "hi" ? "खोजें" : "Search"}
             </button>
           </form>
 
           <div style={{ fontSize: 12, color: "#64748b", marginBottom: 16 }}>
-            💡 {lang === "hi" ? "ट्राय करें: " : "Try sample vehicles: "}{" "}
+             {lang === "hi" ? "ट्राय करें: " : "Try sample vehicles: "}{" "}
             <span
               style={{ cursor: "pointer", textDecoration: "underline", color: "#0284c7", fontWeight: 600 }}
               onClick={() => setQuery("CG 04 AB 1234")}
@@ -172,7 +172,7 @@ export default function EChallanModal({ isOpen, onClose, lang = "en" }) {
                 fontWeight: 600,
               }}
             >
-              ✓ {lang === "hi" ? `चालान #${paySuccess} का सफलतापूर्व ई-भुगतान संपन्न हुआ!` : `e-Challan #${paySuccess} paid successfully! Electronic receipt generated.`}
+               {lang === "hi" ? `चालान #${paySuccess} का सफलतापूर्व ई-भुगतान संपन्न हुआ!` : `e-Challan #${paySuccess} paid successfully! Electronic receipt generated.`}
             </div>
           )}
 
@@ -180,7 +180,7 @@ export default function EChallanModal({ isOpen, onClose, lang = "en" }) {
             <div>
               {results.length === 0 ? (
                 <div style={{ padding: 24, textAlign: "center", background: "#f8fafc", borderRadius: 8, color: "#64748b" }}>
-                  🎉 {lang === "hi" ? "इस वाहन/चालान पर कोई बकाया जुर्माना नहीं पाया गया।" : "No pending e-Challan violations found for this vehicle."}
+                   {lang === "hi" ? "इस वाहन/चालान पर कोई बकाया जुर्माना नहीं पाया गया।" : "No pending e-Challan violations found for this vehicle."}
                 </div>
               ) : (
                 <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
@@ -216,9 +216,9 @@ export default function EChallanModal({ isOpen, onClose, lang = "en" }) {
                       </div>
 
                       <div style={{ fontSize: 13, color: "#334155", margin: "8px 0" }}>
-                        ⚠️ <strong>{lang === "hi" ? c.violation : c.violationEn}</strong>
+                         <strong>{lang === "hi" ? c.violation : c.violationEn}</strong>
                         <br />
-                        📍 {c.location} · 🕒 {c.date}
+                         {c.location} ·  {c.date}
                       </div>
 
                       <div
@@ -251,11 +251,11 @@ export default function EChallanModal({ isOpen, onClose, lang = "en" }) {
                               cursor: "pointer",
                             }}
                           >
-                            {payingChallanNo === c.challanNo ? (lang === "hi" ? "भुगतान हो रहा है..." : "Processing Payment...") : (lang === "hi" ? "💳 अभी ई-भुगतान करें (UPI)" : "💳 Pay Now via UPI / NetBanking")}
+                            {payingChallanNo === c.challanNo ? (lang === "hi" ? "भुगतान हो रहा है..." : "Processing Payment...") : (lang === "hi" ? " अभी ई-भुगतान करें (UPI)" : " Pay Now via UPI / NetBanking")}
                           </button>
                         ) : (
                           <span style={{ fontSize: 12, color: "#166534", fontWeight: 600 }}>
-                            ✓ Paid on {c.paidOn}
+                             Paid on {c.paidOn}
                           </span>
                         )}
                       </div>

@@ -56,7 +56,7 @@ function parkingIcon(status) {
   const color = PARKING_COLOR[status] || PARKING_COLOR.available;
   return L.divIcon({
     className: "",
-    html: `<div style="background:${color};color:white;font-weight:bold;font-size:11px;padding:3px 6px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.35);display:flex;align-items:center;gap:3px;border:2px solid white;white-space:nowrap;cursor:pointer;">🅿️</div>`,
+    html: `<div style="background:${color};color:white;font-weight:bold;font-size:11px;padding:3px 6px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.35);display:flex;align-items:center;gap:3px;border:2px solid white;white-space:nowrap;cursor:pointer;"></div>`,
     iconSize: [26, 26],
     iconAnchor: [13, 13],
   });
@@ -65,7 +65,7 @@ function parkingIcon(status) {
 function policeStationIcon(isSelected) {
   return L.divIcon({
     className: isSelected ? "patrol-vehicle-selected" : "",
-    html: `<div style="background:#1e3a8a;color:#ffffff;font-weight:700;font-size:11px;padding:3px 7px;border-radius:12px;box-shadow:0 3px 10px rgba(30,58,138,0.5);display:flex;align-items:center;gap:4px;border:2px solid ${isSelected ? "#fbbf24" : "#93c5fd"};white-space:nowrap;cursor:pointer;">🏢 <span style="font-size:10.5px;">थाना</span></div>`,
+    html: `<div style="background:#1e3a8a;color:#ffffff;font-weight:700;font-size:11px;padding:3px 7px;border-radius:12px;box-shadow:0 3px 10px rgba(30,58,138,0.5);display:flex;align-items:center;gap:4px;border:2px solid ${isSelected ? "#fbbf24" : "#93c5fd"};white-space:nowrap;cursor:pointer;"> <span style="font-size:10.5px;">थाना</span></div>`,
     iconSize: [36, 26],
     iconAnchor: [18, 13],
   });
@@ -75,7 +75,7 @@ function patrolVehicleIcon(patrol, isSelected) {
   const isBike = patrol.vehicleCategory === "bike_squad";
   const isERV = patrol.vehicleCategory === "erv";
   const isInterceptor = patrol.vehicleCategory === "interceptor";
-  const symbol = isBike ? "🏍️" : isERV ? "🚨" : isInterceptor ? "🚓" : "🚔";
+  const symbol = isBike ? "" : isERV ? "" : isInterceptor ? "" : "";
   
   const bgColor = isERV ? "#991b1b" : isBike ? "#d97706" : isInterceptor ? "#0f766e" : "#b91c1c";
   const borderColor = isSelected ? "#fbbf24" : isERV ? "#fca5a5" : "#fecaca";
@@ -98,7 +98,7 @@ function patrolVehicleIcon(patrol, isSelected) {
 function userLocationIcon() {
   return L.divIcon({
     className: "",
-    html: `<div style="background:#0284c7;color:#ffffff;font-weight:700;font-size:11px;padding:3px 8px;border-radius:12px;box-shadow:0 0 14px rgba(2,132,199,0.7);display:flex;align-items:center;gap:4px;border:2px solid #bae6fd;white-space:nowrap;">📍 <span style="font-size:10.5px;">आप (You)</span></div>`,
+    html: `<div style="background:#0284c7;color:#ffffff;font-weight:700;font-size:11px;padding:3px 8px;border-radius:12px;box-shadow:0 0 14px rgba(2,132,199,0.7);display:flex;align-items:center;gap:4px;border:2px solid #bae6fd;white-space:nowrap;"> <span style="font-size:10.5px;">आप (You)</span></div>`,
     iconSize: [34, 26],
     iconAnchor: [17, 13],
   });
@@ -194,7 +194,7 @@ export default function MapView({
         <Marker position={[userLocation.lat, userLocation.lng]} icon={userLocationIcon()}>
           <Popup>
             <div style={{ minWidth: 150 }}>
-              <strong style={{ color: "#0369a1", fontSize: 13 }}>📍 {lang === "hi" ? "आपकी वर्तमान लोकेशन" : "Your Current Location"}</strong>
+              <strong style={{ color: "#0369a1", fontSize: 13 }}> {lang === "hi" ? "आपकी वर्तमान लोकेशन" : "Your Current Location"}</strong>
               <div style={{ marginTop: 4, fontSize: 11.5, color: "#64748b" }}>
                 GPS: {userLocation.lat.toFixed(4)}, {userLocation.lng.toFixed(4)}
               </div>
@@ -222,7 +222,7 @@ export default function MapView({
           >
             <Popup>
               <div style={{ minWidth: 160 }}>
-                <strong style={{ color: "#0f172a", fontSize: 13 }}>📍 {c.location}</strong>
+                <strong style={{ color: "#0f172a", fontSize: 13 }}> {c.location}</strong>
                 <div style={{ marginTop: 4, fontSize: 12, color: "#475569" }}>
                   {c.category} — <strong>{c.id}</strong>
                 </div>
@@ -276,7 +276,7 @@ export default function MapView({
                 <Popup>
                   <div style={{ minWidth: 175, padding: "2px 0" }}>
                     <div style={{ fontSize: 13, fontWeight: 700, color: "#0f172a" }}>
-                      🛣️ {lang === "hi" ? road.name : road.nameEn}
+                       {lang === "hi" ? road.name : road.nameEn}
                     </div>
                     <div style={{ marginTop: 6, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
                       <span style={{ fontSize: 12, color: "#475569" }}>
@@ -296,7 +296,7 @@ export default function MapView({
                       </span>
                     </div>
                     <div style={{ marginTop: 4, fontSize: 12, color: "#334155" }}>
-                      ⏱️ {lang === "hi" ? "अनुमानित गति: " : "Est. Speed: "}
+                      ⏱ {lang === "hi" ? "अनुमानित गति: " : "Est. Speed: "}
                       <strong>{estSpeed}</strong>
                     </div>
                   </div>
@@ -313,7 +313,7 @@ export default function MapView({
             <Popup>
               <div style={{ minWidth: 160 }}>
                 <strong style={{ fontSize: 13, color: "#0f172a" }}>
-                  📍 {lang === "hi" ? p.name : p.nameEn}
+                   {lang === "hi" ? p.name : p.nameEn}
                 </strong>
                 <br />
                 <span style={{ fontSize: 11.5, color: "#64748b" }}>
@@ -361,7 +361,7 @@ export default function MapView({
               <Popup>
                 <div style={{ minWidth: 180 }}>
                   <strong style={{ fontSize: 13, color: "#0f172a" }}>
-                    🅿️ {lang === "hi" ? p.name : p.nameEn}
+                     {lang === "hi" ? p.name : p.nameEn}
                   </strong>
                   <br />
                   <span style={{ fontSize: 11.5, color: "#64748b" }}>
@@ -395,7 +395,7 @@ export default function MapView({
                         textDecoration: "none",
                       }}
                     >
-                      🧭 {lang === "hi" ? "दिशा-निर्देश (Google Maps)" : "Get Directions (Google Maps)"}
+                       {lang === "hi" ? "दिशा-निर्देश (Google Maps)" : "Get Directions (Google Maps)"}
                     </a>
                   </div>
                 </div>
@@ -426,25 +426,25 @@ export default function MapView({
                     <span style={{ color: "#16a34a", fontSize: 11, fontWeight: 700 }}>● 24x7 Active</span>
                   </div>
                   <strong style={{ fontSize: 13.5, color: "#0f172a" }}>
-                    🏢 {lang === "hi" ? stn.name : stn.nameEn}
+                     {lang === "hi" ? stn.name : stn.nameEn}
                   </strong>
                   <div style={{ fontSize: 11.5, color: "#64748b", marginTop: 2 }}>
-                    📍 {lang === "hi" ? stn.address : stn.addressEn}
+                     {lang === "hi" ? stn.address : stn.addressEn}
                   </div>
                   {stn.distanceKm && (
                     <div style={{ marginTop: 4, fontSize: 12, color: "#1e3a8a", fontWeight: 700 }}>
-                      📏 {stn.distanceKm} km {lang === "hi" ? "दूरी" : "away"}
+                       {stn.distanceKm} km {lang === "hi" ? "दूरी" : "away"}
                     </div>
                   )}
                   <div style={{ marginTop: 6, padding: "6px 8px", background: "#f8fafc", borderRadius: 6, border: "1px solid #e2e8f0", fontSize: 11.5 }}>
                     <div style={{ color: "#334155" }}>
-                      👤 <strong>{lang === "hi" ? stn.inChargeRankHi : stn.inChargeRank}:</strong> {stn.inCharge}
+                       <strong>{lang === "hi" ? stn.inChargeRankHi : stn.inChargeRank}:</strong> {stn.inCharge}
                     </div>
                     <div style={{ marginTop: 3 }}>
-                      📞 <a href={`tel:${stn.phone}`} style={{ color: "#1e40af", fontWeight: 700 }}>{stn.phone}</a>
+                       <a href={`tel:${stn.phone}`} style={{ color: "#1e40af", fontWeight: 700 }}>{stn.phone}</a>
                     </div>
                     <div style={{ marginTop: 2, color: "#64748b", fontSize: 11 }}>
-                      🚓 {lang === "hi" ? "संबद्ध पेट्रोलिंग:" : "Patrol Unit:"} <strong>{stn.assignedPatrol}</strong>
+                       {lang === "hi" ? "संबद्ध पेट्रोलिंग:" : "Patrol Unit:"} <strong>{stn.assignedPatrol}</strong>
                     </div>
                   </div>
                   <div style={{ marginTop: 8, display: "flex", gap: 6, flexWrap: "wrap" }}>
@@ -465,7 +465,7 @@ export default function MapView({
                         gap: 4,
                       }}
                     >
-                      🧭 {lang === "hi" ? "दिशा-निर्देश" : "Directions"}
+                       {lang === "hi" ? "दिशा-निर्देश" : "Directions"}
                     </a>
                     <a
                       href={`tel:${stn.phone}`}
@@ -482,7 +482,7 @@ export default function MapView({
                         gap: 4,
                       }}
                     >
-                      📞 {lang === "hi" ? "कॉल करें" : "Call"}
+                       {lang === "hi" ? "कॉल करें" : "Call"}
                     </a>
                   </div>
                 </div>
@@ -516,12 +516,12 @@ export default function MapView({
                   </div>
 
                   <strong style={{ fontSize: 14, color: "#0f172a" }}>
-                    {patrol.vehicleCategory === "bike_squad" ? "🏍️" : patrol.vehicleCategory === "erv" ? "🚨" : patrol.vehicleCategory === "interceptor" ? "🚓" : "🚔"}{" "}
+                    {patrol.vehicleCategory === "bike_squad" ? "" : patrol.vehicleCategory === "erv" ? "" : patrol.vehicleCategory === "interceptor" ? "" : ""}{" "}
                     {lang === "hi" ? patrol.name : patrol.nameEn}
                   </strong>
                   
                   <div style={{ fontSize: 11.5, color: "#475569", marginTop: 2, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                    <span>🏢 {lang === "hi" ? patrol.stationName : patrol.stationNameEn}</span>
+                    <span> {lang === "hi" ? patrol.stationName : patrol.stationNameEn}</span>
                     <span style={{ fontFamily: "monospace", fontWeight: 700, color: "#1e3a8a", background: "#eff6ff", padding: "1px 4px", borderRadius: 3 }}>
                       {patrol.vehicleNumber}
                     </span>
@@ -529,14 +529,14 @@ export default function MapView({
 
                   <div style={{ marginTop: 6, padding: "6px 8px", background: "#fef2f2", borderRadius: 6, border: "1px solid #fee2e2", fontSize: 11.5 }}>
                     <div style={{ color: "#991b1b" }}>
-                      🛣️ <strong>{lang === "hi" ? "गश्त क्षेत्र:" : "Sector:"}</strong> {lang === "hi" ? patrol.sector : patrol.sectorEn}
+                       <strong>{lang === "hi" ? "गश्त क्षेत्र:" : "Sector:"}</strong> {lang === "hi" ? patrol.sector : patrol.sectorEn}
                     </div>
                     <div style={{ marginTop: 3, color: "#334155" }}>
-                      👮 <strong>{lang === "hi" ? patrol.officerRankHi : patrol.officerRank}:</strong> {patrol.officer}
+                       <strong>{lang === "hi" ? patrol.officerRankHi : patrol.officerRank}:</strong> {patrol.officer}
                     </div>
                     <div style={{ marginTop: 3, display: "flex", justifyContent: "space-between", color: "#64748b", fontSize: 11 }}>
-                      <span>⚡ {lang === "hi" ? "गति" : "Speed"}: <strong style={{ color: "#0f172a" }}>{patrol.speed || "20 km/h"}</strong></span>
-                      <span>🔋 {lang === "hi" ? "ईंधन" : "Fuel"}: <strong style={{ color: "#16a34a" }}>{patrol.fuelBattery || "85%"}</strong></span>
+                      <span> {lang === "hi" ? "गति" : "Speed"}: <strong style={{ color: "#0f172a" }}>{patrol.speed || "20 km/h"}</strong></span>
+                      <span> {lang === "hi" ? "ईंधन" : "Fuel"}: <strong style={{ color: "#16a34a" }}>{patrol.fuelBattery || "85%"}</strong></span>
                     </div>
                   </div>
 
@@ -558,7 +558,7 @@ export default function MapView({
                         gap: 4,
                       }}
                     >
-                      🧭 {lang === "hi" ? "दिशा-निर्देश" : "Directions"}
+                       {lang === "hi" ? "दिशा-निर्देश" : "Directions"}
                     </a>
                     <a
                       href={`tel:${patrol.mobile || patrol.phone}`}
@@ -575,7 +575,7 @@ export default function MapView({
                         gap: 4,
                       }}
                     >
-                      📞 {lang === "hi" ? "कॉल पेट्रोल" : "Call Officer"}
+                       {lang === "hi" ? "कॉल पेट्रोल" : "Call Officer"}
                     </a>
                     {onDispatchPatrol && (
                       <button
@@ -592,7 +592,7 @@ export default function MapView({
                           cursor: "pointer",
                         }}
                       >
-                        🚨 {lang === "hi" ? "अलर्ट भेजें" : "Send Alert"}
+                         {lang === "hi" ? "अलर्ट भेजें" : "Send Alert"}
                       </button>
                     )}
                   </div>

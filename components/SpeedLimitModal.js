@@ -48,10 +48,10 @@ export default function SpeedLimitModal({ isOpen, onClose, lang = "en" }) {
         >
           <div>
             <div style={{ fontSize: 11, color: "#fef3c7", fontWeight: 700, letterSpacing: "0.1em" }}>
-              DELHI TRAFFIC POLICE MODEL · SPEED SAFETY GUIDANCE
+              RAIPUR TRAFFIC POLICE · SPEED SAFETY GUIDANCE
             </div>
             <h3 style={{ fontSize: 20, marginTop: 2, color: "white" }}>
-              🏎️ {lang === "hi" ? "रायपुर शहर गति सीमा दर तालिका" : "Raipur City Speed Limit Matrix"}
+               {lang === "hi" ? "रायपुर शहर गति सीमा दर तालिका" : "Raipur City Speed Limit Matrix"}
             </h3>
           </div>
           <button
@@ -83,9 +83,9 @@ export default function SpeedLimitModal({ isOpen, onClose, lang = "en" }) {
               <thead>
                 <tr style={{ background: "#f8fafc", textAlign: "left", borderBottom: "2px solid #e2e8f0" }}>
                   <th style={{ padding: "10px 12px", color: "#475569" }}>{lang === "hi" ? "सड़क / ज़ोन" : "Road / Zone"}</th>
-                  <th style={{ padding: "10px 12px", color: "#1e40af", textAlign: "center" }}>🚘 {lang === "hi" ? "कार / LMV" : "Car / LMV"}</th>
-                  <th style={{ padding: "10px 12px", color: "#047857", textAlign: "center" }}>🛵 {lang === "hi" ? "दुपहिया" : "Two-Wheeler"}</th>
-                  <th style={{ padding: "10px 12px", color: "#b91c1c", textAlign: "center" }}>🚚 {lang === "hi" ? "भारी वाहन" : "Commercial Truck"}</th>
+                  <th style={{ padding: "10px 12px", color: "#1e40af", textAlign: "center" }}> {lang === "hi" ? "कार / LMV" : "Car / LMV"}</th>
+                  <th style={{ padding: "10px 12px", color: "#047857", textAlign: "center" }}> {lang === "hi" ? "दुपहिया" : "Two-Wheeler"}</th>
+                  <th style={{ padding: "10px 12px", color: "#b91c1c", textAlign: "center" }}> {lang === "hi" ? "भारी वाहन" : "Commercial Truck"}</th>
                 </tr>
               </thead>
               <tbody>
@@ -105,7 +105,7 @@ export default function SpeedLimitModal({ isOpen, onClose, lang = "en" }) {
           </div>
 
           <div style={{ marginTop: 20, padding: 14, background: "#fffbeb", borderRadius: 8, fontSize: 12, color: "#92400e" }}>
-            ⚠️ {lang === "hi" ? "नोट: ओवर-स्पीडिंग पर ₹ 2,000 से ₹ 4,000 तक चालान तथा लाइसेंस निलंबन की कार्रवाई हो सकती है।" : "Note: Over-speeding attracts automatic speed camera e-Challan of ₹2,000 - ₹4,000 and DL suspension."}
+             {lang === "hi" ? "नोट: ओवर-स्पीडिंग पर ₹ 2,000 से ₹ 4,000 तक चालान तथा लाइसेंस निलंबन की कार्रवाई हो सकती है।" : "Note: Over-speeding attracts automatic speed camera e-Challan of ₹2,000 - ₹4,000 and DL suspension."}
           </div>
 
           <div style={{ marginTop: 20, textAlign: "right" }}>

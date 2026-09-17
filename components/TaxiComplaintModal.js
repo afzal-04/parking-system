@@ -20,7 +20,7 @@ export default function TaxiComplaintModal({ isOpen, onClose, lang = "en" }) {
     setIsSubmitting(true);
 
     setTimeout(() => {
-      const caseId = `DTP-TSR-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+      const caseId = `RAIPUR-TSR-2026-${Math.floor(1000 + Math.random() * 9000)}`;
       setReceipt({
         caseId,
         vehicleNo: vehicleNo.toUpperCase(),
@@ -78,10 +78,10 @@ export default function TaxiComplaintModal({ isOpen, onClose, lang = "en" }) {
         >
           <div>
             <div style={{ fontSize: 11, color: "#c7d2fe", fontWeight: 700, letterSpacing: "0.1em" }}>
-              DELHI TRAFFIC POLICE MODEL · TSR & TAXI COMPLAINT
+              RAIPUR TRAFFIC POLICE · TSR & TAXI COMPLAINT
             </div>
             <h3 style={{ fontSize: 20, marginTop: 2, color: "white" }}>
-              🛺 {lang === "hi" ? "ऑटो / टैक्सि मनाही व ओवरचार्जिंग शिकायत" : "Auto / Taxi Refusal & Overcharging Complaint"}
+               {lang === "hi" ? "ऑटो / टैक्सि मनाही व ओवरचार्जिंग शिकायत" : "Auto / Taxi Refusal & Overcharging Complaint"}
             </h3>
           </div>
           <button
@@ -109,7 +109,7 @@ export default function TaxiComplaintModal({ isOpen, onClose, lang = "en" }) {
                   OFFICIAL TRAFFIC POLICE CASE FILED
                 </span>
                 <span style={{ fontSize: 12, background: "#dcfce7", color: "#166534", padding: "3px 8px", borderRadius: 10, fontWeight: 700 }}>
-                  ✓ DISPATCHED TO TRAFFIC INSPECTOR
+                   DISPATCHED TO TRAFFIC INSPECTOR
                 </span>
               </div>
 
@@ -133,7 +133,7 @@ export default function TaxiComplaintModal({ isOpen, onClose, lang = "en" }) {
               </div>
 
               <div style={{ marginTop: 14, padding: 12, background: "#fff", borderRadius: 8, fontSize: 12, color: "#3730a3" }}>
-                🚓 {lang === "hi" ? "आपकी शिकायत निकटतम ट्रैफिक इंस्पेक्टर व कंट्रोल रूम को प्रेषित कर दी गई है। ऑटो/कैब पर धारा 177 MVA के तहत कार्रवाई की जाएगी।" : "Your complaint has been forwarded to the Traffic Inspector circle. Action will be taken under MVA 177."}
+                 {lang === "hi" ? "आपकी शिकायत निकटतम ट्रैफिक इंस्पेक्टर व कंट्रोल रूम को प्रेषित कर दी गई है। ऑटो/कैब पर धारा 177 MVA के तहत कार्रवाई की जाएगी।" : "Your complaint has been forwarded to the Traffic Inspector circle. Action will be taken under MVA 177."}
               </div>
 
               <div style={{ display: "flex", gap: 10, marginTop: 18 }}>
@@ -256,7 +256,7 @@ export default function TaxiComplaintModal({ isOpen, onClose, lang = "en" }) {
                   marginTop: 6,
                 }}
               >
-                {isSubmitting ? (lang === "hi" ? "शिकायत दर्ज हो रही है..." : "Filing Complaint...") : (lang === "hi" ? "🚨 ऑटो/टैक्सि शिकायत दर्ज करें" : "🚨 Submit Auto / Taxi Complaint")}
+                {isSubmitting ? (lang === "hi" ? "शिकायत दर्ज हो रही है..." : "Filing Complaint...") : (lang === "hi" ? " ऑटो/टैक्सि शिकायत दर्ज करें" : " Submit Auto / Taxi Complaint")}
               </button>
             </form>
           )}

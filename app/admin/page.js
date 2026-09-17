@@ -22,36 +22,6 @@ import { t } from "@/lib/i18n";
 
 const MapView = dynamic(() => import("@/components/MapView"), { ssr: false });
 
-const RECOMMENDATIONS = [
-  {
-    icon: "🚧",
-    title: { hi: "गोल बाज़ार — सर्विस लेन मार्किंग", en: "Gol Bazar — Service Lane Marking" },
-    detail: {
-      hi: "सर्विस लेन पर पीली पट्टी व साइनेज लगाना, सुबह/शाम पीक ऑवर में एक कांस्टेबल तैनात करना।",
-      en: "Paint yellow lane markings and add signage on the service lane; station one constable during morning/evening peak hours.",
-    },
-    cost: { hi: "≈ ₹8,000 · कम लागत", en: "≈ ₹8,000 · Low cost" },
-  },
-  {
-    icon: "🅿️",
-    title: { hi: "पंडरी बस स्टैंड — निर्धारित पार्किंग बे", en: "Pandri Bus Stand — Designated Parking Bay" },
-    detail: {
-      hi: "मौजूदा खाली जगह को ऑफ-स्ट्रीट पार्किंग बे के रूप में चिन्हित कर बोर्ड लगाना।",
-      en: "Mark the existing open space as an off-street parking bay with clear signboards.",
-    },
-    cost: { hi: "≈ ₹15,000 · कम लागत", en: "≈ ₹15,000 · Low cost" },
-  },
-  {
-    icon: "🏫",
-    title: { hi: "सेजबहार स्कूल ज़ोन — समय-आधारित नियम", en: "Sejbahar School Zone — Time-based Rule" },
-    detail: {
-      hi: "छुट्टी के 30 मिनट के लिए 'No Parking - School Hours' बोर्ड व अस्थायी बैरिकेड।",
-      en: "Put up a 'No Parking - School Hours' board and temporary barricade for the 30-minute dismissal window.",
-    },
-    cost: { hi: "≈ ₹5,000 · कम लागत", en: "≈ ₹5,000 · Low cost" },
-  },
-];
-
 const LEVEL_LABEL = {
   free: { hi: "सामान्य", en: "Free flow" },
   moderate: { hi: "मध्यम", en: "Moderate" },
@@ -184,7 +154,7 @@ function AdminContent() {
     return () => clearInterval(interval);
   }, []);
 
-  // Simulated traffic feed (Module 2)
+  // Simulated traffic feed
   useEffect(() => {
     const interval = setInterval(() => {
       setTraffic((prev) => {
@@ -212,7 +182,7 @@ function AdminContent() {
     return () => clearInterval(interval);
   }, []);
 
-  // Simulated live parking occupancy feed (Module 4)
+  // Simulated live parking occupancy feed
   useEffect(() => {
     const interval = setInterval(() => {
       setParkingZones((prev) =>
@@ -265,7 +235,7 @@ function AdminContent() {
     setSelectedId(patrol.id);
     setMapCenter([patrol.lat, patrol.lng]);
     setMapZoom(15);
-    setToastMessage(`📍 Focused on ${patrol.code} (${patrol.callSign}) at ${patrol.sectorEn}`);
+    setToastMessage(` Focused on ${patrol.code} (${patrol.callSign}) at ${patrol.sectorEn}`);
   }
 
   // Handle locating a police station on map
@@ -274,7 +244,7 @@ function AdminContent() {
     setSelectedPatrolId(stn.id);
     setMapCenter([stn.lat, stn.lng]);
     setMapZoom(15);
-    setToastMessage(`📍 Focused on ${stn.nameEn} (${stn.code})`);
+    setToastMessage(` Focused on ${stn.nameEn} (${stn.code})`);
   }
 
   // Handle dispatching alert to patrol vehicle
@@ -283,7 +253,7 @@ function AdminContent() {
       prev.map((u) => (u.id === patrolId ? { ...u, status: "responding", statusLabel: { hi: "अलर्ट रिस्पॉन्स (Responding)", en: "Emergency Responding" } } : u))
     );
     const p = patrolUnits.find((u) => u.id === patrolId);
-    const msg = `🚨 Dispatch alert transmitted to ${p?.code} (${p?.officer})`;
+    const msg = ` Dispatch alert transmitted to ${p?.code} (${p?.officer})`;
     setToastMessage(msg);
     speakVoiceAlert(msg);
   }
@@ -293,7 +263,7 @@ function AdminContent() {
     setStations((prev) => [newStation, ...prev.filter((s) => s.id !== newStation.id)]);
     setMapCenter([newStation.lat, newStation.lng]);
     setMapZoom(15);
-    setToastMessage(`✓ ${newStation.nameEn} (${newStation.code}) registered successfully!`);
+    setToastMessage(` ${newStation.nameEn} (${newStation.code}) registered successfully!`);
     speakVoiceAlert(`New police station ${newStation.nameEn} registered in system.`);
   }
 
@@ -303,7 +273,7 @@ function AdminContent() {
     setSelectedPatrolId(newUnit.id);
     setMapCenter([newUnit.lat, newUnit.lng]);
     setMapZoom(15);
-    setToastMessage(`✓ ${newUnit.code} (${newUnit.callSign}) onboarded to patrol fleet!`);
+    setToastMessage(` ${newUnit.code} (${newUnit.callSign}) onboarded to patrol fleet!`);
     speakVoiceAlert(`New patrol unit ${newUnit.code} activated in system.`);
   }
 
@@ -425,12 +395,12 @@ function AdminContent() {
   }
 
   const MODULE_NAV_TABS = [
-    ["overview", t("tabOverviewAdmin", lang), "📊"],
-    ["complaints", t("tabComplaintsReport", lang), "📝"],
-    ["traffic", t("tabTrafficControl", lang), "🚥"],
-    ["parking", t("tabSmartParking", lang), "🅿️"],
-    ["stations", t("tabStationsDir", lang), "🏢"],
-    ["patrol", t("tabPatrol", lang), "🚔"],
+    ["overview", t("tabOverviewAdmin", lang), ""],
+    ["complaints", t("tabComplaintsReport", lang), ""],
+    ["traffic", t("tabTrafficControl", lang), ""],
+    ["parking", t("tabSmartParking", lang), ""],
+    ["stations", t("tabStationsDir", lang), ""],
+    ["patrol", t("tabPatrol", lang), ""],
   ];
 
   const FILTERS = [
@@ -485,7 +455,7 @@ function AdminContent() {
                 ...u,
                 status: "responding",
                 statusLabel: { hi: "अलर्ट रिस्पॉन्स (Responding)", en: "Emergency Responding" },
-                currentTask: `🚨 Responding to Accident at ${complaint.location}`,
+                currentTask: ` Responding to Accident at ${complaint.location}`,
               }
             : u
         )
@@ -524,8 +494,8 @@ function AdminContent() {
     // Toast notification confirmation
     const msg =
       lang === "hi"
-        ? `🚨 आपातकालीन टीम तैनात: गश्त पुलिस ${patrolCallSign} एवं ${stationName} को ${complaint.location} के लिए रवाना किया गया! अलर्ट सूचना हटाई गई और डेटा तालिका में सुरक्षित है।`
-        : `🚨 Emergency Dispatched: Alert transmitted to patrolling police ${patrolCallSign} via ${stationName}! Notification dismissed & updated in complaints table.`;
+        ? ` आपातकालीन टीम तैनात: गश्त पुलिस ${patrolCallSign} एवं ${stationName} को ${complaint.location} के लिए रवाना किया गया! अलर्ट सूचना हटाई गई और डेटा तालिका में सुरक्षित है।`
+        : ` Emergency Dispatched: Alert transmitted to patrolling police ${patrolCallSign} via ${stationName}! Notification dismissed & updated in complaints table.`;
 
     setToastMessage(msg);
     speakVoiceAlert(`Emergency team dispatched. Alert transmitted to patrolling police.`);
@@ -588,12 +558,12 @@ function AdminContent() {
 
           return (
             <div className={styles.emergencyAlertBanner} key={`emergency-${c.id}`}>
-              <span style={{ fontSize: 26 }}>🚨</span>
+              <span style={{ fontSize: 26 }}></span>
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
                   <span
                     style={{
-                      fontSize: 11,
+                      fontSize: 16,
                       fontWeight: 800,
                       background: "#fee2e2",
                       color: "#991b1b",
@@ -603,9 +573,9 @@ function AdminContent() {
                       letterSpacing: 0.5,
                     }}
                   >
-                    🎯 {lang === "hi" ? "लक्षित अलर्ट: केवल एडमिन व निकटतम थाना" : "TARGETED ALERT: ADMIN & NEARBY POLICE ONLY"}
+                     {lang === "hi" ? "लक्षित अलर्ट: केवल एडमिन व निकटतम थाना" : "TARGETED ALERT: ADMIN & NEARBY POLICE ONLY"}
                   </span>
-                  <span style={{ fontSize: 11.5, color: "#7f1d1d", fontWeight: 700 }}>
+                  <span style={{ fontSize: 16, color: "#7f1d1d", fontWeight: 700 }}>
                     ({lang === "hi" ? station.name : station.nameEn})
                   </span>
                 </div>
@@ -616,21 +586,21 @@ function AdminContent() {
 
                 <div className={styles.emergencyDesc}>
                   <strong>{c.category} ({c.id}):</strong> {c.description}
-                  <div style={{ marginTop: 6, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 6, fontSize: 12 }}>
+                  <div style={{ marginTop: 6, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 6, fontSize: 16 }}>
                     <div>
-                      <strong>🏢 {t("nearestStationLabel", lang)}:</strong>{" "}
+                      <strong> {t("nearestStationLabel", lang)}:</strong>{" "}
                       <span style={{ fontWeight: 700, color: "#991b1b" }}>
                         {lang === "hi" ? station.name : station.nameEn}
                       </span>{" "}
-                      ({station.distanceKm || "1.2"} km) · 📞 {station.phone}
+                      ({station.distanceKm || "1.2"} km) ·  {station.phone}
                     </div>
                     {patrol && (
                       <div>
-                        <strong>🚔 {t("nearestPatrolLabel", lang)}:</strong>{" "}
+                        <strong> {t("nearestPatrolLabel", lang)}:</strong>{" "}
                         <span style={{ fontWeight: 700, color: "#1e3a8a" }}>
                           {patrol.code} ({patrol.callSign})
                         </span>{" "}
-                        · 👤 {patrol.driverName} ({patrol.speed})
+                        ·  {patrol.driverName} ({patrol.speed})
                       </div>
                     )}
                   </div>
@@ -654,7 +624,7 @@ function AdminContent() {
                   background: "#b91c1c",
                   color: "white",
                   padding: "10px 18px",
-                  fontSize: 13,
+                  fontSize: 16,
                   fontWeight: 800,
                   boxShadow: "0 4px 10px rgba(185, 28, 28, 0.4)",
                   display: "inline-flex",
@@ -692,7 +662,7 @@ function AdminContent() {
                   key={key}
                   className={`${styles.filterBtn} ${activeTab === key ? styles.active : ""}`}
                   onClick={() => handleTabChange(key)}
-                  style={{ padding: "8px 16px", fontSize: 13, display: "inline-flex", alignItems: "center", gap: 6 }}
+                  style={{ padding: "8px 16px", fontSize: 16, display: "inline-flex", alignItems: "center", gap: 6 }}
                 >
                   <span>{icon}</span>
                   <span>{cleanLabel}</span>
@@ -710,46 +680,46 @@ function AdminContent() {
             {/* Top KPI Stat Row */}
             <div className={styles.statRow}>
               <div className={styles.statCard}>
-                <div className="lbl" style={{ fontSize: 12, color: "var(--ink-soft)", fontWeight: 600 }}>
+                <div className="lbl" style={{ fontSize: 16, color: "var(--ink-soft)", fontWeight: 600 }}>
                   {t("statTotalComplaints", lang)}
                 </div>
                 <div className="val" style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 700, color: "var(--navy-900)", marginTop: 6 }}>
                   {loading ? "…" : stats.total}
                 </div>
-                <div style={{ fontSize: 11, color: "var(--ink-soft)", marginTop: 4 }}>
+                <div style={{ fontSize: 16, color: "var(--ink-soft)", marginTop: 4 }}>
                   Citizen Reports
                 </div>
               </div>
               <div className={`${styles.statCard} ${styles.pending}`}>
-                <div className="lbl" style={{ fontSize: 12, color: "var(--ink-soft)", fontWeight: 600 }}>
+                <div className="lbl" style={{ fontSize: 16, color: "var(--ink-soft)", fontWeight: 600 }}>
                   {t("statPendingAdmin", lang)}
                 </div>
                 <div className="val" style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 700, color: "var(--signal-red)", marginTop: 6 }}>
                   {loading ? "…" : stats.pending}
                 </div>
-                <div style={{ fontSize: 11, color: "var(--signal-red)", marginTop: 4 }}>
+                <div style={{ fontSize: 16, color: "var(--signal-red)", marginTop: 4 }}>
                   Action Pending
                 </div>
               </div>
               <div className={`${styles.statCard} ${styles.progress}`}>
-                <div className="lbl" style={{ fontSize: 12, color: "var(--ink-soft)", fontWeight: 600 }}>
+                <div className="lbl" style={{ fontSize: 16, color: "var(--ink-soft)", fontWeight: 600 }}>
                   {t("statInProgress", lang)}
                 </div>
                 <div className="val" style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 700, color: "var(--amber-deep)", marginTop: 6 }}>
                   {loading ? "…" : stats.inProgress}
                 </div>
-                <div style={{ fontSize: 11, color: "var(--ink-soft)", marginTop: 4 }}>
+                <div style={{ fontSize: 16, color: "var(--ink-soft)", marginTop: 4 }}>
                   Under Investigation
                 </div>
               </div>
               <div className={`${styles.statCard} ${styles.resolved}`}>
-                <div className="lbl" style={{ fontSize: 12, color: "var(--ink-soft)", fontWeight: 600 }}>
+                <div className="lbl" style={{ fontSize: 16, color: "var(--ink-soft)", fontWeight: 600 }}>
                   {t("statResolvedAdmin", lang)}
                 </div>
                 <div className="val" style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 700, color: "var(--signal-green)", marginTop: 6 }}>
                   {loading ? "…" : stats.resolved}
                 </div>
-                <div style={{ fontSize: 11, color: "var(--signal-green)", marginTop: 4 }}>
+                <div style={{ fontSize: 16, color: "var(--signal-green)", marginTop: 4 }}>
                   Successfully Resolved
                 </div>
               </div>
@@ -764,7 +734,7 @@ function AdminContent() {
                       <h3>{t("liveTrafficMapTitle", lang)} &amp; {t("complaintListTitle", lang)}</h3>
                       <span className={styles.liveTag}>● LIVE STREAM</span>
                     </div>
-                    <span className="sub" style={{ fontSize: 12, color: "var(--ink-soft)" }}>
+                    <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>
                       {complaints.length} complaints · {TRAFFIC_POINTS.length} {t("junctionsLabel", lang)}
                     </span>
                   </div>
@@ -782,7 +752,7 @@ function AdminContent() {
                     mode="all"
                   />
 
-                  <div style={{ display: "flex", gap: 14, marginTop: 12, fontSize: 11.5, color: "var(--ink-soft)", flexWrap: "wrap", alignItems: "center" }}>
+                  <div style={{ display: "flex", gap: 14, marginTop: 12, fontSize: 16, color: "var(--ink-soft)", flexWrap: "wrap", alignItems: "center" }}>
                     <span>{t("legendComplaint", lang)}</span>
                     <span style={{ color: "var(--signal-green)" }}>{t("legendFree", lang)}</span>
                     <span style={{ color: "var(--amber-deep)" }}>{t("legendModerate", lang)}</span>
@@ -794,7 +764,7 @@ function AdminContent() {
                 <div className={styles.panel}>
                   <div className={styles.panelHead}>
                     <h3>{t("complaintListTitle", lang)}</h3>
-                    <span className="sub" style={{ fontSize: 12, color: "var(--ink-soft)" }}>Citizen reports stream</span>
+                    <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>Citizen reports stream</span>
                   </div>
                   <div className={styles.filterRow}>
                     {FILTERS.map(([key, label]) => (
@@ -828,15 +798,15 @@ function AdminContent() {
                             <div>{c.id}</div>
                             {(c.isEmergency || c.category === "सड़क दुर्घटना" || c.categoryEn === "Accident / Emergency") && (
                               <span style={{ fontSize: 9.5, background: "#fee2e2", color: "#b91c1c", padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>
-                                🚨 EMERGENCY
+                                 EMERGENCY
                               </span>
                             )}
                           </td>
                           <td>
                             <strong>{c.location}</strong>
                             {c.assignedPatrol && (
-                              <div style={{ fontSize: 11, color: "#15803d", fontWeight: 700, marginTop: 2 }}>
-                                🚔 Dispatched: {c.assignedPatrol} ({c.assignedStation || "Police PS"})
+                              <div style={{ fontSize: 16, color: "#15803d", fontWeight: 700, marginTop: 2 }}>
+                                 Dispatched: {c.assignedPatrol} ({c.assignedStation || "Police PS"})
                               </div>
                             )}
                           </td>
@@ -874,7 +844,7 @@ function AdminContent() {
                       <h3>{t("liveTrafficTitle", lang)}</h3>
                       <span className={styles.liveTag}>● LIVE</span>
                     </div>
-                    <span className="sub" style={{ fontSize: 12, color: "var(--ink-soft)" }}>{TRAFFIC_POINTS.length} {t("junctionsLabel", lang)}</span>
+                    <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>{TRAFFIC_POINTS.length} {t("junctionsLabel", lang)}</span>
                   </div>
                   {trafficPoints.map((p) => (
                     <div className={styles.trafficRow} key={p.id}>
@@ -893,7 +863,7 @@ function AdminContent() {
                 <div className={styles.panel}>
                   <div className={styles.panelHead}>
                     <h3>{t("topZonesTitle", lang)}</h3>
-                    <span className="sub" style={{ fontSize: 12, color: "var(--ink-soft)" }}>{t("topZonesSub", lang)}</span>
+                    <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>{t("topZonesSub", lang)}</span>
                   </div>
                   {zones.map((z, i) => (
                     <div className={styles.zoneRow} key={z.location}>
@@ -905,24 +875,6 @@ function AdminContent() {
                   ))}
                 </div>
 
-                <div className={styles.panel}>
-                  <div className={styles.panelHead}>
-                    <h3>{t("recoTitle", lang)}</h3>
-                    <span className="sub" style={{ fontSize: 12, color: "var(--ink-soft)" }}>{t("recoSub", lang)}</span>
-                  </div>
-                  <div className={styles.recoList}>
-                    {RECOMMENDATIONS.map((r) => (
-                      <div className={styles.recoItem} key={r.title.en}>
-                        <div className={styles.recoIcon}>{r.icon}</div>
-                        <div className={styles.recoText} style={{ flex: 1 }}>
-                          <strong>{r.title[lang]}</strong>
-                          <span>{r.detail[lang]}</span>
-                        </div>
-                        <div className={styles.recoCost}>{r.cost[lang]}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -936,8 +888,8 @@ function AdminContent() {
             <div className={styles.grid}>
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
-                  <h3>📝 {t("tabComplaintsReport", lang)}</h3>
-                  <span className="sub" style={{ fontSize: 12, color: "var(--ink-soft)" }}>
+                  <h3> {t("tabComplaintsReport", lang)}</h3>
+                  <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>
                     {filtered.length} of {complaints.length} reports
                   </span>
                 </div>
@@ -978,16 +930,16 @@ function AdminContent() {
                             <div>{c.id}</div>
                             {(c.isEmergency || c.category === "सड़क दुर्घटना" || c.categoryEn === "Accident / Emergency") && (
                               <span style={{ fontSize: 9.5, background: "#fee2e2", color: "#b91c1c", padding: "1px 5px", borderRadius: 4, fontWeight: 700 }}>
-                                🚨 EMERGENCY
+                                 EMERGENCY
                               </span>
                             )}
                           </td>
                           <td>
                             <strong>{c.location}</strong>
-                            <div style={{ fontSize: 11, color: "var(--ink-soft)" }}>{c.description?.slice(0, 45)}...</div>
+                            <div style={{ fontSize: 16, color: "var(--ink-soft)" }}>{c.description?.slice(0, 45)}...</div>
                             {c.assignedPatrol && (
-                              <div style={{ fontSize: 11, color: "#15803d", fontWeight: 700, marginTop: 2 }}>
-                                🚔 Dispatched: {c.assignedPatrol} ({c.assignedStation || "Police PS"})
+                              <div style={{ fontSize: 16, color: "#15803d", fontWeight: 700, marginTop: 2 }}>
+                                 Dispatched: {c.assignedPatrol} ({c.assignedStation || "Police PS"})
                               </div>
                             )}
                           </td>
@@ -1016,8 +968,8 @@ function AdminContent() {
 
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
-                  <h3>📍 {lang === "hi" ? "शिकायत स्थान मानचित्र" : "Complaints Map View"}</h3>
-                  <span className="sub" style={{ fontSize: 12, color: "var(--ink-soft)" }}>
+                  <h3> {lang === "hi" ? "शिकायत स्थान मानचित्र" : "Complaints Map View"}</h3>
+                  <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>
                     {filtered.length} locations
                   </span>
                 </div>
@@ -1049,10 +1001,10 @@ function AdminContent() {
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
                   <div className={styles.liveHead}>
-                    <h3>🚥 {t("tabTrafficControl", lang)}</h3>
+                    <h3> {t("tabTrafficControl", lang)}</h3>
                     <span className={styles.liveTag}>● REAL-TIME RADAR</span>
                   </div>
-                  <span className="sub" style={{ fontSize: 12, color: "var(--ink-soft)" }}>
+                  <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>
                     {TRAFFIC_POINTS.length} major corridors &amp; junctions
                   </span>
                 </div>
@@ -1081,7 +1033,7 @@ function AdminContent() {
                               <div className={`${styles.trafficDot} ${styles[`dot-${p.level}`]}`} />
                               <div>
                                 <strong>{lang === "hi" ? p.name : p.nameEn}</strong>
-                                <div style={{ fontSize: 11, color: "var(--ink-soft)" }}>{lang === "hi" ? p.nameEn : p.name}</div>
+                                <div style={{ fontSize: 16, color: "var(--ink-soft)" }}>{lang === "hi" ? p.nameEn : p.name}</div>
                               </div>
                             </div>
                           </td>
@@ -1103,7 +1055,7 @@ function AdminContent() {
                                 setToastMessage(`Patrol deployed to ${p.nameEn}`);
                               }}
                             >
-                              🚓 Clear Jam
+                               Clear Jam
                             </button>
                           </td>
                         </tr>
@@ -1115,8 +1067,8 @@ function AdminContent() {
 
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
-                  <h3>🛣️ {lang === "hi" ? "रायपुर लाइव ट्रैफिक फ्लो मैप" : "Raipur Live Traffic Flow Map"}</h3>
-                  <span className="sub" style={{ fontSize: 12, color: "var(--ink-soft)" }}>High-contrast road corridors</span>
+                  <h3> {lang === "hi" ? "रायपुर लाइव ट्रैफिक फ्लो मैप" : "Raipur Live Traffic Flow Map"}</h3>
+                  <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>High-contrast road corridors</span>
                 </div>
                 <MapView
                   complaints={[]}
@@ -1146,12 +1098,12 @@ function AdminContent() {
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
                   <div className={styles.liveHead}>
-                    <h3>🅿️ {t("tabSmartParking", lang)}</h3>
+                    <h3> {t("tabSmartParking", lang)}</h3>
                     <span className={styles.liveTag} style={{ background: "#eef7f2", color: "#3f7d56" }}>
                       ● LIVE SENSORS & ANPR
                     </span>
                   </div>
-                  <span className="sub" style={{ fontSize: 12, color: "var(--ink-soft)" }}>
+                  <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>
                     {parkingStats.totalOccupied} / {parkingStats.totalCapacity} spots filled ({parkingStats.pct}%) ·{" "}
                     <strong style={{ color: "var(--signal-green)" }}>{parkingStats.totalFree} spots free</strong>
                   </span>
@@ -1159,7 +1111,7 @@ function AdminContent() {
 
                 {/* Overall Occupancy Bar */}
                 <div style={{ marginBottom: 18 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12.5, fontWeight: 600, color: "var(--navy-900)", marginBottom: 6 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: 16, fontWeight: 600, color: "var(--navy-900)", marginBottom: 6 }}>
                     <span>{t("overallOccupancy", lang)} ({parkingStats.pct}% filled)</span>
                     <span style={{ color: "var(--ink-soft)" }}>{parkingZones.length} Active Hubs</span>
                   </div>
@@ -1185,14 +1137,14 @@ function AdminContent() {
                   }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                    <label style={{ fontSize: 12.5, fontWeight: 700, color: "var(--navy-900)", display: "flex", alignItems: "center", gap: 6 }}>
-                      <span>🔍</span> {lang === "hi" ? "वाहन नंबर या क्षेत्र द्वारा खोजें" : "Universal Parking & Vehicle Search"}
+                    <label style={{ fontSize: 16, fontWeight: 700, color: "var(--navy-900)", display: "flex", alignItems: "center", gap: 6 }}>
+                      <span></span> {lang === "hi" ? "वाहन नंबर या क्षेत्र द्वारा खोजें" : "Universal Parking & Vehicle Search"}
                     </label>
                     {parkingSearchQuery && (
-                      <span style={{ fontSize: 11.5, color: "#64748b" }}>
+                      <span style={{ fontSize: 16, color: "#64748b" }}>
                         {parkingSearchResults.matchedVehicles.length > 0
-                          ? `🎯 ${parkingSearchResults.matchedVehicles.length} vehicle(s) found`
-                          : `📍 ${filteredParkingPointsFormatted.length} hub(s) found`}
+                          ? ` ${parkingSearchResults.matchedVehicles.length} vehicle(s) found`
+                          : ` ${filteredParkingPointsFormatted.length} hub(s) found`}
                       </span>
                     )}
                   </div>
@@ -1207,7 +1159,7 @@ function AdminContent() {
                         pointerEvents: "none",
                       }}
                     >
-                      🔎
+                      
                     </span>
                     <input
                       type="text"
@@ -1221,7 +1173,7 @@ function AdminContent() {
                       style={{
                         width: "100%",
                         padding: "10px 38px 10px 38px",
-                        fontSize: 13,
+                        fontSize: 16,
                         border: "1.5px solid var(--navy-900, #0f172a)",
                         borderRadius: 8,
                         outline: "none",
@@ -1246,23 +1198,23 @@ function AdminContent() {
                           justifyContent: "center",
                           color: "#475569",
                           cursor: "pointer",
-                          fontSize: 11,
+                          fontSize: 16,
                           fontWeight: 700,
                         }}
                       >
-                        ✕
+                        
                       </button>
                     )}
                   </div>
 
                   {/* Quick Filters / Search Suggestion Chips */}
                   <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 10, alignItems: "center" }}>
-                    <span style={{ fontSize: 11, color: "var(--ink-soft)", fontWeight: 600 }}>Quick Search:</span>
+                    <span style={{ fontSize: 16, color: "var(--ink-soft)", fontWeight: 600 }}>Quick Search:</span>
                     <button
                       type="button"
                       onClick={() => setParkingSearchQuery("")}
                       style={{
-                        fontSize: 11,
+                        fontSize: 16,
                         padding: "3px 8px",
                         borderRadius: 12,
                         border: "1px solid var(--line-strong)",
@@ -1277,7 +1229,7 @@ function AdminContent() {
                       type="button"
                       onClick={() => setParkingSearchQuery("Pandri")}
                       style={{
-                        fontSize: 11,
+                        fontSize: 16,
                         padding: "3px 8px",
                         borderRadius: 12,
                         border: "1px solid var(--line-strong)",
@@ -1286,13 +1238,13 @@ function AdminContent() {
                         cursor: "pointer",
                       }}
                     >
-                      📍 Pandri Area
+                       Pandri Area
                     </button>
                     <button
                       type="button"
                       onClick={() => setParkingSearchQuery("Marine Drive")}
                       style={{
-                        fontSize: 11,
+                        fontSize: 16,
                         padding: "3px 8px",
                         borderRadius: 12,
                         border: "1px solid var(--line-strong)",
@@ -1301,13 +1253,13 @@ function AdminContent() {
                         cursor: "pointer",
                       }}
                     >
-                      📍 Marine Drive
+                       Marine Drive
                     </button>
                     <button
                       type="button"
                       onClick={() => setParkingSearchQuery("Railway Station")}
                       style={{
-                        fontSize: 11,
+                        fontSize: 16,
                         padding: "3px 8px",
                         borderRadius: 12,
                         border: "1px solid var(--line-strong)",
@@ -1316,13 +1268,13 @@ function AdminContent() {
                         cursor: "pointer",
                       }}
                     >
-                      📍 Station Road
+                       Station Road
                     </button>
                     <button
                       type="button"
                       onClick={() => setParkingSearchQuery("CG-04-MB-1245")}
                       style={{
-                        fontSize: 11,
+                        fontSize: 16,
                         padding: "3px 8px",
                         borderRadius: 12,
                         border: "1px solid #1e3a8a",
@@ -1332,13 +1284,13 @@ function AdminContent() {
                         fontWeight: 600,
                       }}
                     >
-                      🚗 CG-04-MB-1245
+                       CG-04-MB-1245
                     </button>
                     <button
                       type="button"
                       onClick={() => setParkingSearchQuery("CG-04-MH-5821")}
                       style={{
-                        fontSize: 11,
+                        fontSize: 16,
                         padding: "3px 8px",
                         borderRadius: 12,
                         border: "1px solid #1e3a8a",
@@ -1348,13 +1300,13 @@ function AdminContent() {
                         fontWeight: 600,
                       }}
                     >
-                      🚗 CG-04-MH-5821
+                       CG-04-MH-5821
                     </button>
                     <button
                       type="button"
                       onClick={() => setParkingSearchQuery("MH-12-QX-3321")}
                       style={{
-                        fontSize: 11,
+                        fontSize: 16,
                         padding: "3px 8px",
                         borderRadius: 12,
                         border: "1px solid #1e3a8a",
@@ -1364,7 +1316,7 @@ function AdminContent() {
                         fontWeight: 600,
                       }}
                     >
-                      🚗 MH-12-QX-3321
+                       MH-12-QX-3321
                     </button>
                   </div>
                 </div>
@@ -1415,7 +1367,7 @@ function AdminContent() {
                                   padding: "3px 8px",
                                   fontFamily: "var(--font-mono, monospace)",
                                   fontWeight: 700,
-                                  fontSize: 13,
+                                  fontSize: 16,
                                   color: "#0f172a",
                                   letterSpacing: 0.5,
                                 }}
@@ -1426,7 +1378,7 @@ function AdminContent() {
 
                             <span
                               style={{
-                                fontSize: 11,
+                                fontSize: 16,
                                 fontWeight: 700,
                                 color: "#15803d",
                                 background: "#dcfce7",
@@ -1452,7 +1404,7 @@ function AdminContent() {
                                 border: "none",
                                 borderRadius: 6,
                                 padding: "5px 10px",
-                                fontSize: 12,
+                                fontSize: 16,
                                 fontWeight: 700,
                                 cursor: "pointer",
                                 display: "inline-flex",
@@ -1460,7 +1412,7 @@ function AdminContent() {
                                 gap: 4,
                               }}
                             >
-                              🎯 {lang === "hi" ? "मैप पर देखें" : "Locate on Map"}
+                               {lang === "hi" ? "मैप पर देखें" : "Locate on Map"}
                             </button>
                             <button
                               type="button"
@@ -1474,17 +1426,17 @@ function AdminContent() {
                                 border: "1px solid #22c55e",
                                 borderRadius: 6,
                                 padding: "5px 10px",
-                                fontSize: 12,
+                                fontSize: 16,
                                 fontWeight: 600,
                                 cursor: "pointer",
                               }}
                             >
-                              📋 {lang === "hi" ? "पार्किंग विवरण" : "Hub Details"}
+                               {lang === "hi" ? "पार्किंग विवरण" : "Hub Details"}
                             </button>
                           </div>
                         </div>
 
-                        <div style={{ marginTop: 10, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 8, fontSize: 12.5 }}>
+                        <div style={{ marginTop: 10, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 8, fontSize: 16 }}>
                           <div>
                             <span style={{ color: "#475569" }}>{lang === "hi" ? "पार्किंग स्थल:" : "Standing in Hub:"}</span>{" "}
                             <strong style={{ color: "#0f172a" }}>{lang === "hi" ? v.zoneName : v.zoneNameEn}</strong>
@@ -1499,10 +1451,10 @@ function AdminContent() {
                           </div>
                           <div>
                             <span style={{ color: "#475569" }}>{lang === "hi" ? "प्रवेश समय:" : "Entry Time:"}</span>{" "}
-                            <strong>🕒 {v.entryTime}</strong>
+                            <strong> {v.entryTime}</strong>
                           </div>
-                          <div style={{ gridColumn: "1 / -1", color: "#166534", fontSize: 12 }}>
-                            📍 {lang === "hi" ? v.zoneAddress : v.zoneAddressEn} ·{" "}
+                          <div style={{ gridColumn: "1 / -1", color: "#166534", fontSize: 16 }}>
+                             {lang === "hi" ? v.zoneAddress : v.zoneAddressEn} ·{" "}
                             <strong>{v.totalSpots - v.occupiedSpots} spots currently available</strong> in this hub
                           </div>
                         </div>
@@ -1529,9 +1481,9 @@ function AdminContent() {
                       {filteredParkingPointsFormatted.length === 0 ? (
                         <tr>
                           <td colSpan={7} style={{ textAlign: "center", padding: "30px 10px", color: "var(--ink-soft)" }}>
-                            <div style={{ fontSize: 24, marginBottom: 6 }}>🔍</div>
+                            <div style={{ fontSize: 24, marginBottom: 6 }}></div>
                             <strong>{lang === "hi" ? "कोई पार्किंग स्थल या वाहन नहीं मिला" : "No matching parking hub or vehicle found"}</strong>
-                            <div style={{ fontSize: 12, marginTop: 4 }}>
+                            <div style={{ fontSize: 16, marginTop: 4 }}>
                               {lang === "hi" ? "कृपया दूसरा क्षेत्र नाम या वाहन नंबर आज़माएँ" : "Try searching by a different area name or vehicle registration number"}
                             </div>
                           </td>
@@ -1562,16 +1514,16 @@ function AdminContent() {
                                   <strong>{lang === "hi" ? p.name : p.nameEn}</strong>
                                   {hasMatchedVehicleInThisZone && (
                                     <span style={{ fontSize: 10, background: "#dcfce7", color: "#15803d", padding: "1px 6px", borderRadius: 10, fontWeight: 700 }}>
-                                      🎯 Vehicle Here
+                                       Vehicle Here
                                     </span>
                                   )}
                                 </div>
-                                <div style={{ fontSize: 11, color: "var(--ink-soft)" }}>{lang === "hi" ? p.address : p.addressEn}</div>
+                                <div style={{ fontSize: 16, color: "var(--ink-soft)" }}>{lang === "hi" ? p.address : p.addressEn}</div>
                               </td>
                               <td>
                                 <span
                                   style={{
-                                    fontSize: 11,
+                                    fontSize: 16,
                                     padding: "2px 6px",
                                     borderRadius: 4,
                                     background: "#f1f5f9",
@@ -1584,7 +1536,7 @@ function AdminContent() {
                               </td>
                               <td style={{ fontFamily: "var(--font-mono)", fontWeight: 700 }}>{p.totalSpots}</td>
                               <td>
-                                <div style={{ fontSize: 12.5 }}>
+                                <div style={{ fontSize: 16 }}>
                                   <strong>{p.occupiedSpots}</strong> occ / <span style={{ color: "var(--signal-green)", fontWeight: 700 }}>{free} free</span> ({pct}%)
                                 </div>
                                 <div style={{ width: 80, height: 4, background: "#e2e8f0", borderRadius: 2, marginTop: 4, overflow: "hidden" }}>
@@ -1600,7 +1552,7 @@ function AdminContent() {
                               <td>
                                 <span
                                   style={{
-                                    fontSize: 11,
+                                    fontSize: 16,
                                     fontWeight: 700,
                                     color: statusColor,
                                     background: `${statusColor}18`,
@@ -1624,7 +1576,7 @@ function AdminContent() {
                                     border: "1px solid var(--line-strong)",
                                     borderRadius: 6,
                                     padding: "4px 8px",
-                                    fontSize: 11.5,
+                                    fontSize: 16,
                                     fontWeight: 600,
                                     color: "var(--navy-900)",
                                     cursor: "pointer",
@@ -1633,7 +1585,7 @@ function AdminContent() {
                                     gap: 4,
                                   }}
                                 >
-                                  🚗 {p.parkedVehicles?.length || 0} Vehicles
+                                   {p.parkedVehicles?.length || 0} Vehicles
                                 </button>
                               </td>
                               <td>
@@ -1651,12 +1603,12 @@ function AdminContent() {
                                     border: "none",
                                     borderRadius: 6,
                                     padding: "4px 9px",
-                                    fontSize: 11.5,
+                                    fontSize: 16,
                                     fontWeight: 600,
                                     cursor: "pointer",
                                   }}
                                 >
-                                  🎯 Map
+                                   Map
                                 </button>
                               </td>
                             </tr>
@@ -1670,8 +1622,8 @@ function AdminContent() {
 
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
-                  <h3>🅿️ {lang === "hi" ? "स्मार्ट पार्किंग मानचित्र" : "Smart Parking Map"}</h3>
-                  <span className="sub" style={{ fontSize: 12, color: "var(--ink-soft)" }}>
+                  <h3> {lang === "hi" ? "स्मार्ट पार्किंग मानचित्र" : "Smart Parking Map"}</h3>
+                  <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>
                     {filteredParkingPointsFormatted.length} live hubs displayed
                   </span>
                 </div>
@@ -1703,7 +1655,7 @@ function AdminContent() {
               <div className={styles.panel} style={{ border: "2px solid #1e3a8a" }}>
                 <div className={styles.panelHead}>
                   <div className={styles.liveHead}>
-                    <h3>🏢 {t("stationsDirectoryTitle", lang)}</h3>
+                    <h3> {t("stationsDirectoryTitle", lang)}</h3>
                     <span className={styles.liveTag} style={{ background: "#eff6ff", color: "#1e3a8a" }}>
                       ● 24x7 DIRECTORY
                     </span>
@@ -1718,7 +1670,7 @@ function AdminContent() {
                         border: "none",
                         borderRadius: 6,
                         padding: "6px 14px",
-                        fontSize: 12.5,
+                        fontSize: 16,
                         fontWeight: 700,
                         cursor: "pointer",
                         display: "inline-flex",
@@ -1738,7 +1690,7 @@ function AdminContent() {
                         border: "none",
                         borderRadius: 6,
                         padding: "6px 14px",
-                        fontSize: 12.5,
+                        fontSize: 16,
                         fontWeight: 700,
                         cursor: "pointer",
                         display: "inline-flex",
@@ -1772,36 +1724,36 @@ function AdminContent() {
                         >
                           <td>
                             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                              <span style={{ fontSize: 18 }}>🏢</span>
+                              <span style={{ fontSize: 18 }}></span>
                               <div>
-                                <strong style={{ color: "#0f172a", fontSize: 13.5 }}>
+                                <strong style={{ color: "#0f172a", fontSize: 16 }}>
                                   {lang === "hi" ? stn.name : stn.nameEn}
                                 </strong>
-                                <div style={{ fontSize: 11, color: "#1e3a8a", fontFamily: "var(--font-mono)", fontWeight: 700 }}>
+                                <div style={{ fontSize: 16, color: "#1e3a8a", fontFamily: "var(--font-mono)", fontWeight: 700 }}>
                                   {stn.code || "PS"} · 24x7 Active
                                 </div>
                               </div>
                             </div>
                           </td>
                           <td>
-                            <div style={{ fontSize: 12.5, fontWeight: 600, color: "#334155" }}>
+                            <div style={{ fontSize: 16, fontWeight: 600, color: "#334155" }}>
                               {lang === "hi" ? stn.jurisdiction : stn.jurisdictionEn}
                             </div>
-                            <div style={{ fontSize: 11, color: "var(--ink-soft)" }}>
-                              📍 {lang === "hi" ? stn.address : stn.addressEn}
+                            <div style={{ fontSize: 16, color: "var(--ink-soft)" }}>
+                               {lang === "hi" ? stn.address : stn.addressEn}
                             </div>
                           </td>
                           <td>
-                            <div style={{ fontSize: 12.5, color: "#0f172a" }}>
-                              👤 <strong>{stn.inCharge}</strong>
+                            <div style={{ fontSize: 16, color: "#0f172a" }}>
+                               <strong>{stn.inCharge}</strong>
                             </div>
-                            <div style={{ fontSize: 11, color: "var(--ink-soft)" }}>
-                              {lang === "hi" ? stn.inChargeRankHi : stn.inChargeRank} · 📞 <a href={`tel:${stn.phone}`} style={{ color: "#1e40af", fontWeight: 700 }}>{stn.phone}</a>
+                            <div style={{ fontSize: 16, color: "var(--ink-soft)" }}>
+                              {lang === "hi" ? stn.inChargeRankHi : stn.inChargeRank} ·  <a href={`tel:${stn.phone}`} style={{ color: "#1e40af", fontWeight: 700 }}>{stn.phone}</a>
                             </div>
                           </td>
                           <td>
-                            <span style={{ background: "#fef2f2", color: "#b91c1c", padding: "2px 8px", borderRadius: 4, fontSize: 11.5, fontWeight: 700 }}>
-                              🚔 {stn.assignedPatrol || "PCR Patrol"}
+                            <span style={{ background: "#fef2f2", color: "#b91c1c", padding: "2px 8px", borderRadius: 4, fontSize: 16, fontWeight: 700 }}>
+                               {stn.assignedPatrol || "PCR Patrol"}
                             </span>
                           </td>
                           <td>
@@ -1814,14 +1766,14 @@ function AdminContent() {
                                   handleLocateStation(stn);
                                 }}
                               >
-                                📍 {t("locateOnMap", lang)}
+                                 {t("locateOnMap", lang)}
                               </button>
                               <a
                                 href={`tel:${stn.phone}`}
                                 className={styles.actionBtnSmall}
                                 onClick={(e) => e.stopPropagation()}
                               >
-                                📞 Call
+                                 Call
                               </a>
                               <button
                                 type="button"
@@ -1832,7 +1784,7 @@ function AdminContent() {
                                 }}
                                 style={{ color: "#b91c1c", borderColor: "#fecaca" }}
                               >
-                                🗑️
+                                
                               </button>
                             </div>
                           </td>
@@ -1845,8 +1797,8 @@ function AdminContent() {
 
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
-                  <h3>🏢 {lang === "hi" ? "पुलिस थाना नेटवर्क मानचित्र" : "Police Station Network Map"}</h3>
-                  <span className="sub" style={{ fontSize: 12, color: "var(--ink-soft)" }}>{stations.length} active stations</span>
+                  <h3> {lang === "hi" ? "पुलिस थाना नेटवर्क मानचित्र" : "Police Station Network Map"}</h3>
+                  <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>{stations.length} active stations</span>
                 </div>
                 <MapView
                   complaints={[]}
@@ -1876,7 +1828,7 @@ function AdminContent() {
             <div className={styles.areaControlBar}>
               <div className={styles.areaControlGroup}>
                 <label htmlFor="area-select-dropdown" className={styles.areaSelectLabel}>
-                  <span>📍 {t("areaSelectLabel", lang)}</span>
+                  <span> {t("areaSelectLabel", lang)}</span>
                 </label>
                 <select
                   id="area-select-dropdown"
@@ -1888,7 +1840,7 @@ function AdminContent() {
                     const pCount = area.id === "all" ? patrolUnits.length : patrolUnits.filter((u) => u.areaId === area.id).length;
                     return (
                       <option key={area.id} value={area.id}>
-                        {lang === "hi" ? area.name : area.nameEn} ({pCount} 🚔)
+                        {lang === "hi" ? area.name : area.nameEn} ({pCount} )
                       </option>
                     );
                   })}
@@ -1901,35 +1853,35 @@ function AdminContent() {
                   className={`${styles.typePill} ${selectedVehicleType === "all" ? styles.active : ""}`}
                   onClick={() => setSelectedVehicleType("all")}
                 >
-                  🌐 {t("allVehicles", lang)} ({filteredPatrolUnits.length})
+                   {t("allVehicles", lang)} ({filteredPatrolUnits.length})
                 </button>
                 <button
                   type="button"
                   className={`${styles.typePill} ${selectedVehicleType === "pcr_van" ? styles.active : ""}`}
                   onClick={() => setSelectedVehicleType("pcr_van")}
                 >
-                  🚔 PCR Vans
+                   PCR Vans
                 </button>
                 <button
                   type="button"
                   className={`${styles.typePill} ${selectedVehicleType === "bike_squad" ? styles.active : ""}`}
                   onClick={() => setSelectedVehicleType("bike_squad")}
                 >
-                  🏍️ Cheetah Bikes
+                   Cheetah Bikes
                 </button>
                 <button
                   type="button"
                   className={`${styles.typePill} ${selectedVehicleType === "interceptor" ? styles.active : ""}`}
                   onClick={() => setSelectedVehicleType("interceptor")}
                 >
-                  🚓 Interceptors
+                   Interceptors
                 </button>
                 <button
                   type="button"
                   className={`${styles.typePill} ${selectedVehicleType === "erv" ? styles.active : ""}`}
                   onClick={() => setSelectedVehicleType("erv")}
                 >
-                  🚨 ERVs
+                   ERVs
                 </button>
                 <button
                   type="button"
@@ -1940,12 +1892,12 @@ function AdminContent() {
                     border: "none",
                     borderRadius: 20,
                     padding: "6px 14px",
-                    fontSize: 12,
+                    fontSize: 16,
                     fontWeight: 700,
                     cursor: "pointer",
                   }}
                 >
-                  ➕ {t("addPatrolBtn", lang)}
+                   {t("addPatrolBtn", lang)}
                 </button>
               </div>
             </div>
@@ -1954,12 +1906,12 @@ function AdminContent() {
               <div className={styles.panel} style={{ border: "2px solid #b91c1c" }}>
                 <div className={styles.panelHead}>
                   <div className={styles.liveHead}>
-                    <h3>🚔 {t("patrolRosterTitle", lang)} — {lang === "hi" ? currentArea.name : currentArea.nameEn}</h3>
+                    <h3> {t("patrolRosterTitle", lang)} — {lang === "hi" ? currentArea.name : currentArea.nameEn}</h3>
                     <span className={styles.liveTag} style={{ background: "#fef2f2", color: "#b91c1c" }}>
                       ● LIVE GPS
                     </span>
                   </div>
-                  <span className="sub" style={{ fontSize: 12, color: "var(--ink-soft)" }}>
+                  <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>
                     {filteredPatrolUnits.length} vehicles active in sector
                   </span>
                 </div>
@@ -1982,7 +1934,7 @@ function AdminContent() {
                         const isBike = patrol.vehicleCategory === "bike_squad";
                         const isERV = patrol.vehicleCategory === "erv";
                         const isInterceptor = patrol.vehicleCategory === "interceptor";
-                        const vehicleIcon = isBike ? "🏍️" : isERV ? "🚨" : isInterceptor ? "🚓" : "🚔";
+                        const vehicleIcon = isBike ? "" : isERV ? "" : isInterceptor ? "" : "";
 
                         return (
                           <tr
@@ -1998,43 +1950,43 @@ function AdminContent() {
                               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                                 <span style={{ fontSize: 18 }}>{vehicleIcon}</span>
                                 <div>
-                                  <strong style={{ color: "#0f172a", fontSize: 13 }}>
+                                  <strong style={{ color: "#0f172a", fontSize: 16 }}>
                                     {lang === "hi" ? patrol.name : patrol.nameEn}
                                   </strong>
-                                  <div style={{ fontSize: 11, color: "#1e3a8a", fontFamily: "var(--font-mono)", fontWeight: 700 }}>
+                                  <div style={{ fontSize: 16, color: "#1e3a8a", fontFamily: "var(--font-mono)", fontWeight: 700 }}>
                                     {patrol.vehicleNumber} · {patrol.callSign}
                                   </div>
                                 </div>
                               </div>
                             </td>
                             <td>
-                              <div style={{ fontSize: 12.5, fontWeight: 600, color: "#334155" }}>
+                              <div style={{ fontSize: 16, fontWeight: 600, color: "#334155" }}>
                                 {lang === "hi" ? patrol.sector : patrol.sectorEn}
                               </div>
-                              <div style={{ fontSize: 11, color: "var(--ink-soft)" }}>
-                                🏢 {lang === "hi" ? patrol.stationName : patrol.stationNameEn}
+                              <div style={{ fontSize: 16, color: "var(--ink-soft)" }}>
+                                 {lang === "hi" ? patrol.stationName : patrol.stationNameEn}
                               </div>
                             </td>
                             <td>
-                              <div style={{ fontSize: 12.5, color: "#0f172a" }}>
-                                👮 <strong>{patrol.officer}</strong>
+                              <div style={{ fontSize: 16, color: "#0f172a" }}>
+                                 <strong>{patrol.officer}</strong>
                               </div>
-                              <div style={{ fontSize: 11, color: "var(--ink-soft)" }}>
-                                {lang === "hi" ? patrol.officerRankHi : patrol.officerRank} · 📞 {patrol.mobile}
+                              <div style={{ fontSize: 16, color: "var(--ink-soft)" }}>
+                                {lang === "hi" ? patrol.officerRankHi : patrol.officerRank} ·  {patrol.mobile}
                               </div>
                             </td>
                             <td>
-                              <div style={{ fontSize: 12, fontWeight: 700, color: "#16a34a" }}>
-                                ⚡ {patrol.speed || "22 km/h"}
+                              <div style={{ fontSize: 16, fontWeight: 700, color: "#16a34a" }}>
+                                 {patrol.speed || "22 km/h"}
                               </div>
-                              <div style={{ fontSize: 11, color: "var(--ink-soft)" }}>
-                                🔋 Fuel: <strong>{patrol.fuelBattery || "85%"}</strong>
+                              <div style={{ fontSize: 16, color: "var(--ink-soft)" }}>
+                                 Fuel: <strong>{patrol.fuelBattery || "85%"}</strong>
                               </div>
                             </td>
                             <td>
                               <span
                                 style={{
-                                  fontSize: 11,
+                                  fontSize: 16,
                                   fontWeight: 700,
                                   color: patrol.status === "responding" ? "#c2410c" : patrol.status === "standby" ? "#475569" : "#15803d",
                                   background: patrol.status === "responding" ? "#ffedd5" : patrol.status === "standby" ? "#f1f5f9" : "#dcfce7",
@@ -2056,14 +2008,14 @@ function AdminContent() {
                                     handleLocateVehicle(patrol);
                                   }}
                                 >
-                                  📍 {t("locateOnMap", lang)}
+                                   {t("locateOnMap", lang)}
                                 </button>
                                 <a
                                   href={`tel:${patrol.mobile}`}
                                   className={styles.actionBtnSmall}
                                   onClick={(e) => e.stopPropagation()}
                                 >
-                                  📞 Call
+                                   Call
                                 </a>
                                 <button
                                   type="button"
@@ -2073,7 +2025,7 @@ function AdminContent() {
                                     handleDispatchPatrol(patrol.id);
                                   }}
                                 >
-                                  🚨 Alert
+                                   Alert
                                 </button>
                                 <button
                                   type="button"
@@ -2084,7 +2036,7 @@ function AdminContent() {
                                   }}
                                   style={{ color: "#b91c1c", borderColor: "#fecaca" }}
                                 >
-                                  🗑️
+                                  
                                 </button>
                               </div>
                             </td>
@@ -2098,8 +2050,8 @@ function AdminContent() {
 
               <div className={styles.panel}>
                 <div className={styles.panelHead}>
-                  <h3>🚔 {lang === "hi" ? "लाइव गश्त वाहन मैप" : "Live Patrol Fleet Map"}</h3>
-                  <span className="sub" style={{ fontSize: 12, color: "var(--ink-soft)" }}>
+                  <h3> {lang === "hi" ? "लाइव गश्त वाहन मैप" : "Live Patrol Fleet Map"}</h3>
+                  <span className="sub" style={{ fontSize: 16, color: "var(--ink-soft)" }}>
                     {filteredPatrolUnits.length} units in {lang === "hi" ? currentArea.name : currentArea.nameEn}
                   </span>
                 </div>

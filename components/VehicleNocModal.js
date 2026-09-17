@@ -61,10 +61,10 @@ export default function VehicleNocModal({ isOpen, onClose, lang = "en" }) {
         >
           <div>
             <div style={{ fontSize: 11, color: "#a7f3d0", fontWeight: 700, letterSpacing: "0.1em" }}>
-              DELHI TRAFFIC POLICE MODEL · TRAFFIC NOC VERIFICATION
+              RAIPUR TRAFFIC POLICE · TRAFFIC NOC VERIFICATION
             </div>
             <h3 style={{ fontSize: 20, marginTop: 2, color: "white" }}>
-              📄 {lang === "hi" ? "वाहन ट्रैफिक एनओसी (NOC) सत्यापन" : "Vehicle Traffic NOC Clearance Status"}
+               {lang === "hi" ? "वाहन ट्रैफिक एनओसी (NOC) सत्यापन" : "Vehicle Traffic NOC Clearance Status"}
             </h3>
           </div>
           <button
@@ -115,7 +115,7 @@ export default function VehicleNocModal({ isOpen, onClose, lang = "en" }) {
                 cursor: "pointer",
               }}
             >
-              🔍 {lang === "hi" ? "NOC खोजें" : "Verify NOC"}
+               {lang === "hi" ? "NOC खोजें" : "Verify NOC"}
             </button>
           </form>
 
@@ -128,7 +128,7 @@ export default function VehicleNocModal({ isOpen, onClose, lang = "en" }) {
                       OFFICIAL TRAFFIC CLEARANCE CERTIFICATE
                     </span>
                     <span style={{ fontSize: 12, background: "#d1fae5", color: "#065f46", padding: "4px 10px", borderRadius: 12, fontWeight: 800 }}>
-                      ✓ NOC CLEARED
+                       NOC CLEARED
                     </span>
                   </div>
 
@@ -144,7 +144,7 @@ export default function VehicleNocModal({ isOpen, onClose, lang = "en" }) {
                   </div>
 
                   <div style={{ marginTop: 14, padding: 12, background: "white", borderRadius: 8, fontSize: 12, color: "#065f46" }}>
-                    ✓ {nocRecord.remarks}
+                     {nocRecord.remarks}
                   </div>
 
                   <div style={{ display: "flex", gap: 10, marginTop: 18 }}>
@@ -161,13 +161,13 @@ export default function VehicleNocModal({ isOpen, onClose, lang = "en" }) {
                         cursor: "pointer",
                       }}
                     >
-                      🖨️ {lang === "hi" ? "डिजिटल NOC डाउनलोड करें" : "Download Verified Traffic NOC"}
+                       {lang === "hi" ? "डिजिटल NOC डाउनलोड करें" : "Download Verified Traffic NOC"}
                     </button>
                   </div>
                 </div>
               ) : (
                 <div style={{ padding: 24, textAlign: "center", background: "#f8fafc", borderRadius: 8, color: "#64748b" }}>
-                  ⚠️ {lang === "hi" ? "इस वाहन के लिए अभी कोई NOC रिकॉर्ड उपलब्ध नहीं है। कृपया पेंडिंग चालान चुकता करें।" : "No cleared Traffic NOC found for this vehicle. Ensure all pending e-Challans are cleared first."}
+                   {lang === "hi" ? "इस वाहन के लिए अभी कोई NOC रिकॉर्ड उपलब्ध नहीं है। कृपया पेंडिंग चालान चुकता करें।" : "No cleared Traffic NOC found for this vehicle. Ensure all pending e-Challans are cleared first."}
                 </div>
               )}
             </div>

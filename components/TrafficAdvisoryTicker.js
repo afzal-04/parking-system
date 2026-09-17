@@ -31,7 +31,7 @@ export default function TrafficAdvisoryTicker({ lang = "en" }) {
             whiteSpace: "nowrap",
           }}
         >
-          📢 {lang === "hi" ? "ट्रैफिक एडवाइजरी" : "TRAFFIC ADVISORY"}
+           {lang === "hi" ? "ट्रैफिक एडवाइजरी" : "Traffic advisory"}
         </span>
 
         <div

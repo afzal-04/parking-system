@@ -42,37 +42,37 @@ export default function Navbar({
   const CITIZEN_SERVICES = [
     {
       key: "challan",
-      icon: "💳",
+      icon: "",
       label: lang === "hi" ? "इ-चालान सर्च व भुगतान" : "e-Challan Search & Pay",
       desc: lang === "hi" ? "वाहन नंबर से चालान व जुर्माना भरें" : "Check pending fines & pay via UPI",
     },
     {
       key: "elost",
-      icon: "📁",
+      icon: "",
       label: lang === "hi" ? "डिजिटल इ-लॉस्ट रिपोर्ट" : "e-Lost Article Report",
       desc: lang === "hi" ? "खोए डीएल/आरसी/फोन की रिपोर्ट दर्ज करें" : "Instant digital receipt for lost items",
     },
     {
       key: "fines",
-      icon: "📜",
+      icon: "",
       label: lang === "hi" ? "जुर्माना दर तालिका (MVA)" : "Traffic Fine Rates (MVA)",
       desc: lang === "hi" ? "मोटर वाहन अधिनियम 2026 पेनल्टी चार्ट" : "Statutory fine amounts & section guide",
     },
     {
       key: "speed",
-      icon: "🏎️",
+      icon: "",
       label: lang === "hi" ? "शहर गति सीमा नियम" : "City Speed Limit Matrix",
       desc: lang === "hi" ? "सड़कवार कार/बाइक/ट्रक स्पीड लिमिट" : "Official road speed limits & safety rules",
     },
     {
       key: "taxi",
-      icon: "🛺",
+      icon: "",
       label: lang === "hi" ? "ऑटो / टैक्सि शिकायत" : "TSR / Taxi Refusal Complaint",
       desc: lang === "hi" ? "अधिक किराया या मनाही पर पुलिस शिकायत" : "Report cab/auto driver refusal or excess fare",
     },
     {
       key: "noc",
-      icon: "📄",
+      icon: "",
       label: lang === "hi" ? "ट्रैफिक एनओसी (NOC)" : "Traffic NOC Clearance",
       desc: lang === "hi" ? "वाहन ट्रांसफर हेतु शून्य चालान एनओसी" : "Verify zero-challan clearance certificate",
     },
@@ -81,37 +81,37 @@ export default function Navbar({
   const ADMIN_MODULES = [
     {
       key: "overview",
-      icon: "📊",
+      icon: "",
       label: lang === "hi" ? "मुख्य डैशबोर्ड (ट्रैफिक व शिकायतें)" : "Main Dashboard (Traffic & Complaints)",
       desc: lang === "hi" ? "लाइव ट्रैफिक मैप व शिकायत लॉग" : "Live Traffic Map & Complaint Log",
     },
     {
       key: "complaints",
-      icon: "📝",
-      label: lang === "hi" ? "शिकायत रिपोर्ट व मैप (मॉड्यूल 2)" : "Complaint Reports & Map (Module 2)",
+      icon: "",
+      label: lang === "hi" ? "शिकायत रिपोर्ट व मैप" : "Complaint Reports & Map",
       desc: lang === "hi" ? "नागरिक शिकायतों की तालिका व स्थान मैप — AI अवैध पार्किंग डिटेक्शन पाइपलाइन" : "Complaints table & map — AI Illegal Parking Detection pipeline",
     },
     {
       key: "traffic",
-      icon: "🚥",
+      icon: "",
       label: lang === "hi" ? "लाइव ट्रैफिक कंट्रोल व मैप" : "Live Traffic Control & Map",
       desc: lang === "hi" ? "कमांड सपोर्ट — जंक्शन व सड़क कॉरिडोर लाइव स्थिति" : "Command Support — junctions, corridors & speed table",
     },
     {
       key: "parking",
-      icon: "🅿️",
-      label: lang === "hi" ? "स्मार्ट पार्किंग सिस्टम (मॉड्यूल 1)" : "Smart Parking System (Module 1)",
+      icon: "",
+      label: lang === "hi" ? "स्मार्ट पार्किंग सिस्टम" : "Smart Parking System",
       desc: lang === "hi" ? "पार्किंग हब क्षमता व लाइव मैप" : "Parking hubs capacity & live map",
     },
     {
       key: "stations",
-      icon: "🏢",
+      icon: "",
       label: lang === "hi" ? "पंजीकृत पुलिस थाने" : "Registered Police Stations",
       desc: lang === "hi" ? "कमांड सपोर्ट — थाना निर्देशिका, SHO संपर्क व मैप" : "Command Support — station directory, SHO & map",
     },
     {
       key: "patrol",
-      icon: "🚔",
+      icon: "",
       label: lang === "hi" ? "लाइव पेट्रोलिंग पुलिस गश्त" : "Live Patrol Police Fleet",
       desc: lang === "hi" ? "कमांड सपोर्ट — क्षेत्रवार गश्त वाहन ट्रैकर व अलर्ट" : "Command Support — area-wise patrol fleet & dispatch",
     },
@@ -139,17 +139,17 @@ export default function Navbar({
     {
       path: "/",
       label: t("navCitizenPortal", lang),
-      icon: "🏠",
+      icon: "",
     },
     {
       path: "/admin",
       label: t("navPoliceAdmin", lang),
-      icon: "🛡️",
+      icon: "",
     },
     {
       path: "/tech-functionality",
       label: t("navTechFunc", lang),
-      icon: "⚡",
+      icon: "",
     },
   ];
 
@@ -210,7 +210,7 @@ export default function Navbar({
                     borderColor: "#93c5fd",
                   }}
                 >
-                  <span>🛡️ {lang === "hi" ? "पुलिस प्रशासन मॉड्यूल" : "Admin Modules"}</span>
+                  <span> {lang === "hi" ? "पुलिस प्रशासन मॉड्यूल" : "Admin Modules"}</span>
                   <span className={styles.chevron}>▼</span>
                 </button>
 
@@ -252,7 +252,7 @@ export default function Navbar({
                   onClick={() => setIsDropdownOpen((prev) => !prev)}
                   aria-expanded={isDropdownOpen}
                 >
-                  <span>💳 {lang === "hi" ? "नागरिक सेवाएँ" : "Citizen Services"}</span>
+                  <span> {lang === "hi" ? "नागरिक सेवाएँ" : "Citizen Services"}</span>
                   <span className={styles.chevron}>▼</span>
                 </button>
 

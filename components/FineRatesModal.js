@@ -66,7 +66,7 @@ export default function FineRatesModal({ isOpen, onClose, lang = "en" }) {
               MOTOR VEHICLES ACT 2026 · STATUTORY PENALTY GUIDE
             </div>
             <h3 style={{ fontSize: 20, marginTop: 2, color: "white" }}>
-              📜 {lang === "hi" ? "ट्रैफिक जुर्माना दर तालिका" : "Traffic Violation Fine Rates Chart"}
+               {lang === "hi" ? "ट्रैफिक जुर्माना दर तालिका" : "Traffic Violation Fine Rates Chart"}
             </h3>
           </div>
           <button
@@ -93,8 +93,8 @@ export default function FineRatesModal({ isOpen, onClose, lang = "en" }) {
               type="text"
               placeholder={
                 lang === "hi"
-                  ? "🔍 उल्लंघन या धारा खोजें (जैसे: हेलमेट, पार्किंग, Sec 177)..."
-                  : "🔍 Search violation or section (e.g., Helmet, Parking, Sec 177)..."
+                  ? " उल्लंघन या धारा खोजें (जैसे: हेलमेट, पार्किंग, Sec 177)..."
+                  : " Search violation or section (e.g., Helmet, Parking, Sec 177)..."
               }
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -160,7 +160,7 @@ export default function FineRatesModal({ isOpen, onClose, lang = "en" }) {
               color: "#92400e",
             }}
           >
-            ⚖️ {lang === "hi"
+             {lang === "hi"
               ? "नोट: बार-बार उल्लंघन करने पर ड्राइविंग लाइसेंस 3 माह के लिए निलंबित किया जा सकता है।"
               : "Note: Repeated offenses may result in driving license suspension for a minimum period of 3 months."}
           </div>

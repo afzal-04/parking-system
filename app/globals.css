@@ -20,13 +20,13 @@
   --signal-amber-bg: #f3e6c9;
 
   /* --- type --- */
-  --font-display: "Rajdhani", "Noto Sans Devanagari", sans-serif;
+  --font-display: "Inter", "Noto Sans Devanagari", sans-serif;
   --font-body: "Inter", "Noto Sans Devanagari", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-mono: "Inter", "Noto Sans Devanagari", sans-serif;
 
   --radius-sm: 4px;
   --radius: 8px;
-  --radius-lg: 14px;
+  --radius-lg: 16px;
 }
 
 * { box-sizing: border-box; }
@@ -62,7 +62,7 @@ button {
 
 input, select, textarea {
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 16px;
 }
 
 :focus-visible {
@@ -150,5 +150,11 @@ input, select, textarea {
   box-shadow: 0 0 0 4px #fbbf24, 0 0 20px rgba(245, 158, 11, 0.9) !important;
   transform: scale(1.15);
   z-index: 9999 !important;
+}
+
+
+
+@media (max-width: 600px) {
+  body { font-size: 14px; }
 }
 

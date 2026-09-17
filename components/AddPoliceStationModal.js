@@ -153,7 +153,7 @@ export default function AddPoliceStationModal({ isOpen, onClose, onStationAdded,
               RAIPUR POLICE COMMISSIONERATE · REGISTRATION PORTAL
             </div>
             <h3 style={{ fontSize: 19, marginTop: 2, color: "white" }}>
-              🏢 {lang === "hi" ? "नया पुलिस थाना पंजीकृत करें" : "Register New Police Station"}
+               {lang === "hi" ? "नया पुलिस थाना पंजीकृत करें" : "Register New Police Station"}
             </h3>
           </div>
           <button
@@ -176,7 +176,7 @@ export default function AddPoliceStationModal({ isOpen, onClose, onStationAdded,
         <form onSubmit={handleSubmit} style={{ padding: "20px 24px", display: "flex", flexDirection: "column", gap: 14 }}>
           {error && (
             <div style={{ padding: "10px 14px", background: "#fef2f2", color: "#b91c1c", borderRadius: 8, fontSize: 13, fontWeight: 600 }}>
-              ⚠️ {error}
+               {error}
             </div>
           )}
 
@@ -296,7 +296,7 @@ export default function AddPoliceStationModal({ isOpen, onClose, onStationAdded,
           <div style={{ background: "#f8fafc", padding: "12px 14px", borderRadius: 8, border: "1px solid #e2e8f0" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
               <span style={{ fontSize: 12.5, fontWeight: 700, color: "#1e3a8a" }}>
-                📍 {lang === "hi" ? "मानचित्र GPS निर्देशांक (Latitude & Longitude) *" : "Map GPS Coordinates *"}
+                 {lang === "hi" ? "मानचित्र GPS निर्देशांक (Latitude & Longitude) *" : "Map GPS Coordinates *"}
               </span>
               <button
                 type="button"
@@ -312,7 +312,7 @@ export default function AddPoliceStationModal({ isOpen, onClose, onStationAdded,
                   cursor: "pointer",
                 }}
               >
-                📍 Use My GPS
+                 Use My GPS
               </button>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
@@ -371,7 +371,7 @@ export default function AddPoliceStationModal({ isOpen, onClose, onStationAdded,
                 boxShadow: "0 2px 8px rgba(30, 58, 138, 0.3)",
               }}
             >
-              {loading ? (lang === "hi" ? "पंजीकृत हो रहा है..." : "Registering...") : (lang === "hi" ? "✓ थाना पंजीकृत करें" : "✓ Register Station")}
+              {loading ? (lang === "hi" ? "पंजीकृत हो रहा है..." : "Registering...") : (lang === "hi" ? " थाना पंजीकृत करें" : " Register Station")}
             </button>
           </div>
         </form>

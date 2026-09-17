@@ -69,7 +69,7 @@ export default function TechFunctionalityPage() {
             <div className={styles.archArrow}>↓</div>
             <div className={styles.archModuleRow}>
               <div className={`${styles.archModuleBox} ${styles.mod1Box}`}>
-                <span className={styles.archModuleNum}>MODULE 1</span>
+                <span className={styles.archModuleNum}></span>
                 <strong>{lang === "hi" ? "स्मार्ट पार्किंग सिस्टम" : "Smart Parking System"}</strong>
                 <ul>
                   <li>{lang === "hi" ? "पार्किंग स्थलों की सूची" : "Parking inventory"}</li>
@@ -78,7 +78,7 @@ export default function TechFunctionalityPage() {
                 </ul>
               </div>
               <div className={`${styles.archModuleBox} ${styles.mod2Box}`}>
-                <span className={styles.archModuleNum}>MODULE 2</span>
+                <span className={styles.archModuleNum}></span>
                 <strong>{lang === "hi" ? "AI अवैध पार्किंग डिटेक्शन" : "AI Illegal Parking Detection"}</strong>
                 <ul>
                   <li>{lang === "hi" ? "प्राथमिकता-स्कोर्ड हॉटस्पॉट" : "Priority-scored hotspots"}</li>
@@ -135,10 +135,10 @@ export default function TechFunctionalityPage() {
           </div>
         </section>
 
-        {/* MODULE 1 */}
+        {/*  */}
         <section className={styles.section}>
           <div className={styles.sectionHead}>
-            <span className={`${styles.moduleBadge} ${styles.mod1Badge}`}>MODULE 1</span>
+            <span className={`${styles.moduleBadge} ${styles.mod1Badge}`}></span>
             <h2> {lang === "hi" ? "स्मार्ट पार्किंग सिस्टम — विस्तृत विवरण" : "Smart Parking System — Detail"}</h2>
             <p>{lang === "hi" ? "नागरिकों को कानूनी पार्किंग खोजने में मदद करता है। नागरिक ऐप के माध्यम से वितरित।" : "Helps citizens find and use legal parking. Delivered through the Citizen App."}</p>
           </div>
@@ -184,10 +184,10 @@ export default function TechFunctionalityPage() {
           </div>
         </section>
 
-        {/* MODULE 2 */}
+        {/*  */}
         <section className={styles.section}>
           <div className={styles.sectionHead}>
-            <span className={`${styles.moduleBadge} ${styles.mod2Badge}`}>MODULE 2</span>
+            <span className={`${styles.moduleBadge} ${styles.mod2Badge}`}></span>
             <h2> {lang === "hi" ? "AI अवैध पार्किंग डिटेक्शन — विस्तृत विवरण" : "AI Illegal Parking Detection — Detail"}</h2>
             <p>{lang === "hi" ? "प्रवर्तन/डिटेक्शन पाइपलाइन — मुख्यतः एडमिन/पुलिस पक्ष पर। नागरिक-रिपोर्ट किए गए उल्लंघन इसमें फीड होते हैं।" : "Enforcement/detection pipeline — primarily surfaced on the admin/police side. Citizen-reported violations feed into it."}</p>
             <div className={styles.simWarning}>
@@ -201,7 +201,7 @@ export default function TechFunctionalityPage() {
               { step: "2", icon: "", titleEn: "Camera + Zone Mapping", titleHi: "कैमरा + ज़ोन मैपिंग", descEn: "Camera detects vehicle, type, and lane position on digitally-mapped no-parking zone. Zone metadata: zone id, road id, polygon coordinates, restriction type, time window, allowed vehicle type.", descHi: "कैमरा डिजिटल नो-पार्किंग ज़ोन पर वाहन, प्रकार और लेन स्थिति का पता लगाता है। ज़ोन मेटाडेटा: ज़ोन ID, सड़क ID, पॉलीगॉन निर्देशांक, प्रतिबंध प्रकार, समय विंडो।" },
               { step: "3", icon: "⏱", titleEn: "Stationary Vehicle Classification", titleHi: "स्थिर वाहन वर्गीकरण", descEn: "Tracked over time (5s → 60s+) to distinguish genuine park from a temporary traffic-light stop, avoiding false positives.", descHi: "समय के साथ ट्रैक (5s → 60s+) — ट्रैफिक-लाइट स्टॉप से वास्तविक पार्किंग को अलग करता है, झूठी पॉज़िटिव से बचाता है।" },
               { step: "4", icon: "", titleEn: "ANPR: Number Plate Read", titleHi: "ANPR: नंबर प्लेट पढ़ना", descEn: "Registration number read with confidence score, timestamp, camera ID, and image — once classified as parked.", descHi: "पंजीकरण नंबर विश्वास स्कोर, टाइमस्टैम्प, कैमरा ID, और छवि के साथ पढ़ा जाता है।" },
-              { step: "5", icon: "", titleEn: "Cross-Check vs Module 1", titleHi: "मॉड्यूल 1 के विरुद्ध क्रॉस-चेक", descEn: "Verify against Module 1's authorized-parking database to confirm the violation.", descHi: "मॉड्यूल 1 के अधिकृत पार्किंग डेटाबेस के विरुद्ध सत्यापित करें — उल्लंघन की पुष्टि करें।" },
+              { step: "5", icon: "", titleEn: "Cross-Check vs ", titleHi: "अधिकृत डेटाबेस के विरुद्ध क्रॉस-चेक", descEn: "Verify against the authorized-parking database to confirm the violation.", descHi: "अधिकृत पार्किंग डेटाबेस के विरुद्ध सत्यापित करें — उल्लंघन की पुष्टि करें।" },
               { step: "6", icon: "", titleEn: "Staged Enforcement (never fully automated)", titleHi: "चरणबद्ध प्रवर्तन (कभी स्वचालित टिकट नहीं)", descEn: "Level 1 — Warning: automated notification to move vehicle. Level 2 — Officer Alert: dashboard with camera feed, vehicle, duration, location → officer chooses: View / Issue Challan / Request Tow. Level 3 — Enforcement: challan issued; repeat offenders escalate to tow.", descHi: "Level 1 — चेतावनी: वाहन हटाने की स्वचालित सूचना। Level 2 — ऑफिसर अलर्ट: कैमरा फीड, वाहन, अवधि, स्थान → ऑफिसर चुनता है: देखें / चालान / टो। Level 3 — प्रवर्तन: चालान जारी; बार-बार अपराधी टो के लिए बढ़ते हैं।" },
               { step: "7", icon: "", titleEn: "AI Traffic Intelligence Dashboard", titleHi: "AI ट्रैफिक इंटेलिजेंस डैशबोर्ड", descEn: "Daily counts (detected / active / warnings / challans / towed) and a ranked 'Top Problem Areas' list.", descHi: "दैनिक गिनती (पता लगाया / सक्रिय / चेतावनी / चालान / टो) और रैंक किए गए 'शीर्ष समस्या क्षेत्र' सूची।" },
               { step: "8", icon: "", titleEn: "Heatmap Analysis", titleHi: "हीटमैप विश्लेषण", descEn: "Violations broken down by location, day, time-of-day, and repeat offenders.", descHi: "स्थान, दिन, दिन के समय और बार-बार अपराधियों द्वारा उल्लंघन का विश्लेषण।" },
@@ -250,8 +250,8 @@ export default function TechFunctionalityPage() {
           <div className={styles.roadmapList}>
             {[
               { monthEn: "Month 1", monthHi: "माह 1", status: "live", labelEn: " In this submission", labelHi: " इस सबमिशन में", titleEn: "Citizen App + Admin Dashboard", titleHi: "नागरिक ऐप + एडमिन डैशबोर्ड", itemsEn: ["Reporting (category, GPS, photo)", "Violation complaint CRUD", "Complaint map (GIS)", "Police officer dashboard"], itemsHi: ["रिपोर्टिंग (श्रेणी, GPS, फोटो)", "उल्लंघन शिकायत CRUD", "शिकायत मानचित्र (GIS)", "पुलिस ऑफिसर डैशबोर्ड"] },
-              { monthEn: "Month 2", monthHi: "माह 2", status: "live", labelEn: " In this submission", labelHi: " इस सबमिशन में", titleEn: "Smart Parking (Module 1)", titleHi: "स्मार्ट पार्किंग (मॉड्यूल 1)", itemsEn: ["Parking database and capacity", "Find-parking + navigation", "Basic parking dashboard", "Manual occupancy update (Police Control)"], itemsHi: ["पार्किंग डेटाबेस व क्षमता", "पार्किंग खोज + नेवीगेशन", "बेसिक पार्किंग डैशबोर्ड", "मैन्युअल ऑक्युपेंसी अपडेट (पुलिस कंट्रोल)"] },
-              { monthEn: "Month 3", monthHi: "माह 3", status: "roadmap", labelEn: " Roadmap", labelHi: " रोडमैप", titleEn: "AI Pilot (Module 2)", titleHi: "AI पायलट (मॉड्यूल 2)", itemsEn: ["Pilot cameras", "Digital no-parking zones", "Vehicle detection", "ANPR", "Officer alerts + warnings"], itemsHi: ["पायलट कैमरे", "डिजिटल नो-पार्किंग ज़ोन", "वाहन डिटेक्शन", "ANPR", "ऑफिसर अलर्ट + चेतावनी"] },
+              { monthEn: "Month 2", monthHi: "माह 2", status: "live", labelEn: " In this submission", labelHi: " इस सबमिशन में", titleEn: "Smart Parking", titleHi: "स्मार्ट पार्किंग", itemsEn: ["Parking database and capacity", "Find-parking + navigation", "Basic parking dashboard", "Manual occupancy update (Police Control)"], itemsHi: ["पार्किंग डेटाबेस व क्षमता", "पार्किंग खोज + नेवीगेशन", "बेसिक पार्किंग डैशबोर्ड", "मैन्युअल ऑक्युपेंसी अपडेट (पुलिस कंट्रोल)"] },
+              { monthEn: "Month 3", monthHi: "माह 3", status: "roadmap", labelEn: " Roadmap", labelHi: " रोडमैप", titleEn: "AI Pilot", titleHi: "AI पायलट", itemsEn: ["Pilot cameras", "Digital no-parking zones", "Vehicle detection", "ANPR", "Officer alerts + warnings"], itemsHi: ["पायलट कैमरे", "डिजिटल नो-पार्किंग ज़ोन", "वाहन डिटेक्शन", "ANPR", "ऑफिसर अलर्ट + चेतावनी"] },
               { monthEn: "Month 4+", monthHi: "माह 4+", status: "roadmap", labelEn: " Roadmap", labelHi: " रोडमैप", titleEn: "Scale + Automate", titleHi: "स्केल + स्वचालन", itemsEn: ["IoT sensors", "Online payment + reservations", "Full challan integration", "Traffic analytics"], itemsHi: ["IoT सेंसर", "ऑनलाइन भुगतान + आरक्षण", "पूर्ण चालान एकीकरण", "ट्रैफिक एनालिटिक्स"] },
             ].map((r, i) => (
               <div key={i} className={`${styles.roadmapItem} ${r.status === "live" ? styles.roadmapLive : styles.roadmapRoadmap}`}>

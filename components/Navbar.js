@@ -88,7 +88,7 @@ export default function Navbar({
     {
       key: "complaints",
       icon: "",
-      label: lang === "hi" ? "शिकायत रिपोर्ट व मैप (मॉड्यूल 2)" : "Complaint Reports & Map (Module 2)",
+      label: lang === "hi" ? "शिकायत रिपोर्ट व मैप" : "Complaint Reports & Map",
       desc: lang === "hi" ? "नागरिक शिकायतों की तालिका व स्थान मैप — AI अवैध पार्किंग डिटेक्शन पाइपलाइन" : "Complaints table & map — AI Illegal Parking Detection pipeline",
     },
     {
@@ -100,7 +100,7 @@ export default function Navbar({
     {
       key: "parking",
       icon: "",
-      label: lang === "hi" ? "स्मार्ट पार्किंग सिस्टम (मॉड्यूल 1)" : "Smart Parking System (Module 1)",
+      label: lang === "hi" ? "स्मार्ट पार्किंग सिस्टम" : "Smart Parking System",
       desc: lang === "hi" ? "पार्किंग हब क्षमता व लाइव मैप" : "Parking hubs capacity & live map",
     },
     {

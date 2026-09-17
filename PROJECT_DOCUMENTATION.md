@@ -1,4 +1,4 @@
-# 🚦 Parking Suraksha & Smart Traffic System — Raipur Police
+# 🚦 Advanced Integrated Mobility & Traffic Management System — Raipur Police
 ### Comprehensive Project Documentation & Technical Architecture Report
 **Submission:** Raipur Police Commissionerate · Traffic Hackathon 2026  
 **Tech Stack:** Next.js (App Router), React, Vanilla CSS Design System, Leaflet Maps, REST APIs
@@ -7,7 +7,7 @@
 
 ## 📌 Executive Summary
 
-**Parking Suraksha & Smart Traffic System** is an end-to-end civic and municipal policing platform engineered for the **Raipur Police Commissionerate**. It bridges the gap between citizens on the road and traffic police control officers at headquarters.
+**Advanced Integrated Mobility & Traffic Management System** is an end-to-end civic and municipal policing platform engineered for the **Raipur Police Commissionerate**. It bridges the gap between citizens on the road and traffic police control officers at headquarters.
 
 The platform provides a streamlined, clutter-free **Citizen Portal** for instant traffic violation reporting, real-time GPS parking spot location, live junction traffic monitoring, and 6 digital police desks (e-Challan, e-Lost, Speed Limits, NOC, Taxi Complaint, Fine Guide), seamlessly integrated with an **Admin Command Dashboard** equipped with emergency dispatch, signal preemption, and patrol management.
 

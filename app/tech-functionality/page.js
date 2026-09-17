@@ -14,7 +14,7 @@ export default function TechFunctionalityPage() {
         <div className={styles.heroInner}>
           <div className={styles.eyebrow}>Technical Architecture &amp; Specifications</div>
           <h1 className={styles.heroTitle}>
-            {lang === "hi" ? "पार्किंग सुरक्षा - तकनीकी कार्यप्रणाली" : "Parking Suraksha - Technical Architecture"}
+            {lang === "hi" ? "उन्नत एकीकृत गतिशीलता एवं यातायात प्रबंधन प्रणाली - तकनीकी कार्यप्रणाली" : "Advanced Integrated Mobility & Traffic Management System - Technical Architecture"}
           </h1>
           <p className={styles.heroSub}>
             {lang === "hi" ? "रायपुर पुलिस कमिश्नरेट ट्रैफिक हैकाथॉन 2026 - विस्तृत तकनीकी दस्तावेज़" : "Raipur Police Commissionerate Traffic Hackathon 2026 - Complete Technical Reference for Judges"}

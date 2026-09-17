@@ -1,9 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "पार्किंग सुरक्षा | Raipur Traffic Police",
+  title: "Advanced Integrated Mobility & Traffic Management System | Raipur Police",
   description:
-    "Smart Parking Compliance & Reporting System — Raipur Police Commissionerate Traffic Hackathon",
+    "Advanced Integrated Mobility & Traffic Management System — Raipur Police Commissionerate Traffic Hackathon",
   other: {
     google: "notranslate",
   },

@@ -378,8 +378,8 @@ function CitizenPortalContent() {
 
   const CITIZEN_NAV_TABS = [
     ["overview", lang === "hi" ? "मुख्य डैशबोर्ड" : "Citizen Dashboard", "📊"],
-    ["report", lang === "hi" ? "उल्लंघन शिकायत (मॉड्यूल 2)" : "Report Violation (Module 2)", "📝"],
-    ["parking", lang === "hi" ? "स्मार्ट पार्किंग खोजें (मॉड्यूल 1)" : "Find Parking (Module 1)", "🅿️"],
+    ["report", lang === "hi" ? "उल्लंघन शिकायत (मॉड्यूल 2)" : "Report Violation", "📝"],
+    ["parking", lang === "hi" ? "स्मार्ट पार्किंग खोजें (मॉड्यूल 1)" : "Find Parking", "🅿️"],
     ["traffic", lang === "hi" ? "लाइव ट्रैफिक मानचित्र" : "Live Traffic Map", "🚥"],
   ];
 
